@@ -260,12 +260,80 @@ function adminChange(t,k){const id=t.dataset.id;
 const openOrd=id=>{const o=db.orders.find(x=>x.id==id);if(!o)return;curOrd=id;dlg(odet(o),"wide ord")};
 const refreshOrd=()=>{const d=$("#dlg");if(curOrd&&d.open&&String(d.className).includes("ord")){const o=db.orders.find(x=>x.id==curOrd);if(o)d.innerHTML=odet(o)}};
 const lines=()=>cart.filter(i=>prod(i.id));
-const BD_DISTRICTS=["Bagerhat","Bandarban","Barguna","Barishal","Bhola","Bogura","Brahmanbaria","Chandpur","Chattogram","Chuadanga","Cox's Bazar","Cumilla","Dhaka","Dinajpur","Faridpur","Feni","Gaibandha","Gazipur","Gopalganj","Habiganj","Jamalpur","Jashore","Jhalokati","Jhenaidah","Joypurhat","Khagrachhari","Kishoreganj","Kurigram","Kushtia","Lakshmipur","Lalmonirhat","Madaripur","Magura","Manikganj","Meherpur","Moulvibazar","Munshiganj","Mymensingh","Naogaon","Narail","Narayanganj","Narsingdi","Natore","Netrokona","Nilphamari","Noakhali","Pabna","Panchagarh","Patuakhali","Pirojpur","Rajbari","Rajshahi","Rangamati","Rangpur","Satkhira","Shariatpur","Sherpur","Sirajganj","Sunamganj","Sylhet","Tangail","Thakurgaon"].sort((a,b)=>a.localeCompare(b));
+const BD_DISTRICTS=["Bagerhat","Bandarban","Barguna","Barishal","Bhola","Bogura","Brahmanbaria","Chandpur","Chapainawabganj","Chattogram","Chuadanga","Cox's Bazar","Cumilla","Dhaka","Dinajpur","Faridpur","Feni","Gaibandha","Gazipur","Gopalganj","Habiganj","Jamalpur","Jashore","Jhalokati","Jhenaidah","Joypurhat","Khagrachhari","Kishoreganj","Khulna","Kurigram","Kushtia","Lakshmipur","Lalmonirhat","Madaripur","Magura","Manikganj","Meherpur","Moulvibazar","Munshiganj","Mymensingh","Naogaon","Narail","Narayanganj","Narsingdi","Natore","Netrokona","Nilphamari","Noakhali","Pabna","Panchagarh","Patuakhali","Pirojpur","Rajbari","Rajshahi","Rangamati","Rangpur","Satkhira","Shariatpur","Sherpur","Sirajganj","Sunamganj","Sylhet","Tangail","Thakurgaon"].sort((a,b)=>a.localeCompare(b));
+
+const BD_THANA_BY_DISTRICT={
+"Bagerhat":["Bagerhat Sadar","Chitalmari","Fakirhat","Kachua","Mollahat","Mongla","Morrelganj","Rampal","Sarankhola"],
+"Bandarban":["Bandarban Sadar","Thanchi","Ruma","Rowangchhari","Lama","Alikadam","Naikhongchhari"],
+"Barguna":["Barguna Sadar","Amtali","Bamna","Betagi","Patharghata","Taltali"],
+"Barishal":["Barishal Sadar","Agailjhara","Babuganj","Bakerganj","Banaripara","Gaurnadi","Hizla","Mehendiganj","Muladi","Wazirpur"],
+"Bhola":["Bhola Sadar","Borhanuddin","Char Fasson","Daulatkhan","Lalmohan","Manpura","Tazumuddin"],
+"Bogura":["Bogura Sadar","Adamdighi","Dhunat","Dhupchanchia","Gabtali","Kahaloo","Nandigram","Sariakandi","Shajahanpur","Sherpur","Shibganj","Sonatala"],
+"Brahmanbaria":["Brahmanbaria Sadar","Akhaura","Ashuganj","Bancharampur","Bijoynagar","Kasba","Nabinagar","Nasirnagar","Sarail"],
+"Chandpur":["Chandpur Sadar","Faridganj","Haimchar","Haziganj","Kachua","Matlab Dakshin","Matlab Uttar","Shahrasti"],
+"Chapainawabganj":["Chapainawabganj Sadar","Bholahat","Gomastapur","Nachole","Shibganj"],
+"Chattogram":["Anwara","Banshkhali","Boalkhali","Chandanaish","Fatikchhari","Hathazari","Lohagara","Mirsharai","Patiya","Rangunia","Raozan","Sandwip","Satkania","Sitakunda","Kotwali","Panchlaish","Double Mooring","Pahartali","Halishahar","Chandgaon","Bayezid","Patenga"],
+"Chuadanga":["Chuadanga Sadar","Alamdanga","Damurhuda","Jibannagar"],
+"Cox's Bazar":["Cox's Bazar Sadar","Chakaria","Kutubdia","Maheshkhali","Pekua","Ramu","Teknaf","Ukhia"],
+"Cumilla":["Cumilla Adarsha Sadar","Cumilla Sadar Dakshin","Barura","Brahmanpara","Burichang","Chandina","Chauddagram","Daudkandi","Debidwar","Homna","Laksam","Lalmai","Meghna","Monoharganj","Muradnagar","Nangalkot","Titas"],
+"Dhaka":["Dhanmondi","Gulshan","Uttara","Turag","Mirpur","Pallabi","Mohammadpur","Tejgaon","Ramna","Motijheel","Wari","Kotwali","Lalbagh","Hazaribagh","Shahbagh","Badda","Khilgaon","Kafrul","Cantonment","Shah Ali","Adabor","Darus Salam","Jatrabari","Kadamtali","Kamrangirchar","Khilkhet","Sabujbagh","Sutrapur","Airport","Bangshal","Chawkbazar","Demra","Paltan","Rampura","Sher-e-Bangla Nagar","Shyampur","Uttarkhan","Dakshinkhan","Bimanbandar"],
+"Dinajpur":["Dinajpur Sadar","Birampur","Birganj","Birol","Bochaganj","Chirirbandar","Fulbari","Ghoraghat","Hakimpur","Kaharole","Khansama","Nawabganj","Parbatipur"],
+"Faridpur":["Faridpur Sadar","Alfadanga","Bhanga","Boalmari","Charbhadrasan","Madhukhali","Nagarkanda","Sadarpur","Saltha"],
+"Feni":["Feni Sadar","Chhagalnaiya","Daganbhuiyan","Fulgazi","Parshuram","Sonagazi"],
+"Gaibandha":["Gaibandha Sadar","Fulchhari","Gobindaganj","Palashbari","Sadullapur","Saghata","Sundarganj"],
+"Gazipur":["Gazipur Sadar","Kaliakair","Kaliganj","Kapasia","Sreepur","Tongi","Joydebpur"],
+"Gopalganj":["Gopalganj Sadar","Kashiani","Kotalipara","Muksudpur","Tungipara"],
+"Habiganj":["Habiganj Sadar","Ajmiriganj","Bahubal","Baniachong","Chunarughat","Lakhai","Madhabpur","Nabiganj","Shayestaganj"],
+"Jamalpur":["Jamalpur Sadar","Baksiganj","Dewanganj","Islampur","Madarganj","Melandaha","Sarishabari"],
+"Jashore":["Jashore Sadar","Abhaynagar","Bagherpara","Chaugachha","Jhikargachha","Keshabpur","Manirampur","Sharsha"],
+"Jhalokati":["Jhalokati Sadar","Kathalia","Nalchity","Rajapur"],
+"Jhenaidah":["Jhenaidah Sadar","Harinakunda","Kaliganj","Kotchandpur","Maheshpur","Shailkupa"],
+"Joypurhat":["Joypurhat Sadar","Akkelpur","Kalai","Khetlal","Panchbibi"],
+"Khagrachhari":["Khagrachhari Sadar","Dighinala","Lakshmichhari","Mahalchhari","Manikchhari","Matiranga","Panchhari","Ramgarh","Guimara"],
+"Kishoreganj":["Kishoreganj Sadar","Austagram","Bajitpur","Bhairab","Hossainpur","Itna","Karimganj","Katiadi","Kuliarchar","Mithamain","Nikli","Pakundia","Tarail"],
+"Khulna":["Khulna Sadar","Batiaghata","Dacope","Dumuria","Dighalia","Koyra","Paikgachha","Phultala","Rupsa","Terokhada"],
+"Kurigram":["Kurigram Sadar","Bhurungamari","Char Rajibpur","Chilmari","Phulbari","Nageshwari","Rajarhat","Raomari","Ulipur"],
+"Kushtia":["Kushtia Sadar","Bheramara","Daulatpur","Khoksa","Kumarkhali","Mirpur"],
+"Lakshmipur":["Lakshmipur Sadar","Kamalnagar","Raipur","Ramganj","Ramgati"],
+"Lalmonirhat":["Lalmonirhat Sadar","Aditmari","Hatibandha","Kaliganj","Patgram"],
+"Madaripur":["Madaripur Sadar","Kalkini","Rajoir","Shibchar","Dasar"],
+"Magura":["Magura Sadar","Mohammadpur","Shalikha","Sreepur"],
+"Manikganj":["Manikganj Sadar","Daulatpur","Ghior","Harirampur","Saturia","Shibalaya","Singair"],
+"Meherpur":["Meherpur Sadar","Gangni","Mujibnagar"],
+"Moulvibazar":["Moulvibazar Sadar","Barlekha","Juri","Kamalganj","Kulaura","Rajnagar","Sreemangal"],
+"Munshiganj":["Munshiganj Sadar","Gazaria","Lohajang","Sirajdikhan","Sreenagar","Tongibari"],
+"Mymensingh":["Mymensingh Sadar","Bhaluka","Dhobaura","Fulbaria","Gaffargaon","Gauripur","Haluaghat","Ishwarganj","Muktagachha","Nandail","Phulpur","Trishal","Tara Khanda"],
+"Naogaon":["Naogaon Sadar","Atrai","Badalgachhi","Dhamoirhat","Manda","Mahadebpur","Niamatpur","Patnitala","Porsha","Raninagar","Sapahar"],
+"Narail":["Narail Sadar","Kalia","Lohagara"],
+"Narayanganj":["Narayanganj Sadar","Araihazar","Bandar","Rupganj","Sonargaon","Fatullah","Siddhirganj"],
+"Narsingdi":["Narsingdi Sadar","Belabo","Monohardi","Palash","Raipura","Shibpur"],
+"Natore":["Natore Sadar","Bagatipara","Baraigram","Gurudaspur","Lalpur","Singra","Naldanga"],
+"Netrokona":["Netrokona Sadar","Atpara","Barhatta","Durgapur","Khaliajuri","Kalmakanda","Kendua","Madan","Mohanganj","Purbadhala"],
+"Nilphamari":["Nilphamari Sadar","Dimla","Domar","Jaldhaka","Kishoreganj","Saidpur"],
+"Noakhali":["Noakhali Sadar","Begumganj","Chatkhil","Companiganj","Hatiya","Kabirhat","Senbagh","Sonaimuri","Subarnachar"],
+"Pabna":["Pabna Sadar","Atgharia","Bera","Bhangura","Chatmohar","Faridpur","Ishwardi","Santhia","Sujanagar"],
+"Panchagarh":["Panchagarh Sadar","Atwari","Boda","Debiganj","Tetulia"],
+"Patuakhali":["Patuakhali Sadar","Bauphal","Dashmina","Galachipa","Kalapara","Mirzaganj","Rangabali","Dumki"],
+"Pirojpur":["Pirojpur Sadar","Bhandaria","Kawkhali","Mathbaria","Nazirpur","Nesarabad","Zianagar"],
+"Rajbari":["Rajbari Sadar","Baliakandi","Goalandaghat","Pangsha","Kalukhali"],
+"Rajshahi":["Rajshahi Boalia","Rajpara","Motihar","Shah Makhdum","Paba","Bagha","Bagmara","Charghat","Durgapur","Godagari","Mohanpur","Puthia","Tanore"],
+"Rangamati":["Rangamati Sadar","Bagaichhari","Barkal","Juraichhari","Kaptai","Kawkhali","Langadu","Naniarchar","Rajasthali","Belaichhari"],
+"Rangpur":["Rangpur Sadar","Badarganj","Gangachara","Kaunia","Mithapukur","Pirgachha","Pirganj","Taraganj"],
+"Satkhira":["Satkhira Sadar","Assasuni","Debhata","Kalaroa","Kaliganj","Shyamnagar","Tala"],
+"Shariatpur":["Shariatpur Sadar","Bhedarganj","Damudya","Gosairhat","Naria","Zajira"],
+"Sherpur":["Sherpur Sadar","Jhenaigati","Nakla","Nalitabari","Sreebardi"],
+"Sirajganj":["Sirajganj Sadar","Belkuchi","Chauhali","Kamarkhanda","Kazipur","Raiganj","Shahjadpur","Tarash","Ullapara"],
+"Sunamganj":["Sunamganj Sadar","Bishwamvarpur","Chhatak","Derai","Dharampasha","Dowarabazar","Jagannathpur","Jamalganj","Shalla","Tahirpur","Madhyanagar"],
+"Sylhet":["Sylhet Sadar","Balaganj","Beanibazar","Bishwanath","Companiganj","Fenchuganj","Golapganj","Gowainghat","Jaintiapur","Kanaighat","Osmaninagar","Zakiganj","South Surma"],
+"Tangail":["Tangail Sadar","Basail","Bhuapur","Delduar","Dhanbari","Ghatail","Gopalpur","Kalihati","Madhupur","Mirzapur","Nagarpur","Sakhipur"],
+"Thakurgaon":["Thakurgaon Sadar","Baliadangi","Haripur","Pirganj","Ranisankail"]
+};
+
 const checkout=()=>{const L=lines();if(!L.length)return'<p class="mut">Your cart is empty. <a class="ac" href="#/shop">Continue shopping</a></p>';const s=db.set,a=quote(L,"online","inside"),b=quote(L,"cod","inside");
  return`<h2>Checkout · অর্ডার করুন</h2><p class="mut">Choose your delivery area and enter your full address.</p><div class="lay" style="grid-template-columns:1fr 340px;margin-top:16px"><form data-s="order" class="glass stack" style="padding:20px"><div class="two"><input name="name" placeholder="Full name · সম্পূর্ণ নাম" required autocomplete="name"><input name="phone" placeholder="01XXXXXXXXX" pattern="(\\+?88)?01[3-9][0-9]{8}" required autocomplete="tel"></div>
  <input name="email" type="email" placeholder="Email (optional)">
  <label>Delivery area · ডেলিভারি এলাকা<select name="delivery_zone" id="deliveryZone" required><option value="">Select area / এলাকা নির্বাচন করুন</option><option value="inside">Inside Dhaka · ঢাকার ভিতরে</option><option value="outside">Outside Dhaka · ঢাকার বাইরে</option></select></label>
- <div class="two"><label>District · জেলা<select name="district" required><option value="">Select district / জেলা বাছাই করুন</option>${BD_DISTRICTS.map(x=>`<option ${x==="Dhaka"?"":""}>${esc(x)}</option>`).join("")}</select></label><label>Thana / Upazila · থানা/উপজেলা<input name="area" list="bd-thana-list" placeholder="Type your thana / উপজেলা" required><datalist id="bd-thana-list"><option value="Uttara"><option value="Turag"><option value="Tongi"><option value="Savar"><option value="Dhanmondi"><option value="Mirpur"><option value="Gulshan"><option value="Pallabi"><option value="Kotwali"><option value="Double Mooring"><option value="Panchlaish"><option value="Sadar"><option value="Sonadanga"><option value="Khulna Sadar"><option value="Sylhet Sadar"><option value="Rajshahi Sadar"><option value="Cumilla Sadar"><option value="Gazipur Sadar"><option value="Narayanganj Sadar"></datalist></label></div>
+ <div class="two"><label>District · জেলা<select name="district" required><option value="">Select district / জেলা বাছাই করুন</option>${BD_DISTRICTS.map(x=>`<option ${x==="Dhaka"?"":""}>${esc(x)}</option>`).join("")}</select></label><label>Thana / Upazila · থানা/উপজেলা<select name="area" id="thanaSelect" required disabled><option value="">আগে জেলা নির্বাচন করুন</option></select></label></div>
  <textarea name="address" placeholder="House, road, village, landmark and full delivery address · সম্পূর্ণ ঠিকানা" required></textarea>
  <div id="outsideAdvance" class="stack" hidden style="border:1px solid var(--ac);border-radius:14px;padding:14px"><b>Outside Dhaka: advance delivery charge required</b><span class="mut bn">ঢাকার বাইরে অর্ডারের ক্ষেত্রে ডেলিভারি চার্জ অগ্রিম Send Money করতে হবে।</span><div class="note"><div class="row sp"><span>bKash · Send Money</span><b>01304244017</b></div><div class="row sp"><span>Nagad · Send Money</span><b>01304244017</b></div><div class="row sp"><span>Advance delivery charge</span><b id="advanceFee">${bdt(s.out)}</b></div></div><p class="mut">Send the exact delivery charge, then enter the transaction ID below. Do not enter your PIN or OTP.</p><label>Payment method<select name="advance_method"><option value="bKash">bKash Send Money</option><option value="Nagad">Nagad Send Money</option></select></label><label>Transaction ID (TrxID)<input name="advance_trx" placeholder="Enter the TrxID after sending" autocomplete="off"></label><p class="mut">Order request will be saved for payment verification. A TrxID alone cannot automatically verify payment.</p></div>
  <label class="opt"><input type="radio" name="m" value="online" checked><span><b>Pay online</b><br><span class="mut">${bdt(a.total)} in Dhaka · gateway payment not connected</span></span></label>
@@ -452,6 +520,7 @@ const A={x:()=>{$("#dlg").close();curOrd=null},theme:()=>{const r=document.docum
  rvh:d=>{if(!can("reviews"))return toast("Forbidden");const r=db.reviews.find(x=>x.id==d.id);r.hide=!r.hide;commit()},rvd:d=>{if(!can("reviews"))return toast("Forbidden");db.reviews=db.reviews.filter(x=>x.id!=d.id);commit()},pub:d=>{if(!can("products"))return toast("Forbidden");const p=prod(d.id);p.pub=!p.pub;commit()}};
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.dataset&&e.target.dataset.a==="pg")A.pg(e.target.dataset)});
 document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;if(b.dataset.a==="gallery"){const p=prod(b.dataset.id),pics=p&&(p.images&&p.images.length?p.images:(p.img?[p.img]:[])),im=pics&&pics[+b.dataset.i],main=$("#productMainMedia");if(im&&main){main.innerHTML=`<img src="${im}" alt="${esc(p.name)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit">`;return}}if(A[b.dataset.a])A[b.dataset.a](b.dataset,b)});
+document.addEventListener("change",e=>{if(e.target&&e.target.name==="district"){const form=e.target.closest("form"),th=form&&form.querySelector("#thanaSelect");if(!th)return;const district=e.target.value,areas=BD_THANA_BY_DISTRICT[district]||[];th.innerHTML=areas.length?'<option value="">থানা/উপজেলা নির্বাচন করুন</option>'+areas.map(a=>`<option value="${esc(a)}">${esc(a)}</option>`).join(""):'<option value="">এই জেলার তালিকা পাওয়া যায়নি</option>';th.disabled=!areas.length;th.value="";}});
 document.addEventListener("change",e=>{if(e.target&&e.target.id==="deliveryZone"){const outside=e.target.value==="outside",panel=$("#outsideAdvance"),cod=$("#codOption"),fee=$("#advanceFee");if(panel)panel.hidden=!outside;if(cod)cod.hidden=outside;if(fee)fee.textContent=bdt(db.set.out);const form=e.target.closest("form");if(outside&&form){const online=form.querySelector('input[name="m"][value="online"]');if(online)online.checked=true}}});
 document.addEventListener("change",e=>{const t=e.target,k=t.dataset.c;if(!k)return;if(k==="ed")return edChange(t);if(adminChange(t,k))return;if(k==="pimg"){if(!can("products")||!t.files.length)return;const existing=($("#pimgcurrent")?.querySelectorAll("img").length||0),remaining=Math.max(0,7-existing-(window.__pmedia?.images?.length||0));const files=[...t.files].slice(0,remaining);if(!files.length){toast("Maximum 7 product photos");return}let done=0;files.forEach(file=>shrink(file,520,u=>{window.__pmedia.images.push(u);done++;const s=$("#pimgs");if(s)s.textContent=`${window.__pmedia.images.length} new photo(s) ready ✓ (up to 7 total)`;if(done===files.length){const box=$("#pimgcurrent");if(box)box.innerHTML=[...box.querySelectorAll("img")].map(x=>x.outerHTML).join("")+window.__pmedia.images.map((im,i)=>`<img src="${im}" alt="New product photo ${i+1}" style="width:58px;height:58px;object-fit:cover;border-radius:9px;border:1px solid var(--ln)">`).join("")}}));return}
  if(k==="pvideo"){if(!can("products")||!t.files[0])return;const file=t.files[0];if(file.size>1200*1024){toast("Video is too large for browser storage. Use a video URL or a file under 1 MB.");t.value="";return}const fr=new FileReader();fr.onload=()=>{window.__pmedia.video=fr.result;const s=$("#pvids");if(s)s.textContent="Video ready ✓ — save the product to apply it.";};fr.onerror=()=>toast("Could not read video");fr.readAsDataURL(file);return}
