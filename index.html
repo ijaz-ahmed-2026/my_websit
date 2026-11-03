@@ -522,6 +522,50 @@ body.adm .sidebar .who .nav-ico{color:var(--fg);background:rgba(255,255,255,.07)
 :root[data-t=light] body.adm .sidebar .sub .sub-ico{color:rgba(20,20,20,.55);background:transparent}
 @media(max-width:520px){body.adm .sidebar .nav-ico{flex-basis:30px;width:30px;height:30px}body.adm .sidebar .nav-ico svg{width:18px;height:18px}}
 
+
+/* Light theme: consistent readable contrast across storefront and admin */
+:root[data-t=light]{
+ --fg:#211b12;--mut:#625847;--muted:#625847;--bg:#f4efe6;--bg2:#fffdf8;
+ --gl:rgba(255,255,255,.78);--ln:rgba(48,38,22,.16);
+ --act:#765016;color-scheme:light;
+}
+:root[data-t=light] body{color:var(--fg)}
+:root[data-t=light] body.adm :is(p,label,small,strong,b,em,td,th,summary,.mut,.sm,.empty,.mn,.who,.dash-kpi-top,.pro-metric-label,.cd span,.rc p,.order-block-title,.sub button,.tl>div,.note,.agrp,.dt){color:var(--fg)}
+:root[data-t=light] body.adm :is(.mut,.sm,.mn,.dash-kpi-top,.pro-metric-label,.cd span,.rc p,.empty,.sub button){color:var(--mut)}
+:root[data-t=light] body.adm :is(input,select,textarea){color:#211b12!important;background:#fff!important;border-color:rgba(48,38,22,.22)!important}
+:root[data-t=light] body.adm input::placeholder,
+:root[data-t=light] body.adm textarea::placeholder{color:#817766!important;opacity:1}
+:root[data-t=light] body.adm button:not(.pri):not(.ab.p):not(.added):not(.x),
+:root[data-t=light] body.adm .btn:not(.pri){color:var(--fg)}
+:root[data-t=light] body.adm .chips button.on,
+:root[data-t=light] body.adm .tag,
+:root[data-t=light] body.adm .sidebar em,
+:root[data-t=light] body.adm .steps li.done i,
+:root[data-t=light] body.adm .ab.p{color:#211b12!important}
+:root[data-t=light] body.adm .pri{background:#171717!important;border-color:#171717!important;color:#fff!important}
+:root[data-t=light] body.adm dialog{color:#211b12;background:linear-gradient(145deg,rgba(255,255,255,.99),rgba(247,243,235,.98));border-color:rgba(48,38,22,.18);box-shadow:0 24px 70px rgba(35,25,10,.2)}
+:root[data-t=light] body.adm dialog :is(p,label,small,strong,b,em,td,th,.mut,.sm,.empty){color:inherit}
+:root[data-t=light] body.adm dialog :is(.mut,.sm,.empty){color:#625847}
+:root[data-t=light] body.adm .sidebar{color:#211b12;background:rgba(255,255,255,.96);border-color:rgba(48,38,22,.16)}
+:root[data-t=light] body.adm .sidebar button{color:#211b12}
+:root[data-t=light] body.adm .sidebar .nav-label{color:inherit}
+:root[data-t=light] body.adm .ot th{color:#625847;background:rgba(25,20,12,.045)}
+:root[data-t=light] body.adm .ot td{color:#211b12}
+:root[data-t=light] body.adm .ot tr.on td{background:rgba(160,110,35,.10)}
+:root[data-t=light] body.adm .orow{color:#211b12;background:rgba(255,255,255,.55)}
+:root[data-t=light] body.adm .orow .mut{color:#625847}
+:root[data-t=light] body.adm .menu-trigger,:root[data-t=light] body.adm .side-collapse{color:#211b12;background:rgba(0,0,0,.045);border-color:rgba(48,38,22,.18)}
+:root[data-t=light] body.adm .badge.wait,:root[data-t=light] body.adm .sb.w{color:#68470f}
+:root[data-t=light] body.adm .sb.b{color:#1857a6}
+:root[data-t=light] body.adm .sb.g{color:#147447}
+:root[data-t=light] body.adm .sb.r,:root[data-t=light] body.adm .ab.d{color:#b4232b}
+:root[data-t=light] body.adm .alert{color:#8f1d25}
+:root[data-t=light] body.adm .toast{color:#211b12;background:rgba(255,255,255,.98);border:1px solid rgba(48,38,22,.16)}
+:root[data-t=light] body.adm .nav-ico{color:rgba(20,20,20,.76)}
+:root[data-t=light] body.adm .sidebar button.sn.on{color:#211b12;background:rgba(160,110,35,.13)}
+:root[data-t=light] body.adm .sidebar button.sn.on .nav-ico{color:#fff;background:#171717}
+:root[data-t=light] body:not(.adm) :is(input,select,textarea){color:#211b12;background:#fff}
+:root[data-t=light] body:not(.adm) input::placeholder,:root[data-t=light] body:not(.adm) textarea::placeholder{color:#817766;opacity:1}
 </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 dialog.ord.order-edit-dialog{width:min(1040px,96vw);max-width:1040px;max-height:92dvh;overflow:auto;padding:clamp(14px,2.5vw,26px)}
