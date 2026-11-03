@@ -479,6 +479,21 @@ body.adm .menu-scrim{display:none!important}
 @media(max-width:520px){body.adm .shell,body.adm .shell.nav-expanded{grid-template-columns:58px minmax(0,1fr)!important;gap:8px!important}body.adm .sidebar,body.adm .shell.nav-expanded .sidebar{width:58px!important;min-width:58px;padding:7px 4px!important;border-radius:14px}body.adm .shell.nav-expanded{grid-template-columns:minmax(170px,190px) minmax(0,1fr)!important}body.adm .shell.nav-expanded .sidebar{width:100%!important;min-width:0;padding:9px!important}body.adm .sidebar>button.sn{min-height:43px}body.adm .sidebar .nav-ico{font-size:18px}}
 @media(prefers-reduced-motion:reduce){body.adm .sidebar,body.adm .side-collapse,body.adm .sidebar button{transition:none!important}}
 
+
+/* Premium consistent outline navigation icon system */
+body.adm .sidebar .nav-ico{display:inline-flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;border-radius:10px;color:rgba(255,255,255,.76);background:rgba(255,255,255,.045);transition:color .25s,background .25s,transform .3s,box-shadow .25s}
+body.adm .sidebar .nav-ico svg{display:block;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+body.adm .sidebar button.sn:hover .nav-ico{color:var(--fg);background:rgba(255,255,255,.10);transform:translateY(-1px)}
+body.adm .sidebar button.sn.on .nav-ico{color:var(--bg);background:var(--ac);box-shadow:0 4px 14px color-mix(in srgb,var(--ac) 25%,transparent)}
+body.adm .sidebar .sub .sub-ico{flex-basis:24px;width:24px;height:24px;border-radius:7px;background:transparent;color:var(--muted);box-shadow:none}
+body.adm .sidebar .sub .sub-ico svg{width:16px;height:16px;stroke-width:1.65}
+body.adm .sidebar .sub button.on .sub-ico{color:var(--act);background:color-mix(in srgb,var(--ac) 13%,transparent)}
+body.adm .sidebar .who .nav-ico{color:var(--fg);background:rgba(255,255,255,.07)}
+:root[data-t=light] body.adm .sidebar .nav-ico{color:rgba(20,20,20,.7);background:rgba(0,0,0,.045)}
+:root[data-t=light] body.adm .sidebar button.sn.on .nav-ico{color:#fff;background:#171717}
+:root[data-t=light] body.adm .sidebar .sub .sub-ico{color:rgba(20,20,20,.55);background:transparent}
+@media(max-width:520px){body.adm .sidebar .nav-ico{flex-basis:30px;width:30px;height:30px}body.adm .sidebar .nav-ico svg{width:18px;height:18px}}
+
 </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head><body>
 
@@ -871,6 +886,33 @@ const setView=()=>{const s=db.set;
  <div class="glass stack" style="padding:20px"><h3 class="disp">Couriers</h3>${s.couriers.map((c,i)=>`<div class="row">${fi("couriers."+i,c)}<button class="ab d" data-a="courdel" data-i="${i}" aria-label="Remove">✕</button></div>`).join("")}<button class="ab" data-a="couradd" style="width:max-content">+ Add courier</button></div></div>`;
  if(at==="setmsg")return`<div class="glass stack" style="padding:20px;max-width:760px"><h3 class="disp">Customer messages</h3><p class="mut">Used by the "WhatsApp update" button on each order. Variables: {name} {no} {total}. Leave empty to use the default English + Bangla message.</p>${ST.map(x=>`<label class="mut">${SL[x]}${fa("msg."+x,s.msg[x]||"",msg({status:x,method:"cod"})[0]+" / "+msg({status:x,method:"cod"})[1])}</label>`).join("")}</div>`;
  return`<div class="glass stack" style="padding:20px;max-width:560px"><h3 class="disp">Sizes and colours</h3><p class="mut">Quick-add chips in the product editor. Separate with commas.</p><label>Sizes${fi("set.sizes",s.sizes)}</label><label>Colours${fi("set.colors",s.colors)}</label></div>`};
+const NAV_ICON_PATHS={
+dash:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/>',
+orders:'<path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M8 11h8M8 15h8M8 19h5"/>',
+ship:'<path d="M3 7h11v11H3zM14 11h4l3 3v4h-7z"/><circle cx="7.5" cy="19" r="2"/><circle cx="17.5" cy="19" r="2"/>',
+neworder:'<path d="M12 5v14M5 12h14"/><rect x="3" y="3" width="18" height="18" rx="4"/>',
+products:'<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 8 9 5 9-5M3 8v9l9 5 9-5V8M12 13v9"/>',
+inventory:'<path d="m4 7 8-4 8 4-8 4-8-4Z"/><path d="M4 7v10l8 4 8-4V7M12 11v10M8 5l8 4"/>',
+cust:'<path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+comp:'<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/>',
+reports:'<path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/>',
+rp_sales:'<path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 6-7"/>',
+rp_prod:'<path d="M4 19V5M10 19V9M16 19V3M22 19v-7"/>',
+rp_cour:'<path d="M3 7h11v11H3zM14 11h4l3 3v4h-7z"/><circle cx="7.5" cy="19" r="2"/><circle cx="17.5" cy="19" r="2"/>',
+rp_parcel:'<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 8 9 5 9-5M3 8v9l9 5 9-5V8M12 13v9"/><path d="m9 16 2 2 4-4"/>',
+rp_user:'<path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 8v6M17 11h6"/>',
+rp_cancel:'<circle cx="12" cy="12" r="9"/><path d="m15 9-6 6M9 9l6 6"/>',
+rev:'<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>',
+users:'<path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 8v6M17 11h6"/>',
+team:'<path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/>',
+set:'<circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7a8 8 0 0 1-1.7 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.7-1l-1.7.7-1.4-2.4 1.4-1.1a8 8 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.7a8 8 0 0 1 1.7-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.7 1l1.7-.7 1.4 2.4-1.4 1.1a8 8 0 0 1 0 2Z"/>',
+setpay:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h3"/>',
+setmsg:'<path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l1.8-4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 11h8M8 15h5"/>',
+setopt:'<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M2 14h4M10 8h4M18 16h4"/>',
+site:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5M7 13h4M7 17h7"/>',
+logout:'<path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h6a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3h-6"/>'
+};
+const navIcon=id=>'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+(NAV_ICON_PATHS[id]||NAV_ICON_PATHS.dash)+'</svg>';
 const NAV=[["dash","Dashboard","▦","dash"],["g1","Orders","▤","orders",[["orders","All orders"],["ship","Shipping & delivery"],["neworder","+ New order","edit"]]],["g2","Products","◫","products",[["products","All products"],["inventory","Inventory & stock"]]],["cust","Customers","◉","customers"],["comp","Complaints","✉","orders"],["g3","Reports","▥","reports",[["rp_sales","Sales report"],["rp_prod","Product report"],["rp_cour","Courier report"],["rp_parcel","Parcel report"],["rp_user","User report & rank"],["rp_cancel","Cancel report"]]],["rev","Reviews","★","reviews"],["g4","Users","☺","*",[["users","All users"],["team","Roles & permissions"]]],["g5","Settings","⚙","*",[["set","General"],["setpay","Payments & couriers"],["setmsg","Messages"],["setopt","Sizes & colours"]]],["site","Site editor","✎","*"]];
 const TT={};NAV.forEach(n=>{TT[n[0]]=n[1];(n[4]||[]).forEach(c=>TT[c[0]]=c[1])});
 const okp=p=>p==="*"?role==="Owner":can(p);
@@ -894,9 +936,9 @@ const admin=()=>{const M=navModel();if(!M.ids.length)return"";if(!M.ids.includes
  if(at==="cust"){const m={};db.orders.forEach(o=>{const c=m[o.c.phone]||(m[o.c.phone]={n:o.c.name,p:o.c.phone,a:o.c.address,k:0,v:0});c.k++;if(!["cancelled","payment_failed"].includes(o.status))c.v+=o.total});const L=Object.values(m);b=`<table><tr><th>Customer</th><th>Phone</th><th>Address</th><th>Orders</th><th>Lifetime value</th></tr>${L.map(c=>`<tr><td>${esc(c.n)}</td><td>${esc(c.p)}</td><td>${esc(c.a)}</td><td>${c.k}</td><td>${bdt(c.v)}</td></tr>`).join("")}</table>`+(L.length?"":'<p class="mut">No customers yet.</p>')}
  if(at==="rev")b=`<div class="stack">${db.reviews.map(r=>`<div class="glass row sp" style="padding:12px"><span>${"★".repeat(r.s)} <b>${esc(r.n)}</b> on ${esc(prod(r.pid)?.name||"?")}: ${esc(r.t)} ${r.hide?'<span class="chip">hidden</span>':""}</span><span class="row"><button data-a="rvh" data-id="${r.id}">${r.hide?"Show":"Hide"}</button><button data-a="rvd" data-id="${r.id}">Delete</button></span></div>`).join("")||'<p class="mut">No reviews yet.</p>'}</div>`;
  const bd=g=>{const m={g1:db.orders.filter(o=>["new","cancel_requested"].includes(o.status)).length,comp:db.complaints.filter(c=>c.status==="pending").length}[g]||0;return m?`<em>${m}</em>`:""};
- const side=M.items.map(({n,ch})=>{if(!ch)return`<button class="sn ${n[0]===at?"on":""}" data-a="t" data-id="${n[0]}" title="${n[1]}"><span class="nav-ico">${n[2]}</span><span class="nav-label">${n[1]}</span>${bd(n[0])}</button>`;const act=ch.some(c=>c[0]===at);return`<button class="sn ${act?"on":""}" data-a="t" data-id="${ch[0][0]}" title="${n[1]}"><span class="nav-ico">${n[2]}</span><span class="nav-label">${n[1]}</span>${bd(n[0])}<i class="chev">${act?"▾":"▸"}</i></button>${act?`<div class="sub">${ch.map(c=>`<button class="${c[0]===at?"on":""}" data-a="t" data-id="${c[0]}" title="${c[1]}"><span class="nav-label">${c[1]}</span></button>`).join("")}</div>`:""}`}).join("");
+ const side=M.items.map(({n,ch})=>{if(!ch)return`<button class="sn ${n[0]===at?"on":""}" data-a="t" data-id="${n[0]}" title="${n[1]}"><span class="nav-ico">${navIcon(n[0])}</span><span class="nav-label">${n[1]}</span>${bd(n[0])}</button>`;const act=ch.some(c=>c[0]===at);return`<button class="sn ${act?"on":""}" data-a="t" data-id="${ch[0][0]}" title="${n[1]}"><span class="nav-ico">${n[2]}</span><span class="nav-label">${n[1]}</span>${bd(n[0])}<i class="chev">${act?"▾":"▸"}</i></button>${act?`<div class="sub">${ch.map(c=>`<button class="${c[0]===at?"on":""}" data-a="t" data-id="${c[0]}" title="${c[1]}"><span class="nav-ico sub-ico">${navIcon(c[0])}</span><span class="nav-label">${c[1]}</span></button>`).join("")}</div>`:""}`}).join("");
  const nal=alerts().reduce((a,x)=>a+x[1],0);
- return`<div class="shell nav-collapsed"><aside class="sidebar"><div class="side-top"><span class="mn">IJAZ MENU</span><button class="side-collapse" data-a="menu" aria-label="Expand sidebar" aria-expanded="false" title="Expand sidebar">›</button></div>${side}<div class="who"><button class="ab" data-a="logout" style="width:100%;margin-bottom:12px"><span class="nav-ico">↪</span><span class="nav-label">Logout</span></button><label class="mut sm nav-label" for="rl">View as role</label><select id="rl" data-c="role">${Object.keys(PERMS).map(r=>`<option ${r===role?"selected":""}>${r}</option>`).join("")}</select></div></aside>
+ return`<div class="shell nav-collapsed"><aside class="sidebar"><div class="side-top"><span class="mn">IJAZ MENU</span><button class="side-collapse" data-a="menu" aria-label="Expand sidebar" aria-expanded="false" title="Expand sidebar">›</button></div>${side}<div class="who"><button class="ab" data-a="logout" style="width:100%;margin-bottom:12px"><span class="nav-ico">${navIcon("logout")}</span><span class="nav-label">Logout</span></button><label class="mut sm nav-label" for="rl">View as role</label><select id="rl" data-c="role">${Object.keys(PERMS).map(r=>`<option ${r===role?"selected":""}>${r}</option>`).join("")}</select></div></aside>
  <section><div class="row sp" style="margin-bottom:16px"><div class="admin-title"><h2>${TT[at]}</h2></div><div class="row">${okp("edit")?'<button class="ab p" data-a="t" data-id="neworder">+ New order</button>':""}<button class="ab" data-a="bell" aria-label="Notifications">🔔${nal?` <b>${nal}</b>`:""}</button></div></div>${b}</section></div>`};
 const noaccess='<h2>Staff area</h2><p class="mut">This demo role has no access.</p>';/*ADMIN_END*/
 let routeRenderSeq=0;
