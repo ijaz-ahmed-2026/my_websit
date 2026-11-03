@@ -566,6 +566,21 @@ body.adm .sidebar .who .nav-ico{color:var(--fg);background:rgba(255,255,255,.07)
 :root[data-t=light] body.adm .sidebar button.sn.on .nav-ico{color:#fff;background:#171717}
 :root[data-t=light] body:not(.adm) :is(input,select,textarea){color:#211b12;background:#fff}
 :root[data-t=light] body:not(.adm) input::placeholder,:root[data-t=light] body:not(.adm) textarea::placeholder{color:#817766;opacity:1}
+
+/* Smooth motion system: scroll reveal, tactile clicks, and admin page transitions */
+@keyframes ij-page-enter{from{opacity:0;transform:translate3d(12px,7px,0);filter:blur(2px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@keyframes ij-reveal-up{from{opacity:0;transform:translate3d(0,26px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes ij-reveal-down{from{opacity:0;transform:translate3d(0,-22px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+#app.ij-page-switch{animation:ij-page-enter .38s cubic-bezier(.2,.75,.25,1) both;transform-origin:50% 0}
+#app .ij-reveal{opacity:0;transform:translate3d(0,24px,0);transition:opacity .48s ease,transform .58s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}
+#app .ij-reveal.ij-visible{opacity:1;transform:translate3d(0,0,0)}
+#app .ij-reveal.ij-leaving-up{opacity:0;transform:translate3d(0,-20px,0)}
+#app .ij-reveal.ij-leaving-down{opacity:0;transform:translate3d(0,22px,0)}
+#app :is(button,.ab,.pri,.pc,.pro-quick,.side-collapse,[role=button]){transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s ease,background-color .2s ease,border-color .2s ease}
+#app :is(button,.ab,.pri,[role=button]):active{transform:scale(.965);filter:brightness(.96)}
+#app :is(a,button,.pc,.pro-quick,[role=button]):focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+body.adm #app.ij-page-switch .dash-head,body.adm #app.ij-page-switch .pro-panel,body.adm #app.ij-page-switch .tbl{animation:ij-page-enter .42s cubic-bezier(.2,.75,.25,1) both}
+@media(prefers-reduced-motion:reduce){#app.ij-page-switch,#app .ij-reveal,#app.ij-page-switch .dash-head,#app.ij-page-switch .pro-panel,#app.ij-page-switch .tbl{animation:none!important;transition:none!important;opacity:1!important;transform:none!important;filter:none!important}#app :is(button,.ab,.pri,.pc,.pro-quick,[role=button]){transition:none!important}}
 </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 dialog.ord.order-edit-dialog{width:min(1040px,96vw);max-width:1040px;max-height:92dvh;overflow:auto;padding:clamp(14px,2.5vw,26px)}
@@ -1039,7 +1054,7 @@ const admin=()=>{const M=navModel();if(!M.ids.length)return"";if(!M.ids.includes
 const noaccess='<h2>Staff area</h2><p class="mut">This demo role has no access.</p>';/*ADMIN_END*/
 let navExpanded=false;
  let routeRenderSeq=0;
-function route(k){const seq=++routeRenderSeq,h=location.hash.split("?")[0],isA=MODE==="admin"||(MODE==="both"&&h==="#staff");document.body.classList.toggle("adm",isA);const v=isA?()=>(!sbAuthReady?`<div class="glass" style="padding:28px;max-width:460px;margin:40px auto;text-align:center"><span class="spin"></span><p>Checking secure admin session…</p></div>`:(unlocked?(admin()||noaccess):lockView())):(h.startsWith("#/p/")?()=>prodPg(h.slice(4)):h.startsWith("#/page/")?()=>pageView(h.slice(7)):({"#/shop":shop,"#/checkout":checkout,"#/track":track,"#/contact":contactPg}[h]||home));k||($("#app").innerHTML='<div class="sk"></div>');requestAnimationFrame(()=>{if(seq!==routeRenderSeq)return;$("#app").innerHTML=v();isA&&unlocked&&refreshOrd();k||scrollTo(0,0)})}
+function route(k){const seq=++routeRenderSeq,h=location.hash.split("?")[0],isA=MODE==="admin"||(MODE==="both"&&h==="#staff");document.body.classList.toggle("adm",isA);const v=isA?()=>(!sbAuthReady?`<div class="glass" style="padding:28px;max-width:460px;margin:40px auto;text-align:center"><span class="spin"></span><p>Checking secure admin session…</p></div>`:(unlocked?(admin()||noaccess):lockView())):(h.startsWith("#/p/")?()=>prodPg(h.slice(4)):h.startsWith("#/page/")?()=>pageView(h.slice(7)):({"#/shop":shop,"#/checkout":checkout,"#/track":track,"#/contact":contactPg}[h]||home));k||($("#app").innerHTML='<div class="sk"></div>');requestAnimationFrame(()=>{if(seq!==routeRenderSeq)return;$("#app").innerHTML=v();const appRoot=$("#app");appRoot.classList.remove("ij-page-switch");void appRoot.offsetWidth;appRoot.classList.add("ij-page-switch");ijObserveMotion();isA&&unlocked&&refreshOrd();k||scrollTo(0,0)})}
 const dlg=(h,c="")=>{const d=$("#dlg");d.className=c;d.innerHTML=h;d.scrollTop=0;if(!d.open)d.showModal()};
 function cartD(){const L=lines(),q=quote(L,"online","dhaka");dlg(`<h3>Your cart</h3>${L.map((i,k)=>`<div class="row sp" style="margin:10px 0"><span>${esc(prod(i.id).name)} <span class="mut">${esc(i.opt)}</span></span><span class="row"><button data-a="dq" data-id="${k}" data-d="-1" aria-label="Less">−</button>${i.q}<button data-a="dq" data-id="${k}" data-d="1" aria-label="More">+</button><b>${bdt(pr(prod(i.id))*i.q)}</b></span></div>`).join("")||'<p class="mut">Empty.</p>'}<p class="row sp"><span>Subtotal</span><b>${bdt(q.sub)}</b></p><div class="row"><button data-a="x">Close</button>${L.length?'<a class="btn pri" href="#/checkout" data-a="x">Proceed to Checkout</a>':""}</div>`)}
 const invHtml=o=>`<h3 class="disp">Invoice ${esc(o.no)}</h3><p class="mut">${esc(db.set.brand)} · ${new Date(o.ts).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})}<br>${esc(o.c.name)}, ${esc(o.c.phone)}<br>${esc(o.c.address)}, ${esc(o.c.district)}</p>${o.items.map(i=>`<div class="row sp"><span>${esc(i.name)} ×${i.qty}</span><span>${bdt(i.price*i.qty)}</span></div>`).join("")}<hr style="border-color:var(--ln)"><div class="row sp"><span>Discount</span><span>−${bdt(o.disc)}</span></div><div class="row sp"><span>Delivery</span><span>${bdt(o.fee)}</span></div><div class="row sp"><b>Total</b><b>${bdt(o.total)}</b></div>${o.adv?`<div class="row sp"><span>Advance paid</span><span>−${bdt(o.adv)}</span></div><div class="row sp"><b>Due on delivery</b><b>${bdt(o.total-o.adv)}</b></div>`:""}`;
@@ -1141,5 +1156,21 @@ document.addEventListener("submit",e=>{const t=e.target,k=t.dataset.s;if(!k)retu
 addEventListener("hashchange",()=>route());
 {let th=null;try{th=localStorage.getItem("ij_theme")}catch{}document.documentElement.dataset.t=th||(db.set.th&&db.set.th.mode)||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}
 bootSupabase();
+
+/* Scroll reveal observer is reattached after every storefront/admin render */
+let ijScrollObserver=null,ijLastScrollY=0,ijScrollDirection="down";
+window.addEventListener("scroll",()=>{const y=window.scrollY||0;ijScrollDirection=y<ijLastScrollY?"up":"down";ijLastScrollY=y},{passive:true});
+function ijObserveMotion(){
+ const root=document.getElementById("app");if(!root)return;
+ if(ijScrollObserver)ijScrollObserver.disconnect();
+ const targets=root.querySelectorAll(":scope > main > .hero,:scope > main > .sec,:scope > main > .grid,:scope > main > .glass,:scope > main > .pc,:scope > main > .pro-panel,:scope > main > .pro-metric,:scope > main > .pro-quick,:scope > main > .dash-head,:scope > main > .dash-kpi,:scope > main > .stat,:scope > main > .cd,:scope > main > .rc,:scope > .hero,:scope .sec,:scope .pro-panel,:scope .pro-metric,:scope .pro-quick,:scope .dash-kpi,:scope .stat,:scope .pc,:scope .orow,:scope .cd,:scope .rc");
+ if(!("IntersectionObserver" in window)){targets.forEach(x=>x.classList.add("ij-visible"));return}
+ ijScrollObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  const el=entry.target;
+  if(entry.isIntersecting){el.classList.remove("ij-leaving-up","ij-leaving-down");el.classList.add("ij-visible")}
+  else if(el.classList.contains("ij-visible")){el.classList.remove("ij-visible");el.classList.add(ijScrollDirection==="up"?"ij-leaving-up":"ij-leaving-down")}
+ }),{root:null,rootMargin:"0px 0px -5% 0px",threshold:.06});
+ targets.forEach((el,i)=>{el.classList.add("ij-reveal");el.style.transitionDelay=(i%5)*45+"ms";ijScrollObserver.observe(el)});
+}
 </script></body></html>
 <!-- Cloudflare Pages initial deployment trigger -->
