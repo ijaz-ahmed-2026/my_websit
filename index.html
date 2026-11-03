@@ -523,7 +523,15 @@ body.adm .sidebar .who .nav-ico{color:var(--fg);background:rgba(255,255,255,.07)
 @media(max-width:520px){body.adm .sidebar .nav-ico{flex-basis:30px;width:30px;height:30px}body.adm .sidebar .nav-ico svg{width:18px;height:18px}}
 
 </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-</head><body>
+<style>
+dialog.ord.order-edit-dialog{width:min(1040px,96vw);max-width:1040px;max-height:92dvh;overflow:auto;padding:clamp(14px,2.5vw,26px)}
+.order-edit-form{padding-top:8px;min-width:0}.order-edit-section{border:1px solid var(--ln);border-radius:15px;padding:16px;display:grid;gap:12px;min-width:0}.order-edit-section h4{margin:0;font-size:15px;letter-spacing:.04em}
+.edit-order-row{display:grid;grid-template-columns:minmax(180px,2fr) minmax(140px,1.2fr) minmax(90px,.6fr) auto;gap:10px;align-items:end;padding:12px 0;border-bottom:1px solid var(--ln)}
+.edit-order-row label,.order-edit-section label,.order-edit-footer label{display:grid;gap:6px;font-size:13px;color:var(--mut);min-width:0}
+.order-edit-footer{position:sticky;bottom:-1px;background:var(--bg2);padding:14px 0 2px;border-top:1px solid var(--ln);display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end}.order-edit-footer button{min-width:170px;min-height:46px}
+.order-edit-section input,.order-edit-section select,.order-edit-section textarea,.edit-order-row input,.edit-order-row select,.order-edit-footer select{min-width:0;width:100%;border-radius:10px}
+@media(max-width:650px){dialog.ord.order-edit-dialog{width:96vw;max-height:94dvh;padding:13px}.edit-order-row{grid-template-columns:1fr 1fr}.edit-order-row label:first-child{grid-column:1/-1}.edit-order-row button{justify-self:start}.order-edit-footer{grid-template-columns:1fr}.order-edit-footer button{width:100%}.order-edit-section{padding:12px}.order-edit-form .two{grid-template-columns:1fr}}
+</style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st">
 <a href="#/shop">Shop</a><a href="#/track">Track</a><a href="#/contact">Contact</a><span id="xnav" style="display:contents"></span>
@@ -1079,12 +1087,4 @@ document.addEventListener("submit",e=>{const t=e.target,k=t.dataset.s;if(!k)retu
 addEventListener("hashchange",()=>route());
 {let th=null;try{th=localStorage.getItem("ij_theme")}catch{}document.documentElement.dataset.t=th||(db.set.th&&db.set.th.mode)||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}
 bootSupabase();
-</script></body></html><style>
-dialog.ord.order-edit-dialog{width:min(1040px,96vw);max-width:1040px;max-height:92dvh;overflow:auto;padding:clamp(14px,2.5vw,26px)}
-.order-edit-form{padding-top:8px;min-width:0}.order-edit-section{border:1px solid var(--ln);border-radius:15px;padding:16px;display:grid;gap:12px;min-width:0}.order-edit-section h4{margin:0;font-size:15px;letter-spacing:.04em}
-.edit-order-row{display:grid;grid-template-columns:minmax(180px,2fr) minmax(140px,1.2fr) minmax(90px,.6fr) auto;gap:10px;align-items:end;padding:12px 0;border-bottom:1px solid var(--ln)}
-.edit-order-row label,.order-edit-section label,.order-edit-footer label{display:grid;gap:6px;font-size:13px;color:var(--mut);min-width:0}
-.order-edit-footer{position:sticky;bottom:-1px;background:var(--bg2);padding:14px 0 2px;border-top:1px solid var(--ln);display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end}.order-edit-footer button{min-width:170px;min-height:46px}
-.order-edit-section input,.order-edit-section select,.order-edit-section textarea,.edit-order-row input,.edit-order-row select,.order-edit-footer select{min-width:0;width:100%;border-radius:10px}
-@media(max-width:650px){dialog.ord.order-edit-dialog{width:96vw;max-height:94dvh;padding:13px}.edit-order-row{grid-template-columns:1fr 1fr}.edit-order-row label:first-child{grid-column:1/-1}.edit-order-row button{justify-self:start}.order-edit-footer{grid-template-columns:1fr}.order-edit-footer button{width:100%}.order-edit-section{padding:12px}.order-edit-form .two{grid-template-columns:1fr}}
-</style>
+</script></body></html>
