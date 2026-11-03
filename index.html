@@ -761,11 +761,53 @@ button,.btn{border-color:rgba(255,255,255,.15)}
 :root[data-t=light] :is(.x,.menu-trigger,.side-collapse){color:#292216!important}
 @media(max-width:720px){:root[data-t=light] body.adm :is(.sidebar,.pro-panel,.pro-metric,.pro-quick,.glass,.cd,.rc){-webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important}}
 
+
+/* Professional storefront navigation */
+header{gap:clamp(12px,2.2vw,30px)}
+header nav.st{width:auto;flex:1;justify-content:flex-end;gap:clamp(8px,1.2vw,18px);overflow:visible;flex-wrap:nowrap}
+header .store-menu{display:flex;align-items:center;justify-content:flex-end;gap:clamp(4px,.8vw,12px)}
+header .store-menu a{border:0;background:transparent;padding:9px 11px;border-radius:10px;font-size:12px;font-weight:600;letter-spacing:.035em;white-space:nowrap;transition:background .2s,color .2s}
+header .store-menu a:hover,header .store-menu a:focus-visible{background:var(--gl);color:var(--ac)}
+header .nav-actions{display:flex;align-items:center;gap:6px;flex:none}
+header .nav-actions button{white-space:nowrap}
+header .mobile-menu-toggle{display:none}
+#xnav{display:contents!important}
+#xnav a{border:0;background:transparent;padding:9px 11px;border-radius:10px;font-size:12px;font-weight:600;white-space:nowrap}
+#xnav a:hover{background:var(--gl);color:var(--ac)}
+@media(max-width:900px) and (min-width:721px){
+ header{padding-inline:18px}
+ header .store-menu{gap:0}
+ header .store-menu a,#xnav a{font-size:11px;padding:8px 7px}
+ header .nav-actions button{padding:7px 9px;font-size:11px}
+}
+@media(max-width:720px){
+ header{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:62px;padding:9px 14px}
+ header .logo{font-size:18px;flex:1}
+ header nav.st{width:auto;flex:0 0 auto;margin:0;display:flex;align-items:center;justify-content:flex-end;gap:7px;overflow:visible}
+ header .mobile-menu-toggle{display:inline-flex;align-items:center;gap:6px;padding:8px 11px;border-radius:11px;font-size:12px;white-space:nowrap}
+ header .store-menu{display:none;position:absolute;left:12px;right:12px;top:calc(100% + 8px);z-index:50;flex-direction:column;align-items:stretch;gap:3px;padding:10px;border:1px solid var(--ln);border-radius:18px;background:color-mix(in srgb,var(--bg2) 88%,transparent);-webkit-backdrop-filter:blur(26px) saturate(1.5);backdrop-filter:blur(26px) saturate(1.5);box-shadow:0 18px 45px rgba(0,0,0,.18)}
+ body.menu-open header .store-menu{display:flex}
+ header .store-menu a,#xnav a{display:block;text-align:left;padding:12px 13px;border-radius:10px;font-size:13px}
+ header #xnav{display:contents!important}
+ header .nav-actions{gap:4px}
+ header .nav-actions button{padding:8px 9px;font-size:11px}
+ body.menu-open header .store-menu a{width:100%}
+}
+@media(max-width:380px){
+ header .logo{font-size:15px;letter-spacing:.1em}
+ header .mobile-menu-toggle{padding:7px 8px}
+ header .nav-actions button{padding:7px 7px;font-size:10px}
+}
+
 </style></head><body>
 
-<header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st">
-<a href="#/shop">Shop</a><a href="#/track">Track</a><a href="#/contact">Contact</a><span id="xnav" style="display:contents"></span>
-<button data-a="wishv" aria-label="Wishlist">♡ <span id="wc">0</span></button><button data-a="cart" aria-label="Cart">Cart <span id="cc">0</span></button><button data-a="theme" aria-label="Toggle theme">◐</button></nav><nav class="ad"><span class="chip">Admin panel</span><button data-a="theme" aria-label="Toggle theme">◐</button></nav></header>
+<header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
+<button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="storeMenu" aria-label="Open menu">☰ <span>Menu</span></button>
+<div class="store-menu" id="storeMenu">
+<a href="#/">Home</a><a href="#/shop">Shop</a><a href="#/shop?s=new">New Arrivals</a><a href="#/track">Track Order</a><a href="#/contact">Contact</a><span id="xnav" style="display:contents"></span>
+</div>
+<div class="nav-actions"><button data-a="wishv" aria-label="Wishlist">♡ <span id="wc">0</span></button><button data-a="cart" aria-label="Cart">Cart <span id="cc">0</span></button><button data-a="theme" aria-label="Toggle theme">◐</button></div>
+</nav><nav class="ad"><span class="chip">Admin panel</span><button data-a="theme" aria-label="Toggle theme">◐</button></nav></header>
 <main id="app"></main>
 <footer id="foot"></footer>
 <dialog id="dlg"></dialog>
@@ -829,7 +871,7 @@ const sv=()=>{try{localStorage.setItem("ij_w",JSON.stringify(wish));localStorage
 const toast=(m,a)=>{const t=document.createElement("div");t.className="toast glass";t.style.background="var(--bg2)";t.append(m);if(a){const b=document.createElement("button");b.textContent=a.t;b.dataset.a=a.a;t.append(b)}(document.querySelector("dialog[open]")||document.body).append(t);setTimeout(()=>t.remove(),2800)};
 const pr=p=>p.sale??p.price,prod=id=>db.products.find(p=>p.id==id);
 function chrome(){const s=db.set;document.title=s.brand+(MODE==="admin"?" Admin":"");$("#brand").innerHTML=(safeImg(s.img&&s.img.logo)?`<img class="lg" src="${safeImg(s.img.logo)}" alt="">`:"")+esc(s.brand);applyTheme();document.documentElement.style.setProperty("--ac",s.ac);$("#wc")&&($("#wc").textContent=wish.length);$("#cc")&&($("#cc").textContent=cart.reduce((a,b)=>a+b.q,0));
- const xn=$("#xnav");if(xn)xn.innerHTML=(s.nav||[]).map(n=>`<a href="${esc(safeLink(n.l))}"${/^https?:/i.test(n.l)?' target="_blank" rel="noopener"':""}>${esc(n.t)}</a>`).join("");const ft=$("#foot");if(ft)ft.innerHTML=`<div><b class="logo">${esc(s.brand)}</b><p>${esc(s.addr)}<br>${esc(s.foot||"Cash on Delivery or online payment across Bangladesh")}</p><p>${(s.pages||[]).map(p=>`<a href="#/page/${esc(p.id)}">${esc(p.title)}</a>`).join(" · ")}</p></div><div><a href="tel:${esc(s.ph1)}">${esc(s.ph1)}</a> / <a href="tel:${esc(s.ph2)}">${esc(s.ph2)}</a><br><a href="mailto:${esc(s.mail)}">${esc(s.mail)}</a><br><a href="${wa(s)}" target="_blank" rel="noopener">WhatsApp ${esc(s.wa)}</a></div>`}
+ const xn=$("#xnav");if(xn)xn.innerHTML=(s.nav||[]).map(n=>`<a href="${esc(safeLink(n.l))}"${/^https?:/i.test(n.l)?' target="_blank" rel="noopener"':""}>${esc(n.t)}</a>`).join("")+(s.pages||[]).map(p=>`<a href="#/page/${esc(p.id)}">${esc(p.title)}</a>`).join("");const ft=$("#foot");if(ft)ft.innerHTML=`<div class="footer-brand"><b class="logo">${esc(s.brand)}</b><p>${esc(s.addr)}<br>${esc(s.foot||"Cash on Delivery or online payment across Bangladesh")}</p></div><div class="footer-links"><b>Explore</b><a href="#/">Home</a><a href="#/shop">Shop All</a><a href="#/shop?s=new">New Arrivals</a><a href="#/track">Track Order</a>${(s.pages||[]).map(p=>`<a href="#/page/${esc(p.id)}">${esc(p.title)}</a>`).join("")}</div><div class="footer-contact"><b>Customer Care</b><a href="#/contact">Contact Us</a><a href="tel:${esc(s.ph1)}">${esc(s.ph1)}</a><a href="tel:${esc(s.ph2)}">${esc(s.ph2)}</a><a href="mailto:${esc(s.mail)}">${esc(s.mail)}</a><a href="${wa(s)}" target="_blank" rel="noopener">WhatsApp ${esc(s.wa)}</a></div>`}
 const wa=s=>"https://wa.me/88"+String(s.wa).replace(/\D/g,"");
 // ── "server" logic (in the real build this lives in Postgres functions; here it is browser code) ──
 function quote(items,method,district){const sub=items.reduce((a,i)=>a+pr(prod(i.id))*i.q,0),s=db.set;
@@ -1366,5 +1408,11 @@ function ijAnimateDashboard(root){
   requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.transition=prop+" 1.15s cubic-bezier(.2,.75,.2,1)";el.style[prop]=target+"%"}));
  });
 }
+
+document.addEventListener("click",e=>{
+ const toggle=e.target.closest("#mobileMenuToggle");
+ if(toggle){const opened=document.body.classList.toggle("menu-open");toggle.setAttribute("aria-expanded",String(opened));toggle.setAttribute("aria-label",opened?"Close menu":"Open menu");toggle.innerHTML=opened?"✕ <span>Close</span>":"☰ <span>Menu</span>";return}
+ if(e.target.closest("#storeMenu a")){document.body.classList.remove("menu-open");const b=$("#mobileMenuToggle");if(b){b.setAttribute("aria-expanded","false");b.setAttribute("aria-label","Open menu");b.innerHTML="☰ <span>Menu</span>"}}
+});
 </script></body></html>
 <!-- Cloudflare Pages initial deployment trigger -->
