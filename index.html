@@ -799,6 +799,17 @@ header .mobile-menu-toggle{display:none}
  header .nav-actions button{padding:7px 7px;font-size:10px}
 }
 
+
+/* Footer information architecture */
+footer#foot{display:grid;grid-template-columns:minmax(220px,1.5fr) repeat(2,minmax(150px,1fr));gap:28px;padding:42px max(18px,4vw) 48px}
+footer#foot>div{display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+footer#foot>div>b{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg)}
+footer#foot .footer-brand .logo{font-size:19px;letter-spacing:.18em}
+footer#foot p{margin:0;color:var(--mut);line-height:1.8;font-size:13px}
+footer#foot a{font-size:13px;color:var(--mut);transition:color .2s,transform .2s}
+footer#foot a:hover{color:var(--ac);transform:translateX(2px)}
+@media(max-width:720px){footer#foot{grid-template-columns:1fr 1fr;gap:22px 14px;padding:30px 16px 88px}footer#foot .footer-brand{grid-column:1/-1}}
+
 </style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
