@@ -567,20 +567,40 @@ body.adm .sidebar .who .nav-ico{color:var(--fg);background:rgba(255,255,255,.07)
 :root[data-t=light] body:not(.adm) :is(input,select,textarea){color:#211b12;background:#fff}
 :root[data-t=light] body:not(.adm) input::placeholder,:root[data-t=light] body:not(.adm) textarea::placeholder{color:#817766;opacity:1}
 
-/* Smooth motion system: scroll reveal, tactile clicks, and admin page transitions */
-@keyframes ij-page-enter{from{opacity:0;transform:translate3d(12px,7px,0);filter:blur(2px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
-@keyframes ij-reveal-up{from{opacity:0;transform:translate3d(0,26px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
-@keyframes ij-reveal-down{from{opacity:0;transform:translate3d(0,-22px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
-#app.ij-page-switch{animation:ij-page-enter .38s cubic-bezier(.2,.75,.25,1) both;transform-origin:50% 0}
-#app .ij-reveal{opacity:0;transform:translate3d(0,24px,0);transition:opacity .48s ease,transform .58s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}
-#app .ij-reveal.ij-visible{opacity:1;transform:translate3d(0,0,0)}
-#app .ij-reveal.ij-leaving-up{opacity:0;transform:translate3d(0,-20px,0)}
-#app .ij-reveal.ij-leaving-down{opacity:0;transform:translate3d(0,22px,0)}
-#app :is(button,.ab,.pri,.pc,.pro-quick,.side-collapse,[role=button]){transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s ease,background-color .2s ease,border-color .2s ease}
+/* IJAZ signature motion: varied editorial reveals + refined glass interactions */
+@keyframes ij-store-enter{from{opacity:0;transform:translate3d(0,12px,0);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes ij-admin-enter{from{opacity:0;transform:translate3d(18px,0,0) scale(.992)}to{opacity:1;transform:none}}
+@keyframes ij-hero-enter{0%{opacity:0;transform:translate3d(0,26px,0) scale(.975);filter:blur(7px)}70%{opacity:1;filter:blur(0)}100%{transform:none}}
+@keyframes ij-soft-pop{0%{opacity:0;transform:scale(.94)}75%{opacity:1;transform:scale(1.012)}100%{transform:scale(1)}}
+#app.ij-page-switch{animation:ij-store-enter .48s cubic-bezier(.2,.75,.2,1) both;transform-origin:50% 0}
+body.adm #app.ij-page-switch{animation:ij-admin-enter .34s cubic-bezier(.2,.8,.2,1) both}
+#app .ij-reveal{opacity:0;will-change:opacity,transform,filter;transition:opacity .62s ease,transform .72s cubic-bezier(.2,.72,.18,1),filter .62s ease}
+#app .ij-reveal.ij-motion-rise{transform:translate3d(0,28px,0)}
+#app .ij-reveal.ij-motion-left{transform:translate3d(-30px,8px,0);filter:blur(3px)}
+#app .ij-reveal.ij-motion-right{transform:translate3d(30px,8px,0);filter:blur(3px)}
+#app .ij-reveal.ij-motion-zoom{transform:scale(.94);filter:blur(2px)}
+#app .ij-reveal.ij-motion-soft{transform:translate3d(0,14px,0);filter:blur(5px)}
+#app .ij-reveal.ij-visible{opacity:1;transform:none;filter:none}
+#app .ij-reveal.ij-leaving-up{opacity:0;transform:translate3d(0,-16px,0);filter:blur(2px)}
+#app .ij-reveal.ij-leaving-down{opacity:0;transform:translate3d(0,16px,0);filter:blur(2px)}
+#app .hero.ij-reveal.ij-visible{animation:ij-hero-enter .9s cubic-bezier(.2,.75,.2,1) both}
+#app .pc{transition:transform .42s cubic-bezier(.2,.75,.2,1),border-color .35s ease,box-shadow .4s ease}
+#app .pc:hover{transform:translateY(-7px);border-color:color-mix(in srgb,var(--ac) 55%,var(--ln));box-shadow:0 18px 44px rgba(0,0,0,.2)}
+#app .pc img{transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s ease}
+#app .pc:hover img{transform:scale(1.045);filter:saturate(1.06)}
+#app :is(.glass,.pro-panel,.dash-kpi,.pro-metric,.cd,.rc){transition:transform .38s cubic-bezier(.2,.75,.2,1),border-color .35s ease,box-shadow .4s ease,background-color .35s ease}
+#app :is(.glass,.pro-panel,.dash-kpi,.pro-metric,.cd,.rc):hover{border-color:color-mix(in srgb,var(--ac) 34%,var(--ln));box-shadow:0 14px 38px rgba(0,0,0,.13)}
+#app :is(button,.ab,.pri,.pro-quick,.side-collapse,[role=button]){transition:transform .24s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,background-color .25s ease,border-color .25s ease,filter .25s ease}
+#app :is(button,.ab,.pri,.pro-quick,[role=button]):hover{filter:brightness(1.08);box-shadow:0 7px 22px rgba(0,0,0,.14)}
 #app :is(button,.ab,.pri,[role=button]):active{transform:scale(.965);filter:brightness(.96)}
+#app .sidebar button{transition:background .28s ease,color .25s ease,transform .25s cubic-bezier(.2,.8,.2,1)}
+#app .sidebar button:hover{transform:translateX(3px)}
 #app :is(a,button,.pc,.pro-quick,[role=button]):focus-visible{outline:2px solid var(--ac);outline-offset:3px}
-body.adm #app.ij-page-switch .dash-head,body.adm #app.ij-page-switch .pro-panel,body.adm #app.ij-page-switch .tbl{animation:ij-page-enter .42s cubic-bezier(.2,.75,.25,1) both}
-@media(prefers-reduced-motion:reduce){#app.ij-page-switch,#app .ij-reveal,#app.ij-page-switch .dash-head,#app.ij-page-switch .pro-panel,#app.ij-page-switch .tbl{animation:none!important;transition:none!important;opacity:1!important;transform:none!important;filter:none!important}#app :is(button,.ab,.pri,.pc,.pro-quick,[role=button]){transition:none!important}}
+body.adm #app.ij-page-switch .dash-head{animation:ij-hero-enter .55s ease both}
+body.adm #app.ij-page-switch .pro-panel{animation:ij-soft-pop .5s cubic-bezier(.2,.8,.2,1) both}
+body.adm #app.ij-page-switch .tbl{animation:ij-store-enter .55s ease both}
+@media(hover:none){#app .pc:hover,#app :is(.glass,.pro-panel,.dash-kpi,.pro-metric,.cd,.rc):hover{transform:none;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){#app.ij-page-switch,#app .ij-reveal,#app .ij-page-switch :is(.dash-head,.pro-panel,.tbl){animation:none!important;transition:none!important;opacity:1!important;transform:none!important;filter:none!important}#app :is(button,.ab,.pri,.pc,.pro-quick,[role=button],.glass,.pro-panel,.dash-kpi,.pro-metric,.cd,.rc){transition:none!important}}
 </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 dialog.ord.order-edit-dialog{width:min(1040px,96vw);max-width:1040px;max-height:92dvh;overflow:auto;padding:clamp(14px,2.5vw,26px)}
@@ -1164,13 +1184,19 @@ function ijObserveMotion(){
  const root=document.getElementById("app");if(!root)return;
  if(ijScrollObserver)ijScrollObserver.disconnect();
  const targets=root.querySelectorAll(":scope > main > .hero,:scope > main > .sec,:scope > main > .grid,:scope > main > .glass,:scope > main > .pc,:scope > main > .pro-panel,:scope > main > .pro-metric,:scope > main > .pro-quick,:scope > main > .dash-head,:scope > main > .dash-kpi,:scope > main > .stat,:scope > main > .cd,:scope > main > .rc,:scope > .hero,:scope .sec,:scope .pro-panel,:scope .pro-metric,:scope .pro-quick,:scope .dash-kpi,:scope .stat,:scope .pc,:scope .orow,:scope .cd,:scope .rc");
+ const variants=["ij-motion-rise","ij-motion-left","ij-motion-zoom","ij-motion-soft","ij-motion-right"];
+ targets.forEach((el,i)=>{
+  el.classList.add("ij-reveal");
+  const variant=el.matches(".hero,.dash-head")?"ij-motion-soft":el.matches(".pc,.pro-metric,.dash-kpi,.stat")?"ij-motion-zoom":el.matches(".sec,.pro-panel")?"ij-motion-left":variants[i%variants.length];
+  el.classList.add(variant);el.style.transitionDelay=(i%4)*65+"ms";
+ });
  if(!("IntersectionObserver" in window)){targets.forEach(x=>x.classList.add("ij-visible"));return}
  ijScrollObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
   const el=entry.target;
   if(entry.isIntersecting){el.classList.remove("ij-leaving-up","ij-leaving-down");el.classList.add("ij-visible")}
   else if(el.classList.contains("ij-visible")){el.classList.remove("ij-visible");el.classList.add(ijScrollDirection==="up"?"ij-leaving-up":"ij-leaving-down")}
- }),{root:null,rootMargin:"0px 0px -5% 0px",threshold:.06});
- targets.forEach((el,i)=>{el.classList.add("ij-reveal");el.style.transitionDelay=(i%5)*45+"ms";ijScrollObserver.observe(el)});
+ }),{root:null,rootMargin:"0px 0px -7% 0px",threshold:.08});
+ targets.forEach(el=>ijScrollObserver.observe(el));
 }
 </script></body></html>
 <!-- Cloudflare Pages initial deployment trigger -->
