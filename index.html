@@ -1024,15 +1024,49 @@ header .nav-actions button{border-radius:8px}
  header .nav-actions{gap:2px}
 }
 
+
+/* IJAZ refined header: icon-first search, clearer wordmark, custom action icons */
+header{position:sticky;top:0;z-index:80;overflow:visible}
+header .logo{font-size:clamp(25px,2.4vw,32px)!important;font-weight:800!important;letter-spacing:.22em!important;line-height:1.12!important;color:var(--fg)!important;text-shadow:0 2px 18px color-mix(in srgb,var(--ac) 28%,transparent)!important}
+header .logo:after{display:none!important;content:none!important}
+header .search-icon-toggle{display:grid;place-items:center;width:42px;height:42px;flex:none;border:1px solid color-mix(in srgb,var(--ac) 32%,var(--ln));border-radius:50%;background:color-mix(in srgb,var(--gl) 86%,transparent);color:var(--fg);cursor:pointer;transition:all .25s ease;box-shadow:0 4px 16px rgba(0,0,0,.07)}
+header .search-icon-toggle span{width:15px;height:15px;border:1.8px solid currentColor;border-radius:50%;position:relative}
+header .search-icon-toggle span:after{content:"";position:absolute;width:7px;height:1.8px;background:currentColor;right:-5px;bottom:-3px;transform:rotate(48deg);border-radius:2px}
+header .search-icon-toggle:hover,header .search-icon-toggle[aria-expanded="true"]{border-color:var(--ac);color:var(--ac);transform:translateY(-1px);box-shadow:0 6px 20px color-mix(in srgb,var(--ac) 15%,transparent)}
+header .nav-search{position:absolute;right:clamp(14px,4vw,58px);top:calc(100% + 8px);z-index:90;display:flex;align-items:center;gap:9px;width:min(340px,calc(100vw - 28px));min-width:0;padding:9px 12px;border:1px solid color-mix(in srgb,var(--ac) 35%,var(--ln));border-radius:14px;background:color-mix(in srgb,var(--bg2) 92%,var(--gl));backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);box-shadow:0 16px 40px rgba(0,0,0,.17);opacity:0;visibility:hidden;transform:translateY(-9px) scale(.97);transform-origin:top right;transition:opacity .24s ease,transform .24s ease,visibility .24s}
+header.search-open .nav-search{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+header .nav-search-icon{display:none}
+header .nav-search input{height:34px;font:400 13px var(--fb);color:var(--fg)}
+header .nav-search button{width:28px;height:28px;flex:0 0 28px;padding:0;border-radius:9px;background:var(--ac);position:relative;font-size:0}
+header .nav-search button:before{content:"";position:absolute;width:9px;height:9px;border:1.6px solid #19140b;border-radius:50%;left:8px;top:7px}
+header .nav-search button:after{content:"";position:absolute;width:5px;height:1.6px;background:#19140b;left:17px;top:17px;transform:rotate(48deg)}
+header .nav-actions{gap:7px!important}
+header .nav-actions button{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:40px;min-height:40px;padding:7px 9px!important;border:1px solid transparent!important;border-radius:12px!important;background:color-mix(in srgb,var(--gl) 72%,transparent)!important;color:var(--fg)!important;transition:all .22s ease}
+header .nav-actions button svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+header .nav-actions button:hover{color:var(--ac)!important;border-color:color-mix(in srgb,var(--ac) 35%,var(--ln))!important;background:color-mix(in srgb,var(--ac) 10%,var(--gl))!important;transform:translateY(-2px)}
+header .nav-actions #wc,header .nav-actions #cc{display:inline-grid;place-items:center;min-width:16px;height:16px;padding:0 4px;border-radius:20px;background:var(--ac);color:#17130c;font-size:9px;font-weight:800}
+header .menu-search-open{display:none}
+@media(max-width:720px){
+ header .logo{font-size:25px!important;flex:1 1 auto}
+ header .search-icon-toggle{order:3;width:38px;height:38px}
+ header .nav-actions{order:4;margin-left:0!important;gap:3px!important}
+ header .nav-actions button{min-width:35px;min-height:36px;padding:6px!important}
+ header .nav-actions button svg{width:18px;height:18px}
+ header .nav-search{right:12px;top:calc(100% + 7px);width:min(330px,calc(100vw - 24px))}
+ header .store-menu .menu-search-open{display:block;width:100%;text-align:left;padding:12px 13px;border:0;background:transparent;color:var(--mut);font:600 12px var(--fb);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+ header .store-menu .menu-search-open:hover{color:var(--ac);background:var(--gl)}
+}
+@media(max-width:380px){header .logo{font-size:22px!important}}
 </style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
 <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="storeMenu" aria-label="Open menu">☰ <span>Menu</span></button>
 <div class="store-menu" id="storeMenu">
-<a href="#/">Home</a><a href="#/shop">Shop</a><a href="#/shop?s=new">New Arrivals</a><a href="#/track">Track Order</a><a href="#/contact">Contact</a><span id="xnav" style="display:contents"></span>
+<a href="#/">Home</a><a href="#/shop">Shop</a><a href="#/shop?s=new">New Arrivals</a><a href="#/track">Track Order</a><a href="#/contact">Contact</a><button type="button" class="menu-search-open" id="menuSearchOpen">Search products</button><span id="xnav" style="display:contents"></span>
 </div>
+<button type="button" class="search-icon-toggle" id="searchIconToggle" aria-label="Open product search" aria-expanded="false"><span></span></button>
 <form class="nav-search" id="storeSearch" role="search" aria-label="Search products"><span class="nav-search-icon" aria-hidden="true"></span><input id="storeSearchInput" type="search" placeholder="Search products..." aria-label="Search products" autocomplete="off"><button type="submit" aria-label="Search"></button></form>
-<div class="nav-actions"><button data-a="wishv" aria-label="Wishlist">♡ <span id="wc">0</span></button><button data-a="cart" aria-label="Cart">Cart <span id="cc">0</span></button><button data-a="theme" aria-label="Toggle theme">◐</button></div>
+<div class="nav-actions"><button data-a="wishv" aria-label="Wishlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.8a5.4 5.4 0 0 0-7.6 0L12 6l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6l1.2 1.2L12 21l7.6-7.4 1.2-1.2a5.4 5.4 0 0 0 0-7.6Z"/></svg><span id="wc">0</span></button><button data-a="cart" aria-label="Cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 7H6"/><circle cx="10" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg><span id="cc">0</span></button><button data-a="theme" aria-label="Toggle theme">◐</button></div>
 </nav><nav class="ad"><span class="chip">Admin panel</span><button data-a="theme" aria-label="Toggle theme">◐</button></nav></header>
 <main id="app"></main>
 <footer id="foot"></footer>
@@ -1653,5 +1687,16 @@ document.addEventListener("click",e=>{
  if(toggle){const opened=document.body.classList.toggle("menu-open");toggle.setAttribute("aria-expanded",String(opened));toggle.setAttribute("aria-label",opened?"Close menu":"Open menu");toggle.innerHTML=opened?"✕ <span>Close</span>":"☰ <span>Menu</span>";return}
  if(e.target.closest("#storeMenu a")){document.body.classList.remove("menu-open");const b=$("#mobileMenuToggle");if(b){b.setAttribute("aria-expanded","false");b.setAttribute("aria-label","Open menu");b.innerHTML="☰ <span>Menu</span>"}}
 });
-</script></body></html>
+
+(function(){
+ const h=document.querySelector('header'),t=document.getElementById('searchIconToggle'),f=document.getElementById('storeSearch'),i=document.getElementById('storeSearchInput'),m=document.getElementById('menuSearchOpen');
+ if(!h||!t||!f)return;
+ const open=()=>{h.classList.add('search-open');t.setAttribute('aria-expanded','true');t.setAttribute('aria-label','Close product search');setTimeout(()=>i&&i.focus(),180)};
+ const close=()=>{h.classList.remove('search-open');t.setAttribute('aria-expanded','false');t.setAttribute('aria-label','Open product search')};
+ t.addEventListener('click',()=>h.classList.contains('search-open')?close():open());
+ if(m)m.addEventListener('click',()=>{open();const mt=document.getElementById('mobileMenuToggle');if(mt&&mt.getAttribute('aria-expanded')==='true')mt.click()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+ document.addEventListener('click',e=>{if(h.classList.contains('search-open')&&!f.contains(e.target)&&!t.contains(e.target)&&e.target!==m)close()});
+ f.addEventListener('submit',()=>close());
+})();</script></body></html>
 <!-- Cloudflare Pages initial deployment trigger -->
