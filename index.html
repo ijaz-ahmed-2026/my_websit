@@ -871,6 +871,87 @@ header .nav-actions button:hover{background:color-mix(in srgb,var(--ac) 14%,var(
  header .nav-search button{padding:7px 10px}
 }
 
+
+/* IJAZ navigation refinement — quieter editorial layout */
+header{
+ min-height:76px;gap:clamp(14px,2vw,28px);padding-inline:clamp(18px,4vw,58px);
+ background:color-mix(in srgb,var(--bg) 91%,transparent)!important;
+ border-bottom:1px solid color-mix(in srgb,var(--ac) 18%,var(--ln))!important;
+ box-shadow:0 8px 28px rgba(0,0,0,.08),inset 0 1px rgba(255,255,255,.08);
+}
+header .logo{font-size:21px;letter-spacing:.2em;line-height:1;flex:none}
+header .logo:after{
+ content:"CURATED ESSENTIALS  ·  BANGLADESH";display:block;margin-top:6px;
+ font:500 8px/1 var(--fb);letter-spacing:.19em;color:var(--mut);text-shadow:none;
+}
+header nav.st{gap:clamp(9px,1.5vw,22px)}
+header .store-menu{padding:0;border:0;background:transparent;box-shadow:none;gap:clamp(2px,.5vw,8px)}
+header .store-menu a,#xnav a{
+ position:relative;padding:10px 9px;border-radius:0;background:transparent;
+ font:600 11px/1.2 var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);
+}
+header .store-menu a:after,#xnav a:after{
+ content:"";position:absolute;left:9px;right:9px;bottom:3px;height:1px;
+ background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform .22s ease;
+}
+header .store-menu a:hover,header .store-menu a:focus-visible,#xnav a:hover{background:transparent;color:var(--fg);transform:none}
+header .store-menu a:hover:after,#xnav a:hover:after{transform:scaleX(1)}
+header .nav-search{
+ flex:0 1 205px;min-width:145px;gap:5px;padding:3px 5px 3px 12px;
+ border:1px solid color-mix(in srgb,var(--ln) 85%,var(--ac) 15%);border-radius:10px;
+ background:color-mix(in srgb,var(--gl) 75%,transparent);box-shadow:none;
+}
+header .nav-search-icon{font-size:19px;color:var(--ac)}
+header .nav-search input{height:32px;font:400 11px var(--fb);letter-spacing:.02em}
+header .nav-search button{
+ width:30px;height:30px;padding:0;border-radius:8px;background:var(--ac);color:#1a1307;
+ font-size:21px;line-height:1;box-shadow:none;
+}
+header .nav-search button span{display:block;transform:translateY(-1px)}
+header .nav-actions{gap:5px}
+header .nav-actions button{
+ min-height:36px;padding:7px 10px;border-radius:9px;background:transparent;
+ border-color:transparent;color:var(--mut);font-size:11px;letter-spacing:.04em;
+}
+header .nav-actions button:hover{background:var(--gl);border-color:var(--ln);color:var(--fg);transform:translateY(-1px)}
+header .nav-actions #wc,header .nav-actions #cc{color:var(--ac);font-weight:700}
+@media(max-width:1100px) and (min-width:721px){
+ header{gap:12px;padding-inline:18px}
+ header .logo{font-size:18px}
+ header .logo:after{font-size:7px;letter-spacing:.12em}
+ header .store-menu a,#xnav a{font-size:10px;padding-inline:6px;letter-spacing:.06em}
+ header .nav-search{flex-basis:160px;min-width:125px}
+ header .nav-actions button{padding-inline:7px}
+}
+@media(max-width:720px){
+ header{min-height:0;display:flex;flex-wrap:wrap;gap:7px 9px;padding:10px 14px 11px}
+ header .logo{font-size:19px;flex:1 1 auto}
+ header .logo:after{font-size:7px;letter-spacing:.15em;margin-top:5px}
+ header nav.st{display:contents}
+ header .mobile-menu-toggle{order:2;display:inline-flex;align-items:center;gap:5px;padding:8px 10px;border-radius:9px;background:var(--gl);border:1px solid var(--ln);font-size:11px}
+ header .nav-actions{order:3;margin-left:0;gap:2px}
+ header .nav-actions button{min-height:34px;padding:6px 8px;font-size:10px}
+ header .ad{display:none}
+ header .nav-search{
+  order:4;flex:1 0 100%;width:100%;min-width:0;margin:2px 0 0;
+  padding:4px 6px 4px 12px;border-radius:9px;background:color-mix(in srgb,var(--gl) 82%,transparent);
+ }
+ header .nav-search-icon{font-size:20px}
+ header .nav-search input{height:34px;font-size:12px}
+ header .nav-search button{width:34px;height:32px;border-radius:7px}
+ header .store-menu{
+  top:calc(100% + 7px);background:color-mix(in srgb,var(--bg2) 96%,transparent);
+  border:1px solid var(--ln);box-shadow:0 18px 44px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.12);
+ }
+ header .store-menu a,#xnav a{padding:12px 13px;border-radius:9px;font-size:12px}
+ header .store-menu a:after,#xnav a:after{display:none}
+}
+@media(max-width:380px){
+ header .logo{font-size:17px}
+ header .nav-actions button{padding:6px 6px;font-size:9px}
+ header .mobile-menu-toggle{padding:7px 8px}
+}
+
 </style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
@@ -878,7 +959,7 @@ header .nav-actions button:hover{background:color-mix(in srgb,var(--ac) 14%,var(
 <div class="store-menu" id="storeMenu">
 <a href="#/">Home</a><a href="#/shop">Shop</a><a href="#/shop?s=new">New Arrivals</a><a href="#/track">Track Order</a><a href="#/contact">Contact</a><span id="xnav" style="display:contents"></span>
 </div>
-<form class="nav-search" id="storeSearch" role="search" aria-label="Search products"><span class="nav-search-icon" aria-hidden="true">⌕</span><input id="storeSearchInput" type="search" placeholder="Search products..." aria-label="Search products" autocomplete="off"><button type="submit" aria-label="Submit search">Search</button></form>
+<form class="nav-search" id="storeSearch" role="search" aria-label="Search products"><span class="nav-search-icon" aria-hidden="true">⌕</span><input id="storeSearchInput" type="search" placeholder="Search products..." aria-label="Search products" autocomplete="off"><button type="submit" aria-label="Search"><span aria-hidden="true">⌕</span></button></form>
 <div class="nav-actions"><button data-a="wishv" aria-label="Wishlist">♡ <span id="wc">0</span></button><button data-a="cart" aria-label="Cart">Cart <span id="cc">0</span></button><button data-a="theme" aria-label="Toggle theme">◐</button></div>
 </nav><nav class="ad"><span class="chip">Admin panel</span><button data-a="theme" aria-label="Toggle theme">◐</button></nav></header>
 <main id="app"></main>
