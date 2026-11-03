@@ -585,7 +585,7 @@ document.addEventListener("change",e=>{const t=e.target,k=t.dataset.c;if(!k)retu
   if(k==="img"&&t.files[0]){const fr=new FileReader();fr.onload=()=>{try{p.img=String(fr.result);p.images=[p.img];commit();toast("Original-quality image saved")}catch{toast("Could not save image")}};fr.onerror=()=>toast("Could not read image");fr.readAsDataURL(t.files[0])}
  if(k==="rg"){rg=t.value;route()}if(k==="osq"){osq=t.value;route(true)}if(k==="role"){role=t.value;localStorage.setItem("ij_role",role);route()}
  if(k==="stk"){if(!can("products"))return toast("Forbidden");{const p=prod(t.dataset.id),nv=Math.max(0,+t.value||0);if(nv!==p.stock)slog(p.id,nv-p.stock,"manual edit",role);p.stock=nv;commit();toast("Stock saved")}}
- if(k==="mgr"&&can("edit")){db.orders.find(o=>o.id==t.dataset.id).mgr=t.value;commit()}});
+ if(k==="mgr"&&can("edit")){db.orders.find(o=>o.id==t.dataset.id).mgr=t.value;commit()}}});
 document.addEventListener("submit",e=>{const t=e.target,k=t.dataset.s;if(!k)return;e.preventDefault();const d=Object.fromEntries(new FormData(t));if(k==="authlogin"){signInAdmin(d,t);return;}
  if(k==="comp"){if(!/^(\+?88)?01[3-9][0-9]{8}$/.test(String(d.phone).trim()))return toast("Enter a valid mobile number");addComplaint(d);t.reset();toast("Complaint received. We will contact you.")}
  if(k==="bulk"){const r=bulkApply(d);A.x();toast(r.ok+" updated"+(r.sk?", "+r.sk+" skipped (not allowed from their current status)":""))}
