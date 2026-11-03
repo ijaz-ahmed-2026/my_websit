@@ -1548,6 +1548,165 @@ body:not(.adm) header.ij-scrolled{background:rgba(25,24,22,.38)!important}
  body:not(.adm)::before,body:not(.adm)::after,#app .ij-clean-hero,#app .sec{animation:none!important}
  #app *{scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
+</style>
+<style id="ijaz-glass-flow-refine">
+/* IJAZ — landscape liquid-glass refinement */
+body:not(.adm){background-color:var(--bg)!important;color:var(--fg)!important}
+body:not(.adm)::before{
+ inset:-28%!important;opacity:.92!important;filter:blur(34px)!important;
+ background:
+ radial-gradient(ellipse 42% 22% at 18% 22%,rgba(76,183,178,.24),transparent 72%),
+ radial-gradient(ellipse 38% 28% at 80% 30%,rgba(75,151,177,.2),transparent 74%),
+ radial-gradient(ellipse 36% 24% at 55% 74%,rgba(112,190,173,.2),transparent 72%),
+ radial-gradient(ellipse 30% 28% at 25% 88%,rgba(84,134,190,.16),transparent 76%)!important;
+ animation:ij-sea-glow 19s ease-in-out infinite alternate!important
+}
+body:not(.adm)::after{
+ inset:-35% -18%!important;opacity:.48!important;
+ background:
+ repeating-radial-gradient(ellipse 72% 38% at 50% 52%,transparent 0 28px,rgba(185,239,236,.10) 29px,transparent 32px 58px),
+ repeating-linear-gradient(168deg,transparent 0 54px,rgba(210,248,244,.035) 56px,transparent 59px 112px)!important;
+ mask-image:radial-gradient(ellipse at 50% 50%,#000 12%,rgba(0,0,0,.8) 58%,transparent 88%)!important;
+ animation:ij-sea-waves 34s linear infinite!important
+}
+@keyframes ij-sea-glow{
+ 0%{transform:translate3d(-3%,3%,0) scale(.98)}
+ 35%{transform:translate3d(2%,-2%,0) scale(1.06)}
+ 70%{transform:translate3d(-1%,-4%,0) scale(1.02)}
+ 100%{transform:translate3d(3%,2%,0) scale(1.08)}
+}
+@keyframes ij-sea-waves{
+ 0%{transform:translate3d(-2%,1%,0) rotate(-4deg) scale(1)}
+ 50%{transform:translate3d(2%,-2%,0) rotate(2deg) scale(1.05)}
+ 100%{transform:translate3d(-2%,1%,0) rotate(-4deg) scale(1)}
+}
+/* Navigation layout: separate, balanced, high-contrast icon controls */
+body:not(.adm) header{
+ display:flex!important;align-items:center!important;gap:clamp(10px,2vw,26px)!important;
+ padding:12px clamp(14px,3.5vw,48px)!important;min-height:76px!important;
+ background:rgba(18,25,27,.24)!important;border-bottom:1px solid rgba(255,255,255,.18)!important;
+ -webkit-backdrop-filter:blur(22px) saturate(1.55)!important;backdrop-filter:blur(22px) saturate(1.55)!important;
+}
+body:not(.adm) header .logo{color:var(--fg)!important;text-shadow:none!important;white-space:nowrap}
+body:not(.adm) header nav.st{display:flex!important;align-items:center!important;gap:clamp(7px,1.5vw,18px)!important;flex:1!important;min-width:0!important}
+body:not(.adm) header .store-menu{
+ display:flex!important;align-items:center!important;justify-content:center!important;gap:3px!important;
+ min-width:0!important;padding:5px!important;border-radius:999px!important;
+ background:rgba(255,255,255,.075)!important;border:1px solid rgba(255,255,255,.2)!important;
+ -webkit-backdrop-filter:blur(18px)!important;backdrop-filter:blur(18px)!important
+}
+body:not(.adm) header .store-menu a{
+ color:var(--fg)!important;background:transparent!important;border:0!important;
+ padding:9px clamp(8px,1.2vw,14px)!important;border-radius:999px!important;
+ font-size:11px!important;line-height:1.2!important;white-space:nowrap!important;text-shadow:none!important
+}
+body:not(.adm) header .store-menu a:hover{background:rgba(255,255,255,.16)!important}
+body:not(.adm) header .nav-actions{
+ display:flex!important;align-items:center!important;justify-content:flex-end!important;
+ flex:0 0 auto!important;gap:8px!important;margin-left:auto!important
+}
+body:not(.adm) header .nav-actions button{
+ position:relative!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ gap:5px!important;width:42px!important;height:42px!important;min-width:42px!important;padding:0!important;
+ color:var(--fg)!important;background:rgba(255,255,255,.10)!important;
+ border:1px solid rgba(255,255,255,.24)!important;border-radius:50%!important;
+ box-shadow:inset 0 1px rgba(255,255,255,.28),0 5px 18px rgba(0,0,0,.08)!important;
+ -webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important
+}
+body:not(.adm) header .nav-actions button:before{display:none!important}
+body:not(.adm) header .nav-actions button svg{display:block!important;width:18px!important;height:18px!important;flex:0 0 18px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.6!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+body:not(.adm) header .nav-actions button span{display:grid!important;place-items:center!important;min-width:14px!important;font-size:10px!important;line-height:1!important;color:inherit!important}
+body:not(.adm) header .search-icon-toggle{color:var(--fg)!important}
+body:not(.adm) header .mobile-menu-toggle{color:var(--fg)!important;background:rgba(255,255,255,.11)!important;border:1px solid rgba(255,255,255,.24)!important}
+:root[data-t=light] body:not(.adm) header{background:rgba(255,255,255,.68)!important;border-color:rgba(31,48,51,.13)!important;box-shadow:0 8px 28px rgba(35,48,49,.06)!important}
+:root[data-t=light] body:not(.adm) header .logo,
+:root[data-t=light] body:not(.adm) header .store-menu a,
+:root[data-t=light] body:not(.adm) header .nav-actions button,
+:root[data-t=light] body:not(.adm) header .mobile-menu-toggle{color:#202b2d!important}
+:root[data-t=light] body:not(.adm) header .store-menu{background:rgba(255,255,255,.72)!important;border-color:rgba(28,44,47,.14)!important}
+:root[data-t=light] body:not(.adm) header .nav-actions button{background:rgba(255,255,255,.8)!important;border-color:rgba(35,54,57,.18)!important;box-shadow:inset 0 1px #fff,0 5px 18px rgba(25,48,50,.08)!important}
+/* Wide landscape hero with editorial typography and layered liquid sheen */
+#app .ij-clean-hero{
+ width:min(calc(100% - 36px),1440px)!important;max-width:1440px!important;
+ aspect-ratio:16/7!important;min-height:390px!important;height:auto!important;
+ margin:24px auto clamp(42px,6vw,76px)!important;padding:clamp(24px,5vw,72px)!important;
+ border-radius:clamp(18px,2.4vw,30px)!important;overflow:hidden!important;
+ background-position:center 44%!important;
+ box-shadow:0 28px 90px rgba(0,0,0,.2),inset 0 1px rgba(255,255,255,.42)!important;
+}
+#app .ij-clean-hero:before{
+ z-index:0!important;border-radius:inherit!important;
+ background:linear-gradient(90deg,rgba(8,15,16,.68) 0%,rgba(8,15,16,.36) 42%,rgba(8,15,16,.06) 100%),linear-gradient(0deg,rgba(8,15,16,.46),transparent 58%)!important
+}
+#app .ij-clean-hero:after{
+ content:"";position:absolute;inset:-30% -70%;z-index:1;pointer-events:none;
+ background:linear-gradient(112deg,transparent 38%,rgba(255,255,255,.09) 48%,rgba(255,255,255,.20) 50%,rgba(255,255,255,.05) 52%,transparent 62%);
+ transform:translateX(-55%) rotate(8deg);animation:ij-banner-sheen 12s ease-in-out infinite
+}
+@keyframes ij-banner-sheen{0%,24%{transform:translateX(-58%) rotate(8deg);opacity:0}38%{opacity:.8}62%,100%{transform:translateX(58%) rotate(8deg);opacity:0}}
+#app .ij-clean-meta,#app .ij-clean-foot,#app .ij-clean-kicker,#app .ij-clean-bn,#app .ij-clean-desc,#app .ij-clean-offer{display:flex!important}
+#app .ij-clean-meta,#app .ij-clean-foot{position:relative!important;z-index:2!important;color:rgba(255,255,255,.84)!important}
+#app .ij-clean-content{position:relative!important;z-index:2!important;width:min(660px,74%)!important;margin:auto 0 0!important;padding:0!important}
+#app .ij-clean-kicker{display:block!important;color:#e7d8c2!important;font-size:10px!important;letter-spacing:.28em!important;margin-bottom:14px!important}
+#app .ij-clean-content h1{font-family:'Playfair Display',Georgia,serif!important;font-weight:500!important;font-size:clamp(44px,6.5vw,82px)!important;line-height:.99!important;letter-spacing:-.045em!important;text-wrap:balance!important;text-shadow:0 5px 28px rgba(0,0,0,.28)!important;animation:ij-title-focus 1.25s cubic-bezier(.2,.75,.25,1) both}
+@keyframes ij-title-focus{0%{opacity:0;filter:blur(13px);transform:translateY(16px)}100%{opacity:1;filter:blur(0);transform:translateY(0)}}
+#app .ij-clean-bn{font-family:'Hind Siliguri',sans-serif!important;font-size:clamp(15px,1.7vw,20px)!important;color:rgba(255,255,255,.92)!important;line-height:1.6!important}
+#app .ij-clean-desc{font-size:13px!important;color:rgba(255,255,255,.78)!important;max-width:440px!important;line-height:1.8!important}
+#app .ij-clean-actions{position:relative!important;z-index:2!important;gap:12px!important}
+#app .ij-clean-cta{color:#fff!important;background:rgba(255,255,255,.17)!important;border:1px solid rgba(255,255,255,.58)!important;border-radius:999px!important;box-shadow:inset 0 1px rgba(255,255,255,.6),0 8px 28px rgba(0,0,0,.16)!important}
+#app .ij-clean-foot{padding-top:12px!important;border-top:1px solid rgba(255,255,255,.3)!important}
+/* Scroll reveals: modern browsers animate elements as they enter the viewport */
+@supports (animation-timeline:view()){
+ #app .sec,#app .pc,#app .glass,#app .pro-panel,#app .dash-kpi,#app .pro-metric,#app .cd,#app .rc,#app .ij-clean-meta,#app .ij-clean-foot{
+  animation:ij-scroll-soft both!important;animation-timeline:view()!important;animation-range:entry 0% entry 38%!important
+ }
+ #app h1:not(.ij-clean-content h1),#app h2,#app h3,#app .sec h2,#app .pc h3{
+  animation:ij-text-focus both!important;animation-timeline:view()!important;animation-range:entry 0% entry 42%!important
+ }
+}
+@keyframes ij-scroll-soft{from{opacity:.35;filter:blur(9px);transform:translateY(24px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@keyframes ij-text-focus{from{opacity:.25;filter:blur(7px);transform:translateY(12px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+#app .pc img{transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .7s ease!important}
+#app .pc:hover img{transform:scale(1.035)!important;filter:saturate(1.08)!important}
+:root[data-t=light] body:not(.adm)::before{opacity:.68!important}
+:root[data-t=light] body:not(.adm)::after{opacity:.24!important}
+:root[data-t=light] #app{color:#243033!important}
+:root[data-t=light] #app :is(.glass,.pc,.pro-panel,.dash-kpi,.pro-metric,.cd,.rc,.order-edit-section,.category-card,.collection-card){
+ background:rgba(255,255,255,.76)!important;border-color:rgba(39,60,62,.13)!important;
+ box-shadow:0 12px 36px rgba(29,48,50,.07),inset 0 1px rgba(255,255,255,.9)!important
+}
+:root[data-t=light] #app :is(h1,h2,h3,h4,p,label,small,.mut,.price,.desc){color:#263436}
+:root[data-t=light] #app :is(.mut,.desc,small){color:#647476!important}
+:root[data-t=light] #app :is(input,select,textarea){color:#202c2e!important;background:rgba(255,255,255,.88)!important;border-color:rgba(38,58,60,.22)!important}
+:root[data-t=light] #app :is(input,select,textarea)::placeholder{color:#718083!important}
+:root[data-t=light] #app :is(button,.btn,.ab,.pri,.pro-quick,[role=button]){color:#263436!important;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(232,241,239,.78))!important;border-color:rgba(43,68,69,.2)!important;box-shadow:inset 0 1px #fff,0 5px 18px rgba(34,57,58,.08)!important}
+:root[data-t=light] #app .ij-clean-cta{color:#fff!important;background:rgba(255,255,255,.17)!important}
+@media(max-width:900px){
+ body:not(.adm) header{gap:9px!important;padding-inline:12px!important}
+ body:not(.adm) header nav.st{gap:6px!important}
+ body:not(.adm) header .store-menu a{padding:8px 8px!important;font-size:10px!important}
+ body:not(.adm) header .nav-actions{gap:5px!important}
+ body:not(.adm) header .nav-actions button{width:38px!important;height:38px!important;min-width:38px!important}
+}
+@media(max-width:720px){
+ body:not(.adm) header{min-height:64px!important;padding:9px 12px!important;gap:8px!important}
+ body:not(.adm) header nav.st{flex:0 0 auto!important;gap:6px!important}
+ body:not(.adm) header .mobile-menu-toggle{display:inline-flex!important;align-items:center!important;gap:6px!important;padding:9px 12px!important;white-space:nowrap!important}
+ body:not(.adm) header .store-menu{top:calc(100% + 8px)!important;max-width:calc(100vw - 24px)!important}
+ body:not(.adm) header .nav-actions{gap:5px!important}
+ body:not(.adm) header .nav-actions button{width:36px!important;height:36px!important;min-width:36px!important}
+ body:not(.adm) header .nav-actions button svg{width:16px!important;height:16px!important;flex-basis:16px!important}
+ #app .ij-clean-hero{width:calc(100% - 24px)!important;aspect-ratio:16/9!important;min-height:260px!important;height:auto!important;margin:14px auto 42px!important;padding:20px 18px!important;border-radius:18px!important;background-position:center 44%!important}
+ #app .ij-clean-content{width:min(100%,540px)!important;margin-bottom:0!important}
+ #app .ij-clean-content h1{font-size:clamp(34px,9vw,54px)!important;line-height:1.02!important}
+ #app .ij-clean-kicker{font-size:8px!important;letter-spacing:.2em!important}
+ #app .ij-clean-bn{font-size:14px!important}
+ #app .ij-clean-desc{font-size:11px!important;max-width:300px!important}
+ #app .ij-clean-meta,#app .ij-clean-foot{font-size:7px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body:not(.adm)::before,body:not(.adm)::after,#app *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
 </style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
