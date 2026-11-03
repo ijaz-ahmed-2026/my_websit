@@ -110,7 +110,7 @@ body.adm main{max-width:1560px}.shell{grid-template-columns:240px 1fr}
 <script>
 const SUPABASE_URL="https://dkzzfuulyygpwfikyzup.supabase.co",SUPABASE_KEY="sb_publishable_q1VicwYnKENd1lDVwzmW_g_aUPiO4kw";
 const sbClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage}});
-let sbSession=null,sbRole=null,sbSaving=false,sbSaveTimer=null,sbSavePromise=Promise.resolve(),sbAuthReady=false;
+let sbSession=null,sbRole=null,sbSaving=false,sbSaveTimer=null,sbSavePromise=Promise.resolve(),sbSaveWaiters=[],sbAuthReady=false;
 const MODE="both",KEY="ijaz_demo_v3",$=(s,e=document)=>e.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])),bdt=n=>"৳"+Number(n).toLocaleString("en-IN");
 
 async function signInAdmin(d,form){const b=form.querySelector("button");if(b){b.disabled=true;b.textContent="Signing in…";}const {data,error}=await sbClient.auth.signInWithPassword({email:String(d.email||"").trim(),password:String(d.password||"")});if(error){const m=form.querySelector("#authmsg");if(m)m.textContent=error.message;if(b){b.disabled=false;b.textContent="Sign in securely";}return;}sbSession=data.session;await loadAdminState();if(!sbSession)return;unlocked=true;role=sbRole==="admin"?"Owner":"Order Manager";localStorage.setItem("ij_role",role);chrome();route(true);}
@@ -130,8 +130,22 @@ async function queueStoreSave(immediate=false){
   });
   return sbSavePromise;
  };
- if(immediate)return run();
- return new Promise(resolve=>{sbSaveTimer=setTimeout(()=>run().then(resolve),500)});
+ if(immediate){
+  clearTimeout(sbSaveTimer);sbSaveTimer=null;
+  const waiting=sbSaveWaiters.splice(0);
+  const task=run();
+  task.then(ok=>waiting.forEach(done=>done(ok)));
+  return task;
+ }
+ return new Promise(resolve=>{
+  sbSaveWaiters.push(resolve);
+  clearTimeout(sbSaveTimer);
+  sbSaveTimer=setTimeout(()=>{
+   sbSaveTimer=null;
+   const waiting=sbSaveWaiters.splice(0);
+   run().then(ok=>waiting.forEach(done=>done(ok)));
+  },900);
+ });
 }
 async function bootSupabase(){try{const {data:{session}}=await sbClient.auth.getSession();sbSession=session;if(session){const ok=await loadAdminState();unlocked=!!(ok&&sbSession);if(sbRole)role=sbRole==="admin"?"Owner":"Order Manager";chrome();route(true);}else{db.products=[];db.orders=[];const {data:st,error:se}=await sbClient.from("site_settings").select("settings").eq("id",1).maybeSingle();if(se)console.warn("Settings read",se.message);if(st?.settings)db.set=Object.assign(db.set||{},st.settings);const {data:ps,error:pe}=await sbClient.from("products").select("*").eq("published",true).order("created_at",{ascending:false});if(pe)console.warn("Products read",pe.message);if(ps?.length)db.products=ps.map(x=>x.legacy_data&&Object.keys(x.legacy_data).length?x.legacy_data:{id:x.legacy_id||x.id,name:x.name,cat:x.category,price:Number(x.price),sale:x.sale_price==null?null:Number(x.sale_price),stock:x.stock,low:x.low_stock_threshold,opts:x.options||[],images:x.images||[],img:(x.images||[])[0]||"",video:x.video_url||"",pub:x.published,d:x.description||"",hue:30,sold:0});chrome();route();}}catch(e){console.error("Supabase startup",e);chrome();route();}sbAuthReady=true;route(true);sbClient.auth.onAuthStateChange((_event,session)=>{sbSession=session;if(!session){unlocked=false;sbRole=null;role="Owner";route(true);}});}
 async function persistCustomerOrder(o){try{const orderId=crypto.randomUUID();const payload={id:orderId,legacy_id:Number(o.id),customer_name:o.c.name,phone:o.c.phone,address:o.c.address,district:o.c.district||null,thana:o.c.area||null,delivery_charge:o.fee||0,subtotal:o.sub||0,total:o.total||0,payment_method:o.method||null,transaction_id:o.c.advance_trx||null,payment_status:o.pay||"pending",status:o.status||"pending",customer_note:o.c.cnote||null,legacy_data:o,created_at:new Date(o.ts).toISOString()};const {error}=await sbClient.from("orders").insert(payload);if(error)throw error;const items=(o.items||[]).map(i=>({order_id:orderId,product_id:null,product_name:i.name,quantity:i.qty,unit_price:i.price,selected_options:{option:i.opt||""}}));if(items.length){const r=await sbClient.from("order_items").insert(items);if(r.error)throw r.error;}o.cloudSaved=true;if(sbSession)commit();}catch(e){console.error("Order cloud save",e);toast("Order could not be saved to server. Please contact support.");}}
