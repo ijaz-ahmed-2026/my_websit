@@ -1058,6 +1058,72 @@ header .menu-search-open{display:none}
  header .store-menu .menu-search-open:hover{color:var(--ac);background:var(--gl)}
 }
 @media(max-width:380px){header .logo{font-size:15px!important;letter-spacing:.1em!important} header .logo .lg{height:30px!important;max-width:105px!important}}
+</style><style>
+/* IJAZ FIX PACK — glass navigation, light-theme campaign visibility, dashboard contrast */
+header{
+ position:sticky!important;isolation:isolate;
+ background:rgba(16,16,16,.58)!important;
+ -webkit-backdrop-filter:blur(30px) saturate(1.65)!important;
+ backdrop-filter:blur(30px) saturate(1.65)!important;
+ border-bottom:1px solid rgba(255,255,255,.19)!important;
+ box-shadow:0 10px 34px rgba(0,0,0,.14),inset 0 1px rgba(255,255,255,.12)!important;
+}
+header nav{
+ display:flex;align-items:center;gap:7px;padding:6px 8px;margin-left:auto;
+ border:1px solid rgba(255,255,255,.2)!important;border-radius:999px;
+ background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.045) 55%,rgba(255,255,255,.09))!important;
+ -webkit-backdrop-filter:blur(28px) saturate(1.7)!important;backdrop-filter:blur(28px) saturate(1.7)!important;
+ box-shadow:inset 0 1px rgba(255,255,255,.24),0 8px 28px rgba(0,0,0,.14)!important;
+}
+header nav a,header nav button{
+ color:var(--fg)!important;background:rgba(255,255,255,.045)!important;
+ border:1px solid rgba(255,255,255,.09)!important;border-radius:999px!important;
+ -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+}
+header nav a:hover,header nav button:hover{background:rgba(255,255,255,.16)!important;border-color:rgba(255,255,255,.3)!important}
+:root[data-t=light] header{
+ background:rgba(255,255,255,.64)!important;border-bottom-color:rgba(35,35,35,.13)!important;
+ box-shadow:0 10px 34px rgba(35,35,35,.09),inset 0 1px rgba(255,255,255,.95)!important;
+}
+:root[data-t=light] header nav{
+ background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(245,245,245,.66))!important;
+ border-color:rgba(40,40,40,.14)!important;box-shadow:inset 0 1px #fff,0 8px 24px rgba(35,35,35,.09)!important;
+}
+:root[data-t=light] header nav a,:root[data-t=light] header nav button{
+ color:#202020!important;background:rgba(255,255,255,.52)!important;border-color:rgba(30,30,30,.09)!important;
+}
+:root[data-t=light] header nav a:hover,:root[data-t=light] header nav button:hover{background:rgba(30,30,30,.08)!important}
+:root[data-t=light] body:not(.adm) .hero.hasimg{
+ color:#fff!important;background-color:#111!important;
+ background-blend-mode:normal!important;
+ border-color:rgba(255,255,255,.35)!important;
+}
+:root[data-t=light] body:not(.adm) .hero.hasimg :is(h1,.bnl,.lead,p,.mut,.eyebrow){
+ color:#fff!important;text-shadow:0 2px 16px rgba(0,0,0,.72)!important;
+}
+:root[data-t=light] body:not(.adm) .hero.hasimg .eyebrow{opacity:1!important}
+:root[data-t=light] body:not(.adm) .hero.hasimg .chip{color:#fff!important;background:rgba(0,0,0,.42)!important;border-color:rgba(255,255,255,.5)!important}
+:root[data-t=light] body:not(.adm) .blkimg{background-color:#ddd!important;background-size:cover!important;background-position:center!important;min-height:240px}
+:root[data-t=light] body.adm .pro-dash{color:#211b12!important}
+:root[data-t=light] body.adm .pro-dash :is(.pro-welcome h2,.pro-panel-head h3,.pro-metric>strong,.pro-status>b,.pro-product-body b,.pro-order-customer b,.pro-order-end b,.pro-quick b,.pro-total){color:#211b12!important}
+:root[data-t=light] body.adm .pro-dash :is(.pro-kicker,.pro-welcome p,.pro-panel-head p,.pro-subtitle,.pro-metric-label,.pro-status>span,.pro-status-note,.pro-chart-value,.pro-chart-col small,.pro-chart-foot,.pro-order-customer small,.pro-product-body small,.pro-quick small,.pro-disclaimer){color:#625847!important}
+:root[data-t=light] body.adm .pro-chart{border-bottom-color:rgba(40,35,25,.2)!important}
+:root[data-t=light] body.adm .pro-chart-track{background:rgba(45,40,30,.1)!important;border-radius:8px}
+:root[data-t=light] body.adm .pro-chart-track i{background:linear-gradient(180deg,#b9822e,#765016)!important;box-shadow:0 2px 12px rgba(118,80,22,.22)!important}
+:root[data-t=light] body.adm .pro-status>div,:root[data-t=light] body.adm .pro-product-line{background:rgba(45,40,30,.11)!important;box-shadow:inset 0 1px 3px rgba(0,0,0,.08)!important}
+:root[data-t=light] body.adm .pro-status>div i,:root[data-t=light] body.adm .pro-product-line i{background:linear-gradient(90deg,#b9822e,#765016)!important;box-shadow:none!important}
+:root[data-t=light] body.adm .pro-total{background:rgba(118,80,22,.1)!important;color:#765016!important}
+:root[data-t=light] body.adm .pro-order{color:#211b12!important;border-top-color:rgba(45,35,20,.12)!important}
+:root[data-t=light] body.adm .pro-order-mark,:root[data-t=light] body.adm .pro-product-rank{color:#765016!important;background:rgba(118,80,22,.1)!important}
+:root[data-t=light] body.adm .pro-dot{background:#32845c!important}
+@media(max-width:900px){
+ header nav{gap:4px;padding:5px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+ header nav::-webkit-scrollbar{display:none}
+}
+@media(max-width:720px){
+ header{gap:8px}
+ header nav{border-radius:16px}
+}
 </style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
