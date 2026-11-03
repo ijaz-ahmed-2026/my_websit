@@ -624,7 +624,104 @@ dialog.ord.order-edit-dialog{width:min(1040px,96vw);max-width:1040px;max-height:
 .order-edit-footer{position:sticky;bottom:-1px;background:var(--bg2);padding:14px 0 2px;border-top:1px solid var(--ln);display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end}.order-edit-footer button{min-width:170px;min-height:46px}
 .order-edit-section input,.order-edit-section select,.order-edit-section textarea,.edit-order-row input,.edit-order-row select,.order-edit-footer select{min-width:0;width:100%;border-radius:10px}
 @media(max-width:650px){dialog.ord.order-edit-dialog{width:96vw;max-height:94dvh;padding:13px}.edit-order-row{grid-template-columns:1fr 1fr}.edit-order-row label:first-child{grid-column:1/-1}.edit-order-row button{justify-self:start}.order-edit-footer{grid-template-columns:1fr}.order-edit-footer button{width:100%}.order-edit-section{padding:12px}.order-edit-form .two{grid-template-columns:1fr}}
-.edit-product-search-label{display:grid;gap:6px;font-size:13px;color:var(--mut)}.edit-product-search-label input{width:100%;min-width:0;border-radius:11px}.edit-product-suggestions{display:grid;gap:7px;max-height:280px;overflow:auto}.edit-product-suggestion{width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:9px 11px;border:1px solid var(--ln);border-radius:12px;background:var(--gl);color:var(--fg)}.edit-product-suggestion img,.edit-product-thumb{width:42px;height:42px;object-fit:cover;border-radius:8px;display:grid;place-items:center;background:var(--gl);flex-shrink:0}.edit-product-suggestion-info{display:grid;gap:3px;flex:1;min-width:0}.edit-product-suggestion-info b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.edit-product-suggestion-info small{color:var(--mut);font-size:11px}.edit-product-empty{padding:10px;margin:0;color:var(--mut);font-size:13px}</style></head><body>
+.edit-product-search-label{display:grid;gap:6px;font-size:13px;color:var(--mut)}.edit-product-search-label input{width:100%;min-width:0;border-radius:11px}.edit-product-suggestions{display:grid;gap:7px;max-height:280px;overflow:auto}.edit-product-suggestion{width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:9px 11px;border:1px solid var(--ln);border-radius:12px;background:var(--gl);color:var(--fg)}.edit-product-suggestion img,.edit-product-thumb{width:42px;height:42px;object-fit:cover;border-radius:8px;display:grid;place-items:center;background:var(--gl);flex-shrink:0}.edit-product-suggestion-info{display:grid;gap:3px;flex:1;min-width:0}.edit-product-suggestion-info b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.edit-product-suggestion-info small{color:var(--mut);font-size:11px}.edit-product-empty{padding:10px;margin:0;color:var(--mut);font-size:13px}
+/* IJAZ liquid-glass design system — consistent in dark AND light themes */
+:root{
+ --ij-glass-dark:rgba(255,255,255,.075);
+ --ij-glass-border-dark:rgba(255,255,255,.17);
+ --ij-glass-shadow-dark:0 18px 48px rgba(0,0,0,.20);
+}
+html{scroll-behavior:smooth}
+body{background:
+ radial-gradient(900px 540px at 8% -12%,color-mix(in srgb,var(--ac) 13%,transparent),transparent 68%),
+ radial-gradient(780px 500px at 100% 35%,rgba(105,135,170,.09),transparent 70%),
+ var(--bg)}
+header,.glass,.sidebar,dialog,.toast,.cd,.tbl,.orow,.attn-c,.pro-panel,.pro-metric,.pro-quick,.dash-kpi,.stat,.agrp,.note,.rc,.dt,.order-main,.order-side,.blk{
+ -webkit-backdrop-filter:blur(24px) saturate(1.55);
+ backdrop-filter:blur(24px) saturate(1.55);
+ background-image:linear-gradient(135deg,rgba(255,255,255,.105),rgba(255,255,255,.025) 48%,rgba(255,255,255,.055));
+ border-color:var(--ij-glass-border-dark);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -1px 0 rgba(255,255,255,.025),var(--ij-glass-shadow-dark);
+}
+header{background:rgba(18,16,13,.58);border-bottom:1px solid var(--ij-glass-border-dark)}
+.glass,.cd,.tbl,.orow,.attn-c,.pro-panel,.pro-metric,.pro-quick,.dash-kpi,.stat,.agrp,.note,.rc,.dt,.order-main,.order-side{border:1px solid var(--ij-glass-border-dark)}
+.glass{background-color:rgba(255,255,255,.045)}
+.sidebar{background-color:rgba(22,20,17,.56);border:1px solid var(--ij-glass-border-dark)}
+dialog{background-color:rgba(26,23,19,.78);border:1px solid rgba(255,255,255,.24)}
+input,select,textarea{background:rgba(255,255,255,.065);border-color:rgba(255,255,255,.17);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+button,.btn{border-color:rgba(255,255,255,.15)}
+.pc,.pro-metric,.pro-panel,.cd,.attn-c,.pro-quick,.stat,.rc,.glass{transition:background .35s ease,border-color .35s ease,box-shadow .35s ease,transform .35s cubic-bezier(.2,.75,.2,1)}
+.pc:hover,.pro-metric:hover,.pro-panel:hover,.cd:hover,.attn-c:hover,.pro-quick:hover,.stat:hover,.rc:hover{border-color:color-mix(in srgb,var(--ac) 48%,rgba(255,255,255,.2));box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 18px 44px rgba(0,0,0,.19)}
+/* Bright liquid glass: milky translucent surfaces with dark readable text */
+:root[data-t=light]{
+ --ij-glass-border-light:rgba(255,255,255,.78);
+ --ij-glass-shadow-light:0 16px 42px rgba(93,72,39,.105);
+}
+:root[data-t=light] body{
+ background:
+ radial-gradient(950px 560px at 8% -12%,color-mix(in srgb,var(--ac) 19%,transparent),transparent 68%),
+ radial-gradient(800px 520px at 100% 30%,rgba(151,183,207,.20),transparent 70%),
+ linear-gradient(145deg,#f8f5ef 0%,#eee9df 52%,#f8f5ef 100%)!important;
+}
+:root[data-t=light] header{
+ background:rgba(255,255,255,.57)!important;
+ border-color:rgba(255,255,255,.8)!important;
+ -webkit-backdrop-filter:blur(30px) saturate(1.7)!important;
+ backdrop-filter:blur(30px) saturate(1.7)!important;
+ box-shadow:0 8px 30px rgba(80,65,42,.07),inset 0 1px 0 #fff!important;
+}
+:root[data-t=light] :is(.glass,.pc,.sidebar,dialog,.toast,.cd,.tbl,.orow,.attn-c,.pro-panel,.pro-metric,.pro-quick,.dash-kpi,.stat,.agrp,.note,.rc,.dt,.order-main,.order-side,.blk){
+ background-color:rgba(255,255,255,.48)!important;
+ background-image:linear-gradient(135deg,rgba(255,255,255,.82),rgba(255,255,255,.38) 48%,rgba(255,255,255,.54))!important;
+ border:1px solid rgba(255,255,255,.78)!important;
+ -webkit-backdrop-filter:blur(28px) saturate(1.65)!important;
+ backdrop-filter:blur(28px) saturate(1.65)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.96),inset 0 -1px 0 rgba(255,255,255,.35),0 16px 42px rgba(93,72,39,.105)!important;
+}
+:root[data-t=light] body.adm .sidebar{
+ background:rgba(255,255,255,.55)!important;
+ border-color:rgba(255,255,255,.84)!important;
+ box-shadow:inset 0 1px 0 #fff,0 18px 42px rgba(93,72,39,.11)!important;
+}
+:root[data-t=light] body.adm .sidebar button{background:transparent}
+:root[data-t=light] body.adm .sidebar button.sn.on{background:rgba(224,162,59,.16)!important}
+:root[data-t=light] body.adm .sidebar .who{border-color:rgba(90,70,40,.12)}
+:root[data-t=light] dialog{
+ background:linear-gradient(140deg,rgba(255,255,255,.88),rgba(255,255,255,.58))!important;
+ border-color:rgba(255,255,255,.9)!important;
+ box-shadow:inset 0 1px 0 #fff,0 28px 80px rgba(65,49,25,.2)!important;
+}
+:root[data-t=light] :is(input,select,textarea){
+ color:#211b12!important;
+ background:rgba(255,255,255,.58)!important;
+ border-color:rgba(92,72,42,.18)!important;
+ box-shadow:inset 0 1px 2px rgba(80,60,30,.035),0 3px 12px rgba(80,60,30,.025)!important;
+ -webkit-backdrop-filter:blur(14px)!important;
+ backdrop-filter:blur(14px)!important;
+}
+:root[data-t=light] :is(input,select,textarea):focus{
+ background:rgba(255,255,255,.82)!important;
+ border-color:color-mix(in srgb,var(--ac) 55%,#fff)!important;
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 13%,transparent),0 8px 22px rgba(80,60,30,.07)!important;
+}
+:root[data-t=light] body.adm .ot th{background:rgba(255,255,255,.5)!important}
+:root[data-t=light] body.adm .ot td,:root[data-t=light] body.adm .orow{background:rgba(255,255,255,.16)!important}
+:root[data-t=light] body.adm .ot tr.on td{background:rgba(224,162,59,.13)!important}
+:root[data-t=light] body.adm .orow.on{background:rgba(224,162,59,.15)!important}
+:root[data-t=light] body.adm .toast{background:rgba(255,255,255,.82)!important}
+:root[data-t=light] .mq{border-color:rgba(110,90,60,.13)}
+:root[data-t=light] footer{border-color:rgba(110,90,60,.13)}
+:root[data-t=light] .pri{box-shadow:0 8px 22px color-mix(in srgb,var(--ac) 22%,transparent),inset 0 1px 0 rgba(255,255,255,.4)}
+:root[data-t=light] .pc:hover,:root[data-t=light] .pro-metric:hover,:root[data-t=light] .pro-panel:hover,:root[data-t=light] .cd:hover,:root[data-t=light] .attn-c:hover,:root[data-t=light] .pro-quick:hover,:root[data-t=light] .stat:hover,:root[data-t=light] .rc:hover{
+ border-color:color-mix(in srgb,var(--ac) 42%,white)!important;
+ box-shadow:inset 0 1px 0 #fff,0 20px 48px rgba(93,72,39,.15)!important;
+}
+@media(max-width:720px){
+ header{-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5)}
+ :root[data-t=light] :is(.glass,.pc,.sidebar,.cd,.tbl,.orow,.attn-c,.pro-panel,.pro-metric,.pro-quick,.dash-kpi,.stat,.agrp,.note,.rc,.dt,.blk){-webkit-backdrop-filter:blur(20px) saturate(1.45)!important;backdrop-filter:blur(20px) saturate(1.45)!important}
+}
+
+</style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st">
 <a href="#/shop">Shop</a><a href="#/track">Track</a><a href="#/contact">Contact</a><span id="xnav" style="display:contents"></span>
