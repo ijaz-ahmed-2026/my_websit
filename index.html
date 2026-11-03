@@ -1465,6 +1465,89 @@ body:not(.adm) header.ij-scrolled .nav-actions button{color:var(--fg)!important;
  #app .ij-clean-content{width:100%!important;margin-bottom:6px!important}
  #app .ij-clean-content h1{font-size:clamp(42px,11vw,62px)!important;margin-bottom:18px!important}
 }
+</style>
+<style id="ijaz-glass-flow-theme">
+/* IJAZ GLASS FLOW — lightweight layered ambience, portrait editorial hero */
+body:not(.adm){background:var(--bg)!important;position:relative;isolation:isolate;overflow-x:hidden}
+body:not(.adm)::before,body:not(.adm)::after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;will-change:transform;transform:translateZ(0)}
+body:not(.adm)::before{
+ opacity:.72;
+ background:
+ radial-gradient(ellipse 34% 25% at 12% 22%,rgba(92,177,169,.18),transparent 72%),
+ radial-gradient(ellipse 28% 36% at 86% 28%,rgba(191,153,105,.17),transparent 74%),
+ radial-gradient(ellipse 38% 26% at 52% 82%,rgba(94,143,160,.16),transparent 72%),
+ radial-gradient(ellipse 22% 32% at 76% 76%,rgba(154,183,148,.12),transparent 75%);
+ filter:blur(28px);animation:ij-water-drift 28s ease-in-out infinite alternate
+}
+body:not(.adm)::after{
+ opacity:.28;
+ background:repeating-radial-gradient(ellipse at 18% 48%,transparent 0 54px,rgba(255,255,255,.055) 56px,transparent 59px 112px);
+ mask-image:linear-gradient(110deg,transparent 4%,#000 28%,#000 76%,transparent 96%);
+ animation:ij-current 42s linear infinite
+}
+@keyframes ij-water-drift{0%{transform:translate3d(-2%,1%,0) scale(1)}50%{transform:translate3d(2%,-2%,0) scale(1.08)}100%{transform:translate3d(-1%,2%,0) scale(1.03)}}
+@keyframes ij-current{from{transform:translate3d(-2%,0,0) rotate(-5deg)}to{transform:translate3d(2%,1%,0) rotate(5deg)}}
+body:not(.adm) header{position:relative!important;top:auto!important;margin:0!important;min-height:76px!important;background:rgba(255,255,255,.035)!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.12)!important;border-radius:0!important;box-shadow:0 8px 28px rgba(0,0,0,.035)!important;-webkit-backdrop-filter:blur(18px) saturate(1.45)!important;backdrop-filter:blur(18px) saturate(1.45)!important}
+body:not(.adm) header .logo,body:not(.adm) header .store-menu a,body:not(.adm) header .nav-actions button{color:var(--fg)!important;text-shadow:none!important}
+body:not(.adm) header .store-menu{background:rgba(255,255,255,.055)!important;border-color:rgba(255,255,255,.14)!important;box-shadow:inset 0 1px rgba(255,255,255,.14)!important}
+body:not(.adm) header.ij-scrolled{background:rgba(25,24,22,.38)!important}
+#app{position:relative;z-index:0}
+#app .ij-clean-hero{
+ width:min( min(100% - 36px, 790px), 100%)!important;
+ min-height:0!important;height:auto!important;aspect-ratio:4/5!important;
+ margin:22px auto clamp(42px,7vw,82px)!important;padding:clamp(22px,5vw,54px)!important;
+ border:1px solid rgba(255,255,255,.34)!important;border-radius:clamp(18px,2.5vw,30px)!important;
+ background-size:cover!important;background-position:center 42%!important;
+ box-shadow:0 28px 90px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.35)!important;
+ animation:ij-hero-arrive .9s cubic-bezier(.2,.7,.2,1) both!important
+}
+@keyframes ij-hero-arrive{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+#app .ij-clean-hero:before{z-index:0!important;border-radius:inherit!important;background:linear-gradient(180deg,rgba(12,15,15,.04) 8%,rgba(12,15,15,.12) 42%,rgba(8,10,10,.72) 100%)!important}
+#app .ij-clean-content{z-index:2!important;width:min(100%,600px)!important;margin:auto 0 0!important;padding:0!important}
+#app .ij-clean-content h1{font-family:'Playfair Display',Georgia,serif!important;font-weight:500!important;font-size:clamp(43px,7.5vw,82px)!important;line-height:.99!important;letter-spacing:-.045em!important;text-wrap:balance;text-shadow:0 4px 28px rgba(0,0,0,.24)!important}
+#app .ij-clean-actions{gap:12px!important}
+#app .ij-clean-cta{border-radius:999px!important;padding:15px 23px!important;gap:24px!important;color:#fff!important;background:rgba(255,255,255,.17)!important;border:1px solid rgba(255,255,255,.56)!important;-webkit-backdrop-filter:blur(16px) saturate(1.5)!important;backdrop-filter:blur(16px) saturate(1.5)!important;box-shadow:inset 0 1px rgba(255,255,255,.55),0 8px 28px rgba(0,0,0,.16)!important;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .35s ease,box-shadow .35s ease!important}
+#app .ij-clean-cta:hover{transform:translateY(-3px)!important;background:rgba(255,255,255,.28)!important;box-shadow:inset 0 1px rgba(255,255,255,.7),0 14px 34px rgba(0,0,0,.2)!important}
+#app :is(.glass,.pc,.pro-panel,.dash-kpi,.pro-metric,.cd,.rc,.order-edit-section,.category-card,.collection-card){
+ background:rgba(255,255,255,.055)!important;border:1px solid rgba(255,255,255,.14)!important;
+ -webkit-backdrop-filter:blur(18px) saturate(1.3)!important;backdrop-filter:blur(18px) saturate(1.3)!important;
+ box-shadow:0 14px 42px rgba(0,0,0,.09),inset 0 1px rgba(255,255,255,.09)!important
+}
+#app .pc{border-radius:20px!important;overflow:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .35s ease,box-shadow .35s ease!important}
+#app .pc:hover{transform:translateY(-6px)!important;border-color:rgba(255,255,255,.3)!important;box-shadow:0 24px 54px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.15)!important}
+#app :is(button,.btn,.ab,.pri,.pro-quick,[role=button],a.ij-clean-cta){
+ border-radius:999px!important;position:relative;overflow:hidden;
+ background:linear-gradient(145deg,rgba(255,255,255,.19),rgba(255,255,255,.055))!important;
+ border:1px solid rgba(255,255,255,.24)!important;
+ -webkit-backdrop-filter:blur(14px) saturate(1.45)!important;backdrop-filter:blur(14px) saturate(1.45)!important;
+ box-shadow:inset 0 1px rgba(255,255,255,.36),inset 0 -1px rgba(0,0,0,.08),0 5px 18px rgba(0,0,0,.08)!important;
+ transition:transform .28s cubic-bezier(.2,.8,.2,1),background .3s ease,border-color .3s ease,box-shadow .3s ease!important
+}
+#app :is(button,.btn,.ab,.pri,.pro-quick,[role=button]):before{
+ content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+ background:radial-gradient(ellipse at 25% 0%,rgba(255,255,255,.32),transparent 52%);opacity:.7
+}
+#app :is(button,.btn,.ab,.pri,.pro-quick,[role=button]):hover{transform:translateY(-2px)!important;border-color:rgba(255,255,255,.42)!important;box-shadow:inset 0 1px rgba(255,255,255,.45),0 10px 26px rgba(0,0,0,.14)!important}
+#app :is(button,.btn,.ab,.pri,.pro-quick,[role=button]):active{transform:scale(.975)!important}
+#app .pri{color:var(--fg)!important;background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(255,255,255,.10))!important}
+#app :is(input,select,textarea){background:rgba(255,255,255,.065)!important;border-color:rgba(255,255,255,.18)!important;-webkit-backdrop-filter:blur(12px)!important;backdrop-filter:blur(12px)!important}
+#app .sec{animation:ij-section-in .65s ease both}
+@keyframes ij-section-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+#foot{position:relative;z-index:1;background:rgba(255,255,255,.035)!important;border-top:1px solid rgba(255,255,255,.12)!important;-webkit-backdrop-filter:blur(18px)!important;backdrop-filter:blur(18px)!important}
+:root[data-t=light] body:not(.adm)::before{opacity:.55}
+:root[data-t=light] body:not(.adm)::after{opacity:.16}
+:root[data-t=light] #app :is(.glass,.pc,.pro-panel,.dash-kpi,.pro-metric,.cd,.rc){background:rgba(255,255,255,.42)!important;border-color:rgba(255,255,255,.7)!important}
+@media(max-width:720px){
+ body:not(.adm) header{min-height:64px!important;padding:10px 14px!important}
+ #app .ij-clean-hero{width:calc(100% - 24px)!important;aspect-ratio:4/5!important;min-height:0!important;height:auto!important;margin:14px auto 42px!important;padding:22px 19px!important;border-radius:20px!important;background-position:57% center!important}
+ #app .ij-clean-content{width:100%!important;margin-bottom:8px!important}
+ #app .ij-clean-content h1{font-size:clamp(42px,11.5vw,64px)!important;line-height:1!important}
+ #app :is(.glass,.pc,.pro-panel,.dash-kpi,.pro-metric,.cd,.rc){-webkit-backdrop-filter:blur(12px)!important;backdrop-filter:blur(12px)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body:not(.adm)::before,body:not(.adm)::after,#app .ij-clean-hero,#app .sec{animation:none!important}
+ #app *{scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
 </style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
