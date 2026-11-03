@@ -1223,9 +1223,10 @@ function ijAnimateDashboard(root){
   requestAnimationFrame(tick);
  });
  root.querySelectorAll("[data-progress]").forEach(el=>{
-  const target=Math.max(0,Math.min(100,Number(el.dataset.progress)||0));el.style.width="0%";
-  if(reduce){el.style.width=target+"%";return}
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.transition="width 1.15s cubic-bezier(.2,.75,.2,1)";el.style.width=target+"%"}));
+  const target=Math.max(0,Math.min(100,Number(el.dataset.progress)||0)),vertical=el.closest(".pro-chart-track");
+  const prop=vertical?"height":"width";el.style[prop]="0%";
+  if(reduce){el.style[prop]=target+"%";return}
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.transition=prop+" 1.15s cubic-bezier(.2,.75,.2,1)";el.style[prop]=target+"%"}));
  });
 }
 </script></body></html>
