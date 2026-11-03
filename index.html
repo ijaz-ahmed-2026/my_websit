@@ -313,6 +313,81 @@ body.adm .dash-bottom{display:flex;justify-content:space-between;gap:10px;paddin
 @media(max-width:900px){body.adm .shell{grid-template-columns:1fr}body.adm .sidebar{position:relative;top:auto;min-height:0;display:flex;gap:4px;overflow-x:auto;white-space:nowrap;scrollbar-width:thin}body.adm .sidebar .mn,body.adm .sidebar .who{display:none}body.adm .sidebar button{width:auto;flex:none;padding:9px 12px}body.adm .sidebar .sub{display:contents}body.adm .sidebar .sub button{font-size:12px}}
 @media(max-width:650px){body.adm .dash-head{align-items:flex-start;flex-direction:column;padding:18px}body.adm .dash-actions{width:100%}body.adm .dash-actions button{flex:1}body.adm .dash-grid,body.adm .dash-grid.lower{grid-template-columns:1fr}body.adm .stats{gap:8px}body.adm .stat{padding:13px}body.adm .stat b{font-size:21px}body.adm .dash-kpis{gap:8px}body.adm .dash-kpi{padding:13px}body.adm .dash-kpi>b{font-size:21px}body.adm .dash-panel{padding:15px}body.adm .dash-chart{height:165px;gap:6px}body.adm .dash-bar-wrap>b{font-size:8px}body.adm .dash-bottom{flex-direction:column}body.adm .sidebar{padding:7px}}
 
+
+/* IJAZ professional admin dashboard */
+body.adm .pro-dash{display:grid;gap:16px;min-width:0}
+body.adm .pro-welcome{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:25px 26px;border:1px solid rgba(224,162,59,.24);border-radius:18px;background:linear-gradient(112deg,rgba(224,162,59,.13),rgba(255,255,255,.045) 48%,rgba(255,255,255,.018));box-shadow:inset 0 1px rgba(255,255,255,.1),0 14px 36px rgba(0,0,0,.12)}
+body.adm .pro-kicker{display:block;color:var(--ac);font-size:9px;font-weight:700;letter-spacing:.18em}
+body.adm .pro-welcome h2{font:500 clamp(23px,3vw,34px)/1.2 var(--fn);margin:8px 0 5px;letter-spacing:-.025em}
+body.adm .pro-welcome p,body.adm .pro-panel-head p{margin:0;color:var(--mut);font-size:12px}
+body.adm .pro-head-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+body.adm .pro-live{display:flex;align-items:center;gap:7px;margin-right:8px;color:var(--mut);font-size:9px;letter-spacing:.09em;white-space:nowrap}
+body.adm .pro-live i,body.adm .pro-dot{width:7px;height:7px;border-radius:50%;background:#55b78a;box-shadow:0 0 0 4px rgba(85,183,138,.12)}
+body.adm .pro-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:2px 2px 0}
+body.adm .pro-subtitle{display:block;color:var(--mut);font-size:11px;margin-top:4px}
+body.adm .pro-toolbar select{width:auto;min-width:145px;padding:9px 12px;border-radius:10px}
+body.adm .pro-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+body.adm .pro-metric{padding:17px 18px;border:1px solid var(--ln);border-radius:15px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.08),0 8px 24px rgba(0,0,0,.1);min-width:0;transition:transform .2s,border-color .2s}
+body.adm .pro-metric:hover{transform:translateY(-2px);border-color:rgba(224,162,59,.42)}
+body.adm .pro-metric-label{display:flex;justify-content:space-between;align-items:center;gap:8px;color:var(--mut);font-size:11px}
+body.adm .pro-metric-label i{font-style:normal;display:grid;place-items:center;width:29px;height:29px;border-radius:9px;color:var(--ac);background:rgba(224,162,59,.12);font-size:15px}
+body.adm .pro-metric>strong{display:block;margin:12px 0 5px;font:600 clamp(21px,2.3vw,29px)/1.1 var(--fb);letter-spacing:-.04em;overflow-wrap:anywhere}
+body.adm .pro-metric>small{color:var(--mut);font-size:10px}
+body.adm .pro-main-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,.9fr);gap:14px}
+body.adm .pro-lower-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.9fr);gap:14px}
+body.adm .pro-panel{min-width:0;padding:19px 20px;border:1px solid var(--ln);border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.02));box-shadow:inset 0 1px rgba(255,255,255,.08),0 10px 28px rgba(0,0,0,.1)}
+body.adm .pro-panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:17px}
+body.adm .pro-panel-head h3{font:500 19px var(--fn);margin:5px 0}
+body.adm .pro-tag{padding:6px 9px;border:1px solid var(--ln);border-radius:8px;color:var(--mut);font-size:9px;letter-spacing:.1em}
+body.adm .pro-chart{height:180px;display:flex;align-items:stretch;gap:clamp(7px,1.8vw,18px);padding:5px 3px 0;border-bottom:1px solid var(--ln)}
+body.adm .pro-chart-col{display:flex;flex:1;min-width:0;flex-direction:column;align-items:center;justify-content:flex-end;gap:7px}
+body.adm .pro-chart-value{font-size:9px;color:var(--mut);white-space:nowrap}
+body.adm .pro-chart-track{height:116px;width:min(100%,35px);display:flex;align-items:flex-end;justify-content:center}
+body.adm .pro-chart-track i{display:block;width:100%;min-height:3px;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#f5d18d,var(--ac));box-shadow:0 0 18px rgba(224,162,59,.12);animation:proGrow .55s ease both}
+body.adm .pro-chart-col small{font-size:9px;color:var(--mut);padding-bottom:9px}
+@keyframes proGrow{from{height:0;opacity:.35}to{opacity:1}}
+body.adm .pro-chart-foot{display:flex;justify-content:space-between;align-items:center;padding-top:12px;color:var(--mut);font-size:11px}
+body.adm .pro-chart-foot b{color:var(--fg);font-size:14px}
+body.adm .pro-total{display:grid;place-items:center;min-width:34px;height:34px;padding:0 8px;border-radius:10px;background:rgba(224,162,59,.13);color:var(--ac);font-weight:700}
+body.adm .pro-status-list{display:grid;gap:17px;padding:3px 0 15px}
+body.adm .pro-status{display:grid;grid-template-columns:82px 1fr 24px;align-items:center;gap:10px;font-size:11px}
+body.adm .pro-status>span{color:var(--mut)}
+body.adm .pro-status>div{height:6px;border-radius:99px;background:var(--ln);overflow:hidden}
+body.adm .pro-status>div i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--ac),#f0c978)}
+body.adm .pro-status>b{text-align:right;font-size:11px}
+body.adm .pro-status-note{display:flex;align-items:center;gap:9px;padding-top:13px;border-top:1px solid var(--ln);color:var(--mut);font-size:10px}
+body.adm .pro-order-list,body.adm .pro-product-list{display:grid}
+body.adm .pro-order{display:flex;align-items:center;gap:11px;width:100%;padding:12px 2px;border:0;border-top:1px solid var(--ln);border-radius:0;background:transparent;text-align:left;letter-spacing:0}
+body.adm .pro-order:hover{background:rgba(255,255,255,.035)}
+body.adm .pro-order-mark{display:grid;place-items:center;width:34px;height:34px;flex:none;border-radius:10px;background:rgba(224,162,59,.12);color:var(--ac);font-size:12px}
+body.adm .pro-order-customer{display:grid;gap:4px;min-width:0}
+body.adm .pro-order-customer b{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.adm .pro-order-customer small{font-size:10px;color:var(--mut)}
+body.adm .pro-order-end{display:grid;justify-items:end;gap:5px;margin-left:auto;white-space:nowrap}
+body.adm .pro-order-end>b{font-size:11px}
+body.adm .pro-order-end .sb{font-size:9px;padding:3px 7px}
+body.adm .pro-product{display:flex;align-items:center;gap:11px;padding:12px 0;border-top:1px solid var(--ln)}
+body.adm .pro-product-rank{font:500 19px var(--fn);color:var(--ac)}
+body.adm .pro-product-body{display:grid;gap:4px;flex:1;min-width:0}
+body.adm .pro-product-body>b{font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.adm .pro-product-body>small{font-size:10px;color:var(--mut)}
+body.adm .pro-product-line{height:4px;border-radius:99px;background:var(--ln);overflow:hidden}
+body.adm .pro-product-line i{display:block;height:100%;border-radius:99px;background:var(--ac)}
+body.adm .pro-product>strong{font-size:11px;white-space:nowrap}
+body.adm .pro-empty{padding:14px 0;color:var(--mut);font-size:12px}
+body.adm .pro-quick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+body.adm .pro-quick{position:relative;display:grid;justify-items:start;gap:5px;padding:14px 15px;border:1px solid var(--ln);border-radius:13px;background:rgba(255,255,255,.025);text-align:left;letter-spacing:0;transition:background .2s,border-color .2s}
+body.adm .pro-quick:hover{background:rgba(224,162,59,.07);border-color:rgba(224,162,59,.35)}
+body.adm .pro-quick>span{color:var(--ac);font-size:17px}
+body.adm .pro-quick>b{font-size:11px}
+body.adm .pro-quick>small{font-size:9px;color:var(--mut)}
+body.adm .pro-quick>i{position:absolute;right:13px;top:13px;color:var(--mut);font-style:normal}
+body.adm .pro-disclaimer{padding:2px 3px;color:var(--mut);font-size:9px;letter-spacing:.04em}
+:root[data-t=light] body.adm .pro-welcome,:root[data-t=light] body.adm .pro-metric,:root[data-t=light] body.adm .pro-panel,:root[data-t=light] body.adm .pro-quick{background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(255,255,255,.65));box-shadow:inset 0 1px rgba(255,255,255,.9),0 8px 24px rgba(80,55,15,.06)}
+@media(max-width:1100px){body.adm .pro-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}body.adm .pro-main-grid,body.adm .pro-lower-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){body.adm .pro-welcome{align-items:flex-start;flex-direction:column}body.adm .pro-head-actions{justify-content:flex-start}}
+@media(max-width:650px){body.adm .pro-main-grid,body.adm .pro-lower-grid{grid-template-columns:1fr}body.adm .pro-welcome{padding:18px}body.adm .pro-head-actions{width:100%}body.adm .pro-head-actions button{flex:1}body.adm .pro-live{width:100%;margin:0 0 4px}body.adm .pro-metrics{gap:8px}body.adm .pro-metric{padding:13px}body.adm .pro-metric>strong{font-size:20px}body.adm .pro-panel{padding:15px}body.adm .pro-quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body.adm .pro-chart{height:160px;gap:5px}body.adm .pro-chart-value{font-size:8px}}
+
 </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head><body>
 
@@ -615,12 +690,15 @@ const gk=t=>new Date(t).toLocaleDateString("en-CA",{timeZone:"Asia/Dhaka"});
 function stats(){const n=Date.now(),inr=o=>rg==="all"||(rg==="today"&&gk(o.ts)===gk(n))||(rg==="yest"&&gk(o.ts)===gk(n-864e5))||(rg==="7"&&o.ts>n-7*864e5)||(rg==="30"&&o.ts>n-30*864e5);
  const O=db.orders.filter(inr),live=O.filter(o=>!["cancelled","payment_failed"].includes(o.status)),gross=live.reduce((a,o)=>a+o.total,0),coll=O.reduce((a,o)=>a+(o.pay==="paid"?o.total:(["cancelled","payment_failed"].includes(o.status)?0:(o.adv||0))),0);
  return{O,tot:O.length,today:db.orders.filter(o=>gk(o.ts)===gk(n)).length,gross,coll,aov:live.length?Math.round(gross/live.length):0,cod:live.filter(o=>o.method==="cod"&&o.pay!=="paid").reduce((a,o)=>a+o.total-(o.adv||0),0),cnt:s=>O.filter(o=>o.status===s).length,low:db.products.filter(p=>p.stock<=p.low).length,cust:new Set(db.orders.map(o=>o.c.phone)).size}}
-const dash=()=>{const s=stats(),days=[...Array(7)].map((_,i)=>gk(Date.now()-(6-i)*864e5)),cn=days.map(d=>db.orders.filter(o=>gk(o.ts)===d).length),mx=Math.max(1,...cn);
- const st=[["Total orders",s.tot],["Today",s.today],["Gross sales",bdt(s.gross)],["Collected (verified/COD paid)",bdt(s.coll)],["Avg order",bdt(s.aov)],["Pending payment",s.cnt("pending_payment")],["Confirmed",s.cnt("confirmed")],["Processing",s.cnt("processing")],["On hold",s.cnt("on_hold")],["Scheduled",s.cnt("scheduled")],["Delivered",s.cnt("delivered")],["Cancelled",s.cnt("cancelled")],["COD outstanding",bdt(s.cod)],["Customers",s.cust],["Products",db.products.length],["Low stock",s.low]];
- const best=[...db.products].sort((a,b)=>b.sold-a.sold).slice(0,3);
- return attention()+`<div class="row sp" style="margin-top:18px"><h3>Overview</h3><select data-c="rg" aria-label="Date range">${[["all","All time"],["today","Today"],["yest","Yesterday"],["7","Last 7 days"],["30","Last 30 days"]].map(([k,t])=>`<option value="${k}" ${k===rg?"selected":""}>${t}</option>`).join("")}</select></div>
- <div class="stats" style="margin:12px 0">${st.map(([k,v])=>`<div class="glass stat"><span class="mut">${k}</span><b>${v}</b></div>`).join("")}</div><div class="glass" style="padding:18px 18px 34px"><b>Orders, last 7 days</b><div class="bars" style="margin-top:12px">${cn.map((c,i)=>`<div style="height:${c/mx*100}%" title="${c}"><span>${days[i].slice(5)}</span></div>`).join("")}</div></div>
- <h3 style="margin:22px 0 10px">Recent orders</h3><div class="stack">${db.orders.slice(0,5).map(o=>`<button class="glass orow" data-a="goo" data-id="${o.id}"><span class="row sp" style="width:100%"><b>${esc(o.no)} <span class="mut">${esc(o.c.name)}</span></b><b>${bdt(o.total)}</b></span>${sbadge(o.status)}</button>`).join("")||'<p class="mut">No orders yet.</p>'}</div><p class="mut">Bestsellers (seed stats): ${best.map(p=>esc(p.name)).join(", ")}. Failed or unpaid orders are never counted as collected.</p>`};
+const dash=()=>{const s=stats(),days=[...Array(7)].map((_,i)=>gk(Date.now()-(6-i)*864e5)),daily=days.map(d=>{const a=db.orders.filter(o=>gk(o.ts)===d&&!["cancelled","payment_failed"].includes(o.status));return{d,n:a.length,v:a.reduce((x,o)=>x+o.total,0)}}),maxV=Math.max(1,...daily.map(x=>x.v)),recent=[...s.O].sort((a,b)=>b.ts-a.ts).slice(0,6),best=[...db.products].sort((a,b)=>(b.sold||0)-(a.sold||0)).slice(0,4),maxSold=Math.max(1,...best.map(p=>p.sold||0)),status=[["New",s.cnt("new")],["Pending",s.cnt("pending_payment")],["Confirmed",s.cnt("confirmed")],["Processing",s.cnt("processing")],["Shipped",s.cnt("shipped")],["Delivered",s.cnt("delivered")]],active=status.reduce((a,x)=>a+x[1],0),money=v=>bdt(v);
+return attention()+'<div class="pro-dash"><div class="pro-welcome"><div><span class="pro-kicker">IJAZ / ADMINISTRATION</span><h2>Dashboard overview</h2><p>Monitor your store, track orders and review business performance.</p></div><div class="pro-head-actions"><span class="pro-live"><i></i> STORE CONNECTED</span><button class="ab" data-a="t" data-id="orders">Manage orders ↗</button><button class="ab p" data-a="t" data-id="neworder">＋ New order</button></div></div>'+
+'<div class="pro-toolbar"><div><span class="pro-kicker">BUSINESS SUMMARY</span><span class="pro-subtitle">Key performance indicators</span></div><select data-c="rg" aria-label="Date range">'+[["all","All time"],["today","Today"],["yest","Yesterday"],["7","Last 7 days"],["30","Last 30 days"]].map(([k,t])=>'<option value="'+k+'" '+(k===rg?"selected":"")+'>'+t+'</option>').join("")+'</select></div>'+
+'<div class="pro-metrics">'+[['Gross sales',money(s.gross),'৳','Active orders · selected period'],['Collected amount',money(s.coll),'↗','Paid and recorded advances'],['Total orders',s.tot.toLocaleString("en-BD"),'▤',s.today+' orders received today'],['Average order value',money(s.aov),'◈','Average per active order']].map(x=>'<article class="pro-metric"><div class="pro-metric-label"><span>'+x[0]+'</span><i>'+x[2]+'</i></div><strong>'+x[1]+'</strong><small>'+x[3]+'</small></article>').join("")+'</div>'+
+'<div class="pro-main-grid"><section class="glass pro-panel"><div class="pro-panel-head"><div><span class="pro-kicker">REVENUE TREND</span><h3>Sales activity</h3><p>Daily revenue for the last seven days</p></div><span class="pro-tag">7 DAYS</span></div><div class="pro-chart">'+daily.map(x=>'<div class="pro-chart-col"><span class="pro-chart-value">'+(x.v?money(x.v):"—")+'</span><div class="pro-chart-track"><i style="height:'+Math.max(x.v?5:0,x.v/maxV*100)+'%"></i></div><small>'+new Date(x.d+"T12:00:00").toLocaleDateString("en",{weekday:"short",timeZone:"Asia/Dhaka"})+'</small></div>').join("")+'</div><div class="pro-chart-foot"><span>7-day revenue</span><b>'+money(daily.reduce((a,x)=>a+x.v,0))+'</b></div></section>'+
+'<section class="glass pro-panel"><div class="pro-panel-head"><div><span class="pro-kicker">ORDER PIPELINE</span><h3>Order status</h3><p>Orders in selected period</p></div><span class="pro-total">'+active+'</span></div><div class="pro-status-list">'+status.map(x=>'<div class="pro-status"><span>'+x[0]+'</span><div><i style="width:'+(active?x[1]/active*100:0)+'%"></i></div><b>'+x[1]+'</b></div>').join("")+'</div><div class="pro-status-note"><span class="pro-dot"></span> Live order status summary</div></section></div>'+
+'<div class="pro-lower-grid"><section class="glass pro-panel"><div class="pro-panel-head"><div><span class="pro-kicker">LATEST ACTIVITY</span><h3>Recent orders</h3><p>Latest orders from your customers</p></div><button class="ab" data-a="t" data-id="orders">View all ↗</button></div><div class="pro-order-list">'+(recent.map(o=>'<button class="pro-order" data-a="goo" data-id="'+o.id+'"><span class="pro-order-mark">#</span><span class="pro-order-customer"><b>'+esc(o.c.name)+'</b><small>'+esc(o.no)+' · '+fdt(o.ts)+'</small></span><span class="pro-order-end"><b>'+money(o.total)+'</b>'+sbadge(o.status)+'</span></button>').join("")||'<p class="pro-empty">No orders yet. Customer orders will appear here.</p>')+'</div></section>'+
+'<section class="glass pro-panel"><div class="pro-panel-head"><div><span class="pro-kicker">CATALOG PERFORMANCE</span><h3>Top products</h3><p>Best-selling products by recorded units</p></div><button class="ab" data-a="t" data-id="products">Products ↗</button></div><div class="pro-product-list">'+(best.map((p,i)=>'<div class="pro-product"><span class="pro-product-rank">'+String(i+1).padStart(2,"0")+'</span><div class="pro-product-body"><b>'+esc(p.name)+'</b><small>'+(p.sold||0)+' units sold</small><div class="pro-product-line"><i style="width:'+(p.sold||0)/maxSold*100+'%"></i></div></div><strong>'+money(pr(p))+'</strong></div>').join("")||'<p class="pro-empty">Add products to view catalog performance.</p>')+'</div></section></div>'+
+'<div class="pro-quick-grid"><button class="pro-quick" data-a="t" data-id="inventory"><span>▦</span><b>Inventory</b><small>'+s.low+' low-stock items</small><i>↗</i></button><button class="pro-quick" data-a="t" data-id="cust"><span>◉</span><b>Customers</b><small>'+s.cust+' customer profiles</small><i>↗</i></button><button class="pro-quick" data-a="t" data-id="rp_sales"><span>▥</span><b>Sales reports</b><small>Review store performance</small><i>↗</i></button><button class="pro-quick" data-a="t" data-id="set"><span>⚙</span><b>Store settings</b><small>Manage your storefront</small><i>↗</i></button></div><div class="pro-disclaimer">IJAZ ADMIN · Financial totals exclude cancelled and payment-failed orders where applicable.</div></div>'};
 let sel=null,osq="";
 const SL={new:"New",pending_payment:"Pending payment",payment_failed:"Payment failed",confirmed:"Confirmed",processing:"Processing",on_hold:"On hold",scheduled:"Scheduled",ready_to_ship:"Ready to ship",shipped:"Shipped",delivered:"Delivered",cancel_requested:"Cancel request",cancelled:"Cancelled",return_requested:"Return request",returned:"Returned"};
 const stc=s=>({delivered:"g",payment_failed:"r",cancel_requested:"r",cancelled:"r",returned:"r",pending_payment:"w",on_hold:"w",scheduled:"w",return_requested:"w"}[s]||"b");
