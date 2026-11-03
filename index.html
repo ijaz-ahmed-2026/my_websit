@@ -721,6 +721,46 @@ button,.btn{border-color:rgba(255,255,255,.15)}
  :root[data-t=light] :is(.glass,.pc,.sidebar,.cd,.tbl,.orow,.attn-c,.pro-panel,.pro-metric,.pro-quick,.dash-kpi,.stat,.agrp,.note,.rc,.dt,.blk){-webkit-backdrop-filter:blur(20px) saturate(1.45)!important;backdrop-filter:blur(20px) saturate(1.45)!important}
 }
 
+
+/* FINAL LIGHT THEME PATCH: enforce readable contrast and milky glass surfaces */
+:root[data-t=light]{color-scheme:light!important;--fg:#211b12;--mut:#625847;--bg:#f4f0e8;--bg2:#fffdf9;--gl:rgba(255,255,255,.72);--ln:rgba(66,51,29,.15);--act:#765016}
+:root[data-t=light] body,
+:root[data-t=light] body.adm{color:#211b12!important;background:radial-gradient(900px 520px at 8% -10%,rgba(220,174,93,.17),transparent 68%),radial-gradient(760px 480px at 100% 32%,rgba(154,185,210,.15),transparent 70%),linear-gradient(145deg,#f8f6f1,#eee9df 55%,#f8f6f1)!important}
+:root[data-t=light] body.adm #app,
+:root[data-t=light] body:not(.adm) #app{color:#211b12}
+:root[data-t=light] body.adm :is(h1,h2,h3,h4,h5,p,label,small,strong,b,em,span,li,dt,dd,td,th,summary,.mut,.sm,.mn,.who,.empty,.order-block-title,.pro-metric-label,.dash-kpi-top,.pro-chart-value,.pro-chart-foot,.pro-status,.pro-product-line){color:inherit}
+:root[data-t=light] body.adm :is(.mut,.sm,.mn,.who,.empty,.pro-metric-label,.dash-kpi-top,.pro-chart-value,.pro-chart-foot,.pro-panel-head p,.pro-welcome p,.pro-live,.sub button){color:#625847!important}
+:root[data-t=light] body.adm :is(.sidebar,.glass,.tbl,.ot,.orow,.attn-c,.pro-welcome,.pro-metric,.pro-panel,.pro-quick,.pro-total,.dash-kpi,.stat,.cd,.rc,.agrp,.note,.dt,.order-main,.order-side,.blk,.panel,.box,.tile){
+ background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(255,255,255,.58))!important;
+ color:#211b12!important;border-color:rgba(76,59,34,.14)!important;
+ -webkit-backdrop-filter:blur(26px) saturate(1.45)!important;backdrop-filter:blur(26px) saturate(1.45)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.96),0 12px 34px rgba(65,48,22,.075)!important
+}
+:root[data-t=light] body.adm .sidebar{background:rgba(255,255,255,.82)!important}
+:root[data-t=light] body.adm .sidebar :is(button,a,.nav-label,.nav-ico){color:#292216!important}
+:root[data-t=light] body.adm .sidebar button.on{background:rgba(181,132,57,.16)!important}
+:root[data-t=light] body.adm .sidebar button.on .nav-ico{color:#fff!important;background:#292216!important}
+:root[data-t=light] body.adm :is(input,select,textarea){
+ color:#211b12!important;background:rgba(255,255,255,.88)!important;border:1px solid rgba(66,51,29,.2)!important;
+}
+:root[data-t=light] body.adm :is(input,select,textarea)::placeholder{color:#817766!important;opacity:1}
+:root[data-t=light] body.adm :is(input,select,textarea):focus{border-color:#a87932!important;box-shadow:0 0 0 3px rgba(168,121,50,.13)!important}
+:root[data-t=light] body.adm :is(button,.btn,.ab,.side-collapse,.menu-trigger){color:#292216}
+:root[data-t=light] body.adm :is(.ot th,thead th){background:rgba(49,38,20,.055)!important;color:#554a38!important}
+:root[data-t=light] body.adm :is(.ot td,tbody td){color:#292216}
+:root[data-t=light] body.adm .orow{background:rgba(255,255,255,.68)!important}
+:root[data-t=light] body.adm .pri{background:linear-gradient(180deg,#e8bd70,#d49a3e)!important;color:#211609!important;border-color:#c58b32!important}
+:root[data-t=light] body.adm .badge,:root[data-t=light] body.adm .sb{background:rgba(60,50,35,.07)}
+:root[data-t=light] body.adm dialog{background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(247,243,235,.97))!important;color:#211b12!important;border:1px solid rgba(66,51,29,.18)!important}
+:root[data-t=light] body.adm dialog :is(p,label,small,strong,b,em,td,th,.mut,.sm,.empty){color:inherit}
+:root[data-t=light] body:not(.adm) :is(.glass,.pc,.hero,.sec,.chip,.note,dialog){color:#211b12;border-color:rgba(66,51,29,.14)}
+:root[data-t=light] body:not(.adm) .pc{background:rgba(255,255,255,.72)!important;box-shadow:inset 0 1px rgba(255,255,255,.95),0 12px 32px rgba(65,48,22,.08)!important}
+:root[data-t=light] body:not(.adm) :is(input,select,textarea){color:#211b12!important;background:rgba(255,255,255,.9)!important;border-color:rgba(66,51,29,.2)!important}
+:root[data-t=light] body:not(.adm) :is(input,textarea)::placeholder{color:#817766!important;opacity:1}
+:root[data-t=light] :is(header,.toast){color:#211b12!important;background:rgba(255,255,255,.78)!important;border-color:rgba(66,51,29,.14)!important}
+:root[data-t=light] :is(.x,.menu-trigger,.side-collapse){color:#292216!important}
+@media(max-width:720px){:root[data-t=light] body.adm :is(.sidebar,.pro-panel,.pro-metric,.pro-quick,.glass,.cd,.rc){-webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important}}
+
 </style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st">
