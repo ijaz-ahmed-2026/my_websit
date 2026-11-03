@@ -1376,6 +1376,95 @@ body:not(.adm) header.ij-scrolled .store-menu{background:rgba(255,255,255,.055)!
  #app .ij-clean-content h1{font-size:clamp(45px,12vw,70px)!important;margin-bottom:20px!important}
 }
 @media(prefers-reduced-motion:reduce){body:not(.adm) header,#app .ij-clean-cta{transition:none!important}}
+</style>
+<style>
+/* IJAZ — navigation is its own transparent row; hero begins beneath it */
+body:not(.adm) header{
+ position:sticky!important;top:0!important;z-index:60!important;
+ display:flex!important;align-items:center!important;
+ min-height:78px!important;margin:0!important;padding:12px clamp(16px,4vw,58px)!important;
+ background:rgba(255,255,255,.015)!important;
+ border:0!important;border-bottom:1px solid rgba(120,110,95,.12)!important;
+ box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+body:not(.adm) header .logo{color:var(--fg)!important;text-shadow:none!important}
+body:not(.adm) header .store-menu{
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;padding:0!important;
+}
+body:not(.adm) header .store-menu a{
+ color:var(--fg)!important;text-shadow:none!important;border-radius:999px!important;
+ padding:10px 13px!important;font-weight:500!important;letter-spacing:.035em!important;
+}
+body:not(.adm) header .store-menu a:hover{background:rgba(128,118,101,.10)!important}
+body:not(.adm) header .nav-actions button,
+body:not(.adm) header .search-icon-toggle{
+ color:var(--fg)!important;text-shadow:none!important;
+ background:transparent!important;border:1px solid rgba(128,118,101,.28)!important;
+ box-shadow:none!important;border-radius:50%!important;
+}
+body:not(.adm) header.ij-scrolled{
+ background:rgba(245,242,235,.76)!important;
+ border-bottom-color:rgba(120,110,95,.16)!important;
+ -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;
+ backdrop-filter:blur(18px) saturate(1.35)!important;
+}
+:root[data-t=dark] body:not(.adm) header.ij-scrolled{background:rgba(24,23,21,.78)!important}
+body:not(.adm) header.ij-scrolled .logo,
+body:not(.adm) header.ij-scrolled .store-menu a,
+body:not(.adm) header.ij-scrolled .nav-actions button{color:var(--fg)!important;text-shadow:none!important}
+
+/* New banner treatment: framed campaign image, quiet typography */
+#app .ij-clean-hero{
+ height:clamp(480px,72vw,690px)!important;
+ min-height:clamp(480px,72vw,690px)!important;max-height:690px!important;
+ margin:18px clamp(12px,2.5vw,34px) 52px!important;
+ padding:clamp(24px,5vw,58px)!important;
+ border-radius:3px!important;overflow:hidden!important;
+ background-position:center 40%!important;
+}
+#app .ij-clean-hero:before{
+ background:linear-gradient(0deg,rgba(12,11,10,.48) 0%,rgba(12,11,10,.08) 44%,rgba(12,11,10,0) 72%)!important;
+}
+#app .ij-clean-content{
+ width:min(620px,90%)!important;padding:0!important;
+ margin-top:auto!important;margin-bottom:clamp(8px,2vh,20px)!important;
+}
+#app .ij-clean-content h1{
+ max-width:580px!important;font-size:clamp(42px,6.6vw,78px)!important;
+ line-height:.98!important;letter-spacing:-.045em!important;margin:0 0 20px!important;
+}
+#app .ij-clean-hero .ij-clean-meta,
+#app .ij-clean-hero .ij-clean-foot,
+#app .ij-clean-hero .ij-clean-kicker,
+#app .ij-clean-hero .ij-clean-bn,
+#app .ij-clean-hero .ij-clean-desc,
+#app .ij-clean-hero .ij-clean-offer{display:none!important}
+#app .ij-clean-cta{padding:14px 20px!important;border-radius:2px!important}
+@media(max-width:720px){
+ body:not(.adm) header{min-height:64px!important;padding:9px 15px!important;margin:0!important}
+ body:not(.adm) header .logo{font-size:16px!important}
+ body:not(.adm) header .mobile-menu-toggle{
+  color:var(--fg)!important;background:transparent!important;
+  border:1px solid rgba(128,118,101,.3)!important;border-radius:999px!important;
+ }
+ body:not(.adm) header .store-menu{
+  background:rgba(246,243,236,.92)!important;border:1px solid rgba(120,110,95,.16)!important;
+  -webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important;
+ }
+ :root[data-t=dark] body:not(.adm) header .store-menu{background:rgba(28,27,25,.94)!important}
+ body:not(.adm) header .store-menu a{color:var(--fg)!important}
+ #app .ij-clean-hero{
+  height:clamp(490px,76svh,650px)!important;min-height:490px!important;max-height:650px!important;
+  margin:12px 10px 38px!important;padding:22px 20px 26px!important;
+  border-radius:2px!important;background-position:59% center!important;
+ }
+ #app .ij-clean-hero:before{
+  background:linear-gradient(0deg,rgba(12,11,10,.52),rgba(12,11,10,.05) 65%,transparent)!important;
+ }
+ #app .ij-clean-content{width:100%!important;margin-bottom:6px!important}
+ #app .ij-clean-content h1{font-size:clamp(42px,11vw,62px)!important;margin-bottom:18px!important}
+}
 </style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
