@@ -260,13 +260,13 @@ const prodPg=id=>{const p=prod(id);if(!p||!p.pub)return'<p class="mut">Product n
 function reqCancel(id,why,more){const o=db.orders.find(x=>x.id==id);if(!o||!["new","pending_payment","confirmed","on_hold"].includes(o.status))return null;const r=why+(more?" — "+more:"");o.creason=r;o.hist.push({from:o.status,to:"cancel_requested",by:"customer",at:Date.now(),reason:r});o.status="cancel_requested";commit();return o}
 const T=s=>{const o=db.set.txt;return(o&&o[s])||s};
 const safeLink=l=>/^(#|https?:\/\/|tel:|mailto:)/i.test(l||"")?l:"#/";
-const safeImg=s=>/^data:image\/(jpeg|png|webp|gif);base64,[A-Za-z0-9+\/=]+$/.test(s||"")?s:"";
+const safeImg=s=>{if(/^data:image\/(jpeg|png|webp|gif);base64,[A-Za-z0-9+\/=]+$/.test(s||""))return s;try{const u=new URL(String(s||""));return u.protocol==="https:"&&u.hostname==="dkzzfuulyygpwfikyzup.supabase.co"&&u.pathname.startsWith("/storage/v1/object/public/ijaz-media/")?u.href:""}catch{return""}};
 const FH=["Cinzel","Playfair Display","Inter","Bebas Neue","Noto Serif Bengali","Tiro Bangla","Hind Siliguri"],FB=["Inter","Hind Siliguri","Playfair Display","Noto Serif Bengali"];
 const PRE={Amber:["#e0a23b","#15120e","#f4efe6"],Emerald:["#2fbf8f","#0e1512","#eef5f0"],Rose:["#e0607e","#17110f","#f8eeee"],Ocean:["#3b9eff","#0e131a","#edf2f8"],Mono:["#d9d9d9","#111111","#f2f2f2"]};
 const TXL=["Featured","বাছাই করা","New arrivals","নতুন এসেছে","Bestsellers","সেরা বিক্রি","Recently viewed","সম্প্রতি দেখা","How ordering works","অর্ডারের নিয়ম","Reviews & ratings","রিভিউ ও রেটিং","Description","বিবরণ","Reviews","রিভিউ","You may also like","আপনার পছন্দ হতে পারে","Track order · ট্র্যাক"];
 function applyTheme(){const s=db.set,t=s.th||{},c6=(c,d)=>/^#[0-9a-f]{6}$/i.test(c)?c:d,f=(n,L,d)=>L.includes(n)?n:d;let e=document.getElementById("thx");if(!e){e=document.createElement("style");e.id="thx";document.head.append(e)}
  e.textContent=`:root{--ac:${c6(s.ac,"#e0a23b")};--r:${Math.min(30,Math.max(4,+t.r||18))}px;--fc:"${f(t.fh,FH,"Cinzel")}",Georgia,serif;--fb:"${f(t.fb,FB,"Inter")}","Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif}:root:not([data-t=light]){--bg:${c6(t.bgd,"#15120e")}}:root[data-t=light]{--bg:${c6(t.bgl,"#f4efe6")}}`}
-function shrink(f,max,cb){const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const sc=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);c.getContext("2d").drawImage(im,0,0,c.width,c.height);try{cb(c.toDataURL("image/jpeg",.82))}catch{toast("Could not read this image")}};im.onerror=()=>toast("This is not a valid picture");im.src=fr.result};fr.readAsDataURL(f)}
+function shrink(f,max,cb){const fr=new FileReader();fr.onload=()=>{if(typeof fr.result!=="string"||!fr.result.startsWith("data:image/")){toast("This is not a valid picture");return}cb(fr.result)};fr.onerror=()=>toast("Could not read this image");fr.readAsDataURL(f)}
 function edSet(f,v){const s=db.set,p=f.split("."),L={blk:"blocks",pg:"pages"}[p[0]];
  if(p[0]==="set")p.shift();
  if(p[0]==="txt"){const k=TXL[+p[1]];v?s.txt[k]=v:delete s.txt[k];return}
@@ -582,7 +582,7 @@ document.addEventListener("change",e=>{const t=e.target,k=t.dataset.c;if(!k)retu
  if(["q","s"].includes(k)){go({[k]:t.value});if(k==="q")setTimeout(()=>{const i=$('[data-c=q]');i&&i.focus&&i.focus()})}
  if(!["q","c","s","rg","role","mgr","stk","osq"].includes(k)){if(!can("products"))return toast("Forbidden");const p=prod(t.dataset.id);
   if(k==="prc"){p.price=Math.max(1,+t.value||1);if(p.sale>p.price)p.sale=null;commit()}if(k==="sal"){p.sale=t.value===""?null:Math.min(+t.value,p.price);commit()}
-  if(k==="img"&&t.files[0]){const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const sc=Math.min(1,600/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*sc;c.height=im.height*sc;c.getContext("2d").drawImage(im,0,0,c.width,c.height);try{p.img=c.toDataURL("image/jpeg",.8);commit();toast("Image saved")}catch{toast("Storage full: use a smaller image")}};im.src=fr.result};fr.readAsDataURL(t.files[0])}}
+  if(k==="img"&&t.files[0]){const fr=new FileReader();fr.onload=()=>{try{p.img=String(fr.result);p.images=[p.img];commit();toast("Original-quality image saved")}catch{toast("Could not save image")}};fr.onerror=()=>toast("Could not read image");fr.readAsDataURL(t.files[0])}
  if(k==="rg"){rg=t.value;route()}if(k==="osq"){osq=t.value;route(true)}if(k==="role"){role=t.value;localStorage.setItem("ij_role",role);route()}
  if(k==="stk"){if(!can("products"))return toast("Forbidden");{const p=prod(t.dataset.id),nv=Math.max(0,+t.value||0);if(nv!==p.stock)slog(p.id,nv-p.stock,"manual edit",role);p.stock=nv;commit();toast("Stock saved")}}
  if(k==="mgr"&&can("edit")){db.orders.find(o=>o.id==t.dataset.id).mgr=t.value;commit()}});
