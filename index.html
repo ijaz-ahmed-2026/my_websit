@@ -1191,6 +1191,53 @@ header nav a:hover,header nav button:hover{background:rgba(255,255,255,.16)!impo
 @media(prefers-reduced-motion:reduce){#app .ij-editorial-hero *{animation:none!important;transition:none!important}}
 :root[data-t=light] #app .ij-editorial-hero{color:#fff!important;border-color:rgba(255,255,255,.3)!important}
 :root[data-t=light] #app .ij-editorial-hero :is(h1,.ij-hero-bn,.ij-hero-copy>p,.ij-hero-top,.ij-hero-bottom,.ij-hero-side,.ij-hero-glass-tag b){color:inherit!important}
+</style>
+<style>
+/* IJAZ — transparent over hero, liquid-glass only after scrolling */
+body:not(.adm) header{
+ position:sticky!important;top:0!important;z-index:50!important;
+ margin-bottom:-72px!important;
+ min-height:72px;
+ background:transparent!important;
+ background-color:transparent!important;
+ border-bottom:1px solid transparent!important;
+ box-shadow:none!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+ transition:background .35s ease,border-color .35s ease,box-shadow .35s ease,-webkit-backdrop-filter .35s ease,backdrop-filter .35s ease;
+}
+body:not(.adm) header nav a,
+body:not(.adm) header nav button{background:transparent!important;box-shadow:none!important}
+body:not(.adm) header nav a:hover{background:rgba(255,255,255,.1)!important}
+body:not(.adm) header .logo,body:not(.adm) header .nav-actions button,
+body:not(.adm) header .mobile-menu-toggle,body:not(.adm) header .search-icon-toggle{color:#fff!important;text-shadow:0 1px 12px rgba(0,0,0,.28)}
+body:not(.adm) header.ij-scrolled{
+ background:rgba(22,20,17,.58)!important;
+ border-bottom-color:rgba(255,255,255,.14)!important;
+ box-shadow:0 8px 30px rgba(0,0,0,.08)!important;
+ -webkit-backdrop-filter:blur(22px) saturate(1.55)!important;
+ backdrop-filter:blur(22px) saturate(1.55)!important;
+}
+:root[data-t=light] body:not(.adm) header.ij-scrolled{
+ background:rgba(246,241,231,.68)!important;
+ border-bottom-color:rgba(255,255,255,.48)!important;
+ box-shadow:0 8px 28px rgba(70,50,15,.07)!important;
+}
+:root[data-t=light] body:not(.adm) header:not(.ij-scrolled) .logo,
+:root[data-t=light] body:not(.adm) header:not(.ij-scrolled) .nav-actions button,
+:root[data-t=light] body:not(.adm) header:not(.ij-scrolled) .mobile-menu-toggle,
+:root[data-t=light] body:not(.adm) header:not(.ij-scrolled) .search-icon-toggle{color:#fff!important}
+body:not(.adm) header.ij-scrolled .logo,
+body:not(.adm) header.ij-scrolled .nav-actions button,
+body:not(.adm) header.ij-scrolled .mobile-menu-toggle,
+body:not(.adm) header.ij-scrolled .search-icon-toggle{color:var(--fg)!important;text-shadow:none}
+body:not(.adm) header .store-menu{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
+body:not(.adm) header.ij-scrolled .store-menu{
+ background:rgba(22,20,17,.28)!important;
+ -webkit-backdrop-filter:blur(18px)!important;backdrop-filter:blur(18px)!important;
+}
+@media(max-width:720px){
+ body:not(.adm) header{margin-bottom:-64px!important;min-height:64px;padding-top:10px;padding-bottom:10px}
+}
 </style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
@@ -1832,5 +1879,13 @@ document.addEventListener("click",e=>{
  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
  document.addEventListener('click',e=>{if(h.classList.contains('search-open')&&!f.contains(e.target)&&!t.contains(e.target)&&e.target!==m)close()});
  f.addEventListener('submit',()=>close());
-})();</script></body></html>
+})();
+/* Transparent hero navigation becomes glass only after the visitor scrolls */
+(function(){
+ const head=document.querySelector('body:not(.adm) header');
+ if(!head)return;
+ const sync=()=>head.classList.toggle('ij-scrolled',(window.scrollY||0)>28);
+ sync();window.addEventListener('scroll',sync,{passive:true});
+})();
+</script></body></html>
 <!-- Cloudflare Pages initial deployment trigger -->
