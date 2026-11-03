@@ -952,6 +952,78 @@ header .nav-actions #wc,header .nav-actions #cc{color:var(--ac);font-weight:700}
  header .mobile-menu-toggle{padding:7px 8px}
 }
 
+
+/* IJAZ clean navigation — understated search and wordmark */
+header{min-height:70px;padding-inline:clamp(16px,3.2vw,46px);gap:clamp(12px,1.7vw,24px)}
+header .logo{font-size:22px;letter-spacing:.17em;line-height:1}
+header .logo:after{content:none!important;display:none!important}
+header nav.st{gap:clamp(8px,1.25vw,18px)}
+header .store-menu{gap:clamp(1px,.35vw,6px)}
+header .store-menu a,#xnav a{
+ font-size:11px;letter-spacing:.065em;padding:10px 8px;color:var(--fg);opacity:.78;
+}
+header .store-menu a:after,#xnav a:after{left:8px;right:8px;bottom:4px;height:2px;border-radius:2px}
+header .store-menu a:hover,#xnav a:hover{opacity:1;color:var(--fg)}
+header .nav-search{
+ flex:0 1 174px;min-width:125px;gap:9px;padding:0 0 5px;
+ border:0;border-bottom:1px solid var(--ln);border-radius:0;background:transparent;
+ box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+}
+header .nav-search:focus-within{border-color:var(--ac);box-shadow:0 1px 0 var(--ac);background:transparent}
+header .nav-search-icon{
+ position:relative;display:block;flex:0 0 13px;width:13px;height:13px;
+ font-size:0;color:transparent;
+}
+header .nav-search-icon:before{
+ content:"";position:absolute;width:8px;height:8px;border:1.4px solid var(--mut);
+ border-radius:50%;left:0;top:0;
+}
+header .nav-search-icon:after{
+ content:"";position:absolute;width:5px;height:1.4px;background:var(--mut);
+ transform:rotate(45deg);left:8px;top:9px;border-radius:2px;
+}
+header .nav-search input{
+ height:27px;padding:0;border:0!important;border-radius:0;background:transparent!important;
+ box-shadow:none!important;font:400 11px var(--fb);letter-spacing:.025em;
+}
+header .nav-search input::placeholder{color:var(--mut);opacity:.8}
+header .nav-search button{
+ position:relative;width:22px;height:25px;flex:0 0 22px;padding:0;
+ border:0;border-radius:0;background:transparent;color:var(--mut);box-shadow:none;
+ font-size:0;
+}
+header .nav-search button:before{
+ content:"";position:absolute;width:8px;height:8px;border:1.5px solid currentColor;
+ border-radius:50%;left:5px;top:6px;
+}
+header .nav-search button:after{
+ content:"";position:absolute;width:5px;height:1.5px;background:currentColor;
+ transform:rotate(45deg);left:13px;top:15px;border-radius:2px;
+}
+header .nav-search button:hover{background:transparent;color:var(--ac);transform:none}
+header .nav-actions button{border-radius:8px}
+@media(max-width:1100px) and (min-width:721px){
+ header .logo{font-size:19px}
+ header .store-menu a,#xnav a{font-size:10px;padding-inline:6px;letter-spacing:.035em}
+ header .nav-search{flex-basis:135px;min-width:105px}
+}
+@media(max-width:720px){
+ header{min-height:0;gap:8px 10px;padding:11px 14px}
+ header .logo{font-size:20px;flex:1 1 auto}
+ header .nav-search{
+  order:4;flex:1 0 100%;width:100%;min-width:0;margin:3px 0 0;
+  gap:10px;padding:5px 2px 7px;border:0;border-bottom:1px solid var(--ln);
+  border-radius:0;background:transparent;box-shadow:none;
+ }
+ header .nav-search:focus-within{border-color:var(--ac);box-shadow:0 1px 0 var(--ac)}
+ header .nav-search input{height:28px;font-size:12px}
+ header .nav-search-icon{margin-left:2px}
+ header .nav-search button{width:26px;height:26px;flex-basis:26px}
+ header .nav-search button:before{left:6px;top:6px}
+ header .nav-search button:after{left:14px;top:15px}
+ header .nav-actions{gap:2px}
+}
+
 </style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
@@ -959,7 +1031,7 @@ header .nav-actions #wc,header .nav-actions #cc{color:var(--ac);font-weight:700}
 <div class="store-menu" id="storeMenu">
 <a href="#/">Home</a><a href="#/shop">Shop</a><a href="#/shop?s=new">New Arrivals</a><a href="#/track">Track Order</a><a href="#/contact">Contact</a><span id="xnav" style="display:contents"></span>
 </div>
-<form class="nav-search" id="storeSearch" role="search" aria-label="Search products"><span class="nav-search-icon" aria-hidden="true">⌕</span><input id="storeSearchInput" type="search" placeholder="Search products..." aria-label="Search products" autocomplete="off"><button type="submit" aria-label="Search"><span aria-hidden="true">⌕</span></button></form>
+<form class="nav-search" id="storeSearch" role="search" aria-label="Search products"><span class="nav-search-icon" aria-hidden="true"></span><input id="storeSearchInput" type="search" placeholder="Search products..." aria-label="Search products" autocomplete="off"><button type="submit" aria-label="Search"></button></form>
 <div class="nav-actions"><button data-a="wishv" aria-label="Wishlist">♡ <span id="wc">0</span></button><button data-a="cart" aria-label="Cart">Cart <span id="cc">0</span></button><button data-a="theme" aria-label="Toggle theme">◐</button></div>
 </nav><nav class="ad"><span class="chip">Admin panel</span><button data-a="theme" aria-label="Toggle theme">◐</button></nav></header>
 <main id="app"></main>
