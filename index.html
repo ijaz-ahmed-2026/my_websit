@@ -1947,6 +1947,33 @@ button:disabled, .btn:disabled { cursor: not-allowed; opacity: .55; transform: n
  },true);
 })();
 </script>
+<style id="ijaz-admin-button-compact-active">
+/* Admin controls: compact sizing and unmistakable current navigation */
+body.adm .sidebar{gap:3px}
+body.adm .sidebar>button.sn{min-height:39px!important;padding:7px 8px!important;border-radius:9px!important;font-size:12px!important}
+body.adm .nav-expanded .sidebar>button.sn{padding:7px 10px!important}
+body.adm .sidebar .sub button{min-height:30px!important;padding:5px 8px!important;font-size:11.5px!important}
+body.adm .nav-expanded .sidebar .sub button{padding:6px 10px 6px 38px!important}
+body.adm .sidebar button.on,
+body.adm .sidebar button.sn.on{background:color-mix(in srgb,var(--ac) 20%,var(--gl))!important;color:var(--act)!important;box-shadow:inset 3px 0 0 var(--ac),0 2px 8px rgba(0,0,0,.08)!important;font-weight:700!important}
+body.adm .sidebar .sub button.on{background:color-mix(in srgb,var(--ac) 13%,transparent)!important;box-shadow:inset 3px 0 0 var(--ac)!important;color:var(--act)!important}
+body.adm .sidebar button:active,
+body.adm .sidebar button.ij-pressed{background:color-mix(in srgb,var(--ac) 30%,var(--gl))!important;transform:scale(.975)!important;box-shadow:inset 0 2px 5px rgba(0,0,0,.18)!important}
+body.adm .ab,body.adm .pri,body.adm .chips button,
+body.adm .row>button,body.adm .tbl button{
+ min-height:30px!important;padding:6px 10px!important;font-size:12px!important;line-height:1.2!important;border-radius:8px!important
+}
+body.adm .ab.p,body.adm .pri{padding:7px 11px!important}
+body.adm .attn-c{padding:10px!important;min-height:66px}
+body.adm .attn-c b{font-size:27px!important}
+body.adm .cards .cd{min-height:66px!important;padding:10px!important}
+body.adm .cards .cd b{font-size:24px!important}
+body.adm button:focus-visible{outline:2px solid var(--ac)!important;outline-offset:2px!important}
+@media(max-width:520px){
+ body.adm .ab,body.adm .pri,body.adm .chips button{min-height:29px!important;padding:5px 8px!important;font-size:11.5px!important}
+ body.adm .sidebar>button.sn{min-height:36px!important}
+}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
