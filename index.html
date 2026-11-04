@@ -2574,6 +2574,18 @@ body:not(.adm) header nav.st{order:1!important;margin-right:auto!important}
  body:not(.adm) header nav.st{order:1!important;flex:1 1 auto!important;min-width:0!important;justify-content:flex-start!important;gap:6px!important}
 }
 </style>
+
+<style id="ijaz-final-brand-left-glass">
+/* Final requested alignment: signature brand on the LEFT, retain glass header. */
+body:not(.adm) header #brand{order:1!important;margin-left:0!important;margin-right:auto!important;justify-self:flex-start!important}
+body:not(.adm) header nav.st{order:2!important;margin-left:auto!important;margin-right:0!important}
+@media(max-width:720px){
+ body:not(.adm) header{justify-content:space-between!important;gap:8px!important}
+ body:not(.adm) header #brand{order:1!important;flex:0 0 104px!important;width:104px!important;min-width:88px!important;max-width:104px!important;justify-content:flex-start!important}
+ body:not(.adm) header #brand img,body:not(.adm) header #brand .lg{object-position:left center!important}
+ body:not(.adm) header nav.st{order:2!important;flex:1 1 auto!important;justify-content:flex-end!important;margin-left:auto!important}
+}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
