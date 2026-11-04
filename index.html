@@ -2613,6 +2613,67 @@ body:not(.adm) header .nav-actions button svg,body:not(.adm) header .search-icon
 }
 @media(max-width:720px){body:not(.adm) header .store-menu{border-radius:18px!important;padding:8px!important;box-shadow:0 14px 34px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.12)!important}body:not(.adm) header .store-menu a{color:#fff!important;padding:11px 12px!important}}
 </style>
+
+<style id="ijaz-flat-glass-nav-controls">
+/* One shared glass navigation capsule; every control stays visually bare like the IJAZ wordmark. */
+body:not(.adm) header .store-menu{
+ background:rgba(255,255,255,.105)!important;
+ border:1px solid rgba(255,255,255,.20)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 8px 26px rgba(0,0,0,.08)!important;
+ -webkit-backdrop-filter:blur(24px) saturate(1.35)!important;
+ backdrop-filter:blur(24px) saturate(1.35)!important;
+}
+body:not(.adm) header .store-menu a,
+body:not(.adm) header .store-menu button,
+body:not(.adm) header .menu-search-open,
+body:not(.adm) header .mobile-menu-toggle,
+body:not(.adm) header .search-icon-toggle,
+body:not(.adm) header .nav-actions button{
+ appearance:none!important;
+ background:transparent!important;
+ background-color:transparent!important;
+ border:0!important;
+ outline-offset:4px!important;
+ border-radius:0!important;
+ box-shadow:none!important;
+}
+body:not(.adm) header .store-menu a,
+body:not(.adm) header .store-menu button,
+body:not(.adm) header .mobile-menu-toggle,
+body:not(.adm) header .search-icon-toggle,
+body:not(.adm) header .nav-actions button{
+ color:var(--ink,#252525)!important;
+ text-shadow:none!important;
+}
+:root[data-t="dark"] body:not(.adm) header .store-menu a,
+:root[data-t="dark"] body:not(.adm) header .store-menu button,
+:root[data-t="dark"] body:not(.adm) header .mobile-menu-toggle,
+:root[data-t="dark"] body:not(.adm) header .search-icon-toggle,
+:root[data-t="dark"] body:not(.adm) header .nav-actions button{color:#f5f3ef!important}
+:root[data-t="light"] body:not(.adm) header .store-menu a,
+:root[data-t="light"] body:not(.adm) header .store-menu button,
+:root[data-t="light"] body:not(.adm) header .mobile-menu-toggle,
+:root[data-t="light"] body:not(.adm) header .search-icon-toggle,
+:root[data-t="light"] body:not(.adm) header .nav-actions button{color:#292b29!important}
+body:not(.adm) header .store-menu a:hover,
+body:not(.adm) header .store-menu button:hover,
+body:not(.adm) header .nav-actions button:hover,
+body:not(.adm) header .search-icon-toggle:hover{
+ opacity:.68!important;transform:translateY(-1px)!important;
+}
+body:not(.adm) header .nav-actions button svg{
+ background:transparent!important;fill:none!important;stroke:currentColor!important;
+}
+body:not(.adm) header .nav-actions button span{background:transparent!important;box-shadow:none!important}
+body:not(.adm) header .nav-actions{background:transparent!important;border:0!important;box-shadow:none!important}
+body:not(.adm) header .store-menu a:focus-visible,
+body:not(.adm) header button:focus-visible{outline:1px solid currentColor!important}
+@media(max-width:720px){
+ body:not(.adm) header .store-menu{background:rgba(255,255,255,.13)!important}
+ body:not(.adm) header .nav-actions{gap:9px!important}
+ body:not(.adm) header .nav-actions button{min-width:28px!important;min-height:30px!important;padding:3px!important}
+}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
