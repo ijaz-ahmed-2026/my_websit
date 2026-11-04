@@ -2098,6 +2098,94 @@ body.adm #app button:active,body.adm #app button.ij-pressed{filter:brightness(.8
 :root[data-t="light"] body:not(.adm) .rl .rc :is(h4,p,small){color:#293536!important}
 </style>
 
+
+<style id="ijaz-header-mobile-layout-final">
+@media(max-width:720px){
+ body:not(.adm) header{
+  display:flex!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:space-between!important;
+  gap:6px!important;width:100%!important;min-height:58px!important;padding:7px 10px!important;
+  overflow:visible!important;box-sizing:border-box!important
+ }
+ body:not(.adm) header .logo{
+  order:1!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  flex:0 0 104px!important;width:104px!important;min-width:104px!important;max-width:104px!important;
+  margin:0!important;padding:0!important;overflow:visible!important;white-space:nowrap!important;
+  font-size:0!important;letter-spacing:0!important
+ }
+ body:not(.adm) header .logo .lg{
+  display:block!important;width:100%!important;max-width:104px!important;height:31px!important;
+  object-fit:contain!important;object-position:left center!important;margin:0!important;filter:brightness(0)!important;opacity:.82!important
+ }
+ body:not(.adm) header nav.st{display:contents!important}
+ body:not(.adm) header .store-menu{
+  order:2!important;display:flex!important;position:static!important;visibility:visible!important;opacity:1!important;
+  transform:none!important;flex:1 1 auto!important;min-width:0!important;width:auto!important;
+  justify-content:center!important;align-items:center!important;gap:0!important;
+  padding:0!important;margin:0!important;background:transparent!important;border:0!important;box-shadow:none!important;
+  overflow:visible!important;white-space:nowrap!important
+ }
+ body:not(.adm) header .store-menu a{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  padding:7px 4px!important;font-size:8px!important;letter-spacing:.015em!important;line-height:1!important;
+  white-space:nowrap!important
+ }
+ body:not(.adm) header .store-menu .menu-search-open{display:none!important}
+ body:not(.adm) header .mobile-menu-toggle{display:none!important}
+ body:not(.adm) header .nav-actions{
+  order:3!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;
+  flex:0 0 auto!important;gap:3px!important;margin:0!important;padding:0!important
+ }
+ body:not(.adm) header .nav-actions button{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:30px!important;min-width:30px!important;height:30px!important;min-height:30px!important;
+  padding:4px!important;margin:0!important;border-radius:8px!important;
+  background:rgba(255,255,255,.88)!important;color:#263b3c!important;
+  border:1px solid rgba(38,59,60,.22)!important;box-shadow:0 2px 6px rgba(25,45,45,.06)!important;
+  font-size:14px!important;line-height:1!important
+ }
+ body:not(.adm) header .nav-actions button svg{display:block!important;width:15px!important;height:15px!important;stroke:#263b3c!important}
+ body:not(.adm) header .nav-actions #wc,body:not(.adm) header .nav-actions #cc{
+  display:inline-grid!important;place-items:center!important;min-width:11px!important;height:11px!important;
+  padding:0 2px!important;font-size:7px!important
+ }
+ body:not(.adm) header .search-icon-toggle{
+  order:4!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  position:relative!important;flex:0 0 30px!important;width:30px!important;min-width:30px!important;
+  height:30px!important;min-height:30px!important;padding:0!important;margin:0!important;
+  border:1px solid rgba(38,59,60,.22)!important;border-radius:8px!important;
+  background:rgba(255,255,255,.88)!important;color:#263b3c!important;font-size:0!important
+ }
+ body:not(.adm) header .search-icon-toggle>span{
+  display:block!important;width:11px!important;height:11px!important;border:1.7px solid #263b3c!important;
+  border-radius:50%!important;position:relative!important;opacity:1!important
+ }
+ body:not(.adm) header .search-icon-toggle>span:after{
+  content:""!important;display:block!important;position:absolute!important;width:5px!important;height:1.7px!important;
+  right:-4px!important;bottom:-2px!important;background:#263b3c!important;border:0!important;transform:rotate(48deg)!important
+ }
+ body:not(.adm) header .nav-search{order:5!important}
+}
+@media(max-width:520px){
+ body:not(.adm) header{gap:4px!important;padding-inline:7px!important}
+ body:not(.adm) header .logo{flex-basis:88px!important;width:88px!important;min-width:88px!important;max-width:88px!important}
+ body:not(.adm) header .logo .lg{max-width:88px!important;height:27px!important}
+ body:not(.adm) header .store-menu a{padding-inline:3px!important;font-size:7px!important;letter-spacing:0!important}
+ body:not(.adm) header .nav-actions{gap:2px!important}
+ body:not(.adm) header .nav-actions button,body:not(.adm) header .search-icon-toggle{
+  width:27px!important;min-width:27px!important;height:27px!important;min-height:27px!important
+ }
+}
+@media(max-width:370px){
+ body:not(.adm) header .store-menu a:nth-of-type(4){display:none!important}
+ body:not(.adm) header .logo{flex-basis:76px!important;width:76px!important;min-width:76px!important;max-width:76px!important}
+ body:not(.adm) header .logo .lg{max-width:76px!important}
+}
+:root[data-t="light"] body:not(.adm) header .nav-actions button,
+:root[data-t="light"] body:not(.adm) header .search-icon-toggle{
+ background:#fff!important;color:#263b3c!important;border-color:rgba(38,59,60,.24)!important
+}
+</style>
+
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
