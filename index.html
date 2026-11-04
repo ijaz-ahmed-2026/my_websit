@@ -2952,6 +2952,51 @@ html body:not(.adm) header .nav-actions #cc {
   vertical-align: baseline !important;
 }
 </style>
+
+<style id="ijaz-nav-zero-button-surfaces">
+/* Final override: no individual surfaces on any header brand, link or icon control. */
+header #brand,
+header .store-menu,
+header .store-menu a,
+header .store-menu button,
+header #xnav,
+header #xnav a,
+header .nav-actions,
+header .nav-actions button,
+header .mobile-menu-toggle,
+header .search-icon-toggle,
+header .menu-search-open,
+header .nav-actions button svg,
+header .nav-actions button span,
+header .store-menu a *,
+header .store-menu button * {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+header .nav-actions button::before,
+header .nav-actions button::after,
+header .store-menu a::before,
+header .store-menu a::after,
+header .store-menu button::before,
+header .store-menu button::after,
+header #brand::before,
+header #brand::after {
+  content: none !important;
+  display: none !important;
+}
+header .nav-actions button span {
+  display: inline !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
