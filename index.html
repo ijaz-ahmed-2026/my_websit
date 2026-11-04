@@ -2009,6 +2009,51 @@ body.adm #app button:active,body.adm #app button.ij-pressed{filter:brightness(.8
 }
 </style>
 
+
+<style id="ijaz-light-header-visibility-fix">
+/* Light theme header: convert the white signature mark and restore action glyph contrast */
+:root[data-t="light"] body:not(.adm) header{
+ background:rgba(239,246,243,.97)!important;
+ border-bottom:1px solid rgba(36,57,57,.2)!important;
+ box-shadow:0 5px 20px rgba(31,55,54,.09)!important;
+}
+:root[data-t="light"] body:not(.adm) header #brand{color:#263b3c!important}
+:root[data-t="light"] body:not(.adm) header #brand img.lg{
+ filter:brightness(0) saturate(100%)!important;
+ opacity:.78!important;
+}
+:root[data-t="light"] body:not(.adm) header .nav-actions button{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ min-width:40px!important;min-height:38px!important;
+ background:rgba(255,255,255,.82)!important;
+ color:#263b3c!important;border:1px solid rgba(35,55,55,.28)!important;
+ box-shadow:0 2px 8px rgba(31,55,54,.08)!important;
+}
+:root[data-t="light"] body:not(.adm) header .nav-actions button svg{
+ display:block!important;width:18px!important;height:18px!important;
+ stroke:#263b3c!important;fill:none!important;opacity:1!important;
+}
+:root[data-t="light"] body:not(.adm) header .nav-actions button svg path,
+:root[data-t="light"] body:not(.adm) header .nav-actions button svg circle{
+ stroke:#263b3c!important;fill:none!important;stroke-width:1.8!important;
+}
+:root[data-t="light"] body:not(.adm) header .nav-actions button span{
+ color:#263b3c!important;background:#e1ece8!important;border:1px solid rgba(35,55,55,.14)!important;
+}
+:root[data-t="light"] body:not(.adm) header .store-menu a,
+:root[data-t="light"] body:not(.adm) header .mobile-menu-toggle,
+:root[data-t="light"] body:not(.adm) header .search-icon-toggle{
+ color:#263b3c!important;text-shadow:none!important;
+}
+:root[data-t="light"] body:not(.adm){
+ background:linear-gradient(145deg,#eaf1ee 0%,#f3f2eb 48%,#e5eeeb 100%)!important;
+}
+:root[data-t="light"] body:not(.adm) #app .pc{
+ background:rgba(255,255,255,.94)!important;border-color:rgba(37,59,58,.18)!important;
+ box-shadow:0 9px 26px rgba(36,59,58,.09)!important;
+}
+</style>
+
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
