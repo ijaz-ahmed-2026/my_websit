@@ -2674,6 +2674,77 @@ body:not(.adm) header button:focus-visible{outline:1px solid currentColor!import
  body:not(.adm) header .nav-actions button{min-width:28px!important;min-height:30px!important;padding:3px!important}
 }
 </style>
+
+<style id="ijaz-nav-no-individual-background">
+/* Keep ONE glass capsule for the navigation; links and icons themselves stay bare. */
+body:not(.adm) header .store-menu,
+body:not(.adm) header .store-menu a,
+body:not(.adm) header .store-menu button,
+body:not(.adm) header #xnav a,
+body:not(.adm) header .nav-actions,
+body:not(.adm) header .nav-actions button,
+body:not(.adm) header .nav-actions button span,
+body:not(.adm) header .mobile-menu-toggle,
+body:not(.adm) header .search-icon-toggle,
+body:not(.adm) header .menu-search-open,
+body:not(.adm) header .nav-search button{
+ background-color:transparent!important;
+ box-shadow:none!important;
+}
+body:not(.adm) header .store-menu a,
+body:not(.adm) header .store-menu button,
+body:not(.adm) header #xnav a,
+body:not(.adm) header .nav-actions button,
+body:not(.adm) header .mobile-menu-toggle,
+body:not(.adm) header .search-icon-toggle,
+body:not(.adm) header .menu-search-open,
+body:not(.adm) header .nav-search button{
+ background:transparent!important;
+ border-color:transparent!important;
+ border-style:solid!important;
+}
+body:not(.adm) header .store-menu a:hover,
+body:not(.adm) header .store-menu a:focus,
+body:not(.adm) header .store-menu a:focus-visible,
+body:not(.adm) header .store-menu a:active,
+body:not(.adm) header .store-menu button:hover,
+body:not(.adm) header .store-menu button:focus-visible,
+body:not(.adm) header #xnav a:hover,
+body:not(.adm) header #xnav a:focus-visible,
+body:not(.adm) header .nav-actions button:hover,
+body:not(.adm) header .nav-actions button:focus-visible,
+body:not(.adm) header .nav-actions button:active,
+body:not(.adm) header .mobile-menu-toggle:hover,
+body:not(.adm) header .search-icon-toggle:hover{
+ background:transparent!important;
+ background-color:transparent!important;
+ box-shadow:none!important;
+}
+body:not(.adm) header .nav-actions button svg,
+body:not(.adm) header .nav-actions button svg *,
+body:not(.adm) header .search-icon-toggle *,
+body:not(.adm) header .mobile-menu-toggle *{
+ background:transparent!important;box-shadow:none!important;
+}
+body:not(.adm) header .nav-actions button::before,
+body:not(.adm) header .nav-actions button::after,
+body:not(.adm) header .store-menu a::before,
+body:not(.adm) header .store-menu a::after,
+body:not(.adm) header .mobile-menu-toggle::before,
+body:not(.adm) header .mobile-menu-toggle::after{
+ background:transparent!important;box-shadow:none!important;border-color:transparent!important;
+}
+body:not(.adm) header .nav-actions button span{
+ border:0!important;border-radius:0!important;padding:0!important;
+}
+body:not(.adm) header .store-menu{
+ /* This is the single shared glass background, intentionally retained. */
+ background:rgba(255,255,255,.105)!important;
+ border:1px solid rgba(255,255,255,.20)!important;
+ -webkit-backdrop-filter:blur(24px) saturate(1.35)!important;
+ backdrop-filter:blur(24px) saturate(1.35)!important;
+}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
