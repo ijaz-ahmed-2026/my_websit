@@ -2807,6 +2807,69 @@ body:not(.adm) header .store-menu {
   backdrop-filter: blur(24px) saturate(1.35) !important;
 }
 </style>
+
+<style id="ijaz-navigation-fully-transparent">
+/* IJAZ navigation: brand, labels and utility icons are plain text/icons only. */
+body:not(.adm) header,
+body:not(.adm) header nav.st,
+body:not(.adm) header .store-menu,
+body:not(.adm) header .nav-actions,
+body:not(.adm) header #brand,
+body:not(.adm) header #storeMenu,
+body:not(.adm) header #xnav {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+body:not(.adm) header .store-menu > a,
+body:not(.adm) header .store-menu > button,
+body:not(.adm) header #xnav a,
+body:not(.adm) header .nav-actions > button,
+body:not(.adm) header .mobile-menu-toggle,
+body:not(.adm) header .search-icon-toggle,
+body:not(.adm) header .menu-search-open,
+body:not(.adm) header #brand,
+body:not(.adm) header .nav-actions > button *,
+body:not(.adm) header .store-menu > a *,
+body:not(.adm) header .store-menu > button *,
+body:not(.adm) header #xnav a * {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline-offset: 4px;
+}
+body:not(.adm) header .store-menu > a::before,
+body:not(.adm) header .store-menu > a::after,
+body:not(.adm) header .store-menu > button::before,
+body:not(.adm) header .store-menu > button::after,
+body:not(.adm) header .nav-actions > button::before,
+body:not(.adm) header .nav-actions > button::after,
+body:not(.adm) header #brand::before,
+body:not(.adm) header #brand::after {
+  content: none !important;
+  display: none !important;
+}
+body:not(.adm) header .store-menu > a:hover,
+body:not(.adm) header .store-menu > button:hover,
+body:not(.adm) header .nav-actions > button:hover,
+body:not(.adm) header #brand:hover,
+body:not(.adm) header .store-menu > a:active,
+body:not(.adm) header .nav-actions > button:active {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+body:not(.adm) header {
+  border-bottom: 0 !important;
+}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
