@@ -3221,7 +3221,19 @@ body:not(.adm) header nav.ad{display:none!important}
 }
 </style>
 
-</head><body>
+<style id="ijaz-footer-trial">
+:root{--footer-bg:#000;--footer-text-primary:#fff;--footer-text-secondary:#888;--footer-text-hover:#fff;--footer-border-color:#222;--status-green:#00e676}
+body:not(.adm) footer#foot{display:grid!important;grid-template-columns:minmax(220px,1.5fr) repeat(2,minmax(150px,1fr));gap:28px;background:#000!important;color:#888!important;padding:40px max(18px,4vw) 28px!important;border:0!important;overflow:hidden}
+body:not(.adm) footer#foot:before{content:"IJAZ";grid-column:1/-1;display:block;text-align:center;border-bottom:1px solid #222;padding:0 0 22px;margin:0 0 14px;font-family:var(--fn),Impact,sans-serif;font-size:clamp(4rem,15vw,12rem);font-weight:800;line-height:.9;letter-spacing:-.05em;background:linear-gradient(180deg,#fff 0%,#444 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.92}
+body:not(.adm) footer#foot>div{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+body:not(.adm) footer#foot .footer-brand .logo{display:none}
+body:not(.adm) footer#foot .footer-brand p{font-size:14px;line-height:1.8;color:#888}
+body:not(.adm) footer#foot .footer-brand:after{content:"●  ONLINE STORE · BANGLADESH";display:inline-flex;margin-top:8px;padding:7px 12px;border:1px solid #222;border-radius:30px;background:rgba(255,255,255,.05);font-size:11px;letter-spacing:.08em;color:#fff;box-shadow:inset 9px 0 0 -5px #00e676}
+body:not(.adm) footer#foot>div>b{color:#fff;font-size:12px;letter-spacing:.14em}
+body:not(.adm) footer#foot a{color:#888;font-size:13px;transition:color .2s,transform .2s}
+body:not(.adm) footer#foot a:hover{color:#fff;transform:translateX(3px)}
+@media(max-width:768px){body:not(.adm) footer#foot{grid-template-columns:1fr 1fr;gap:22px 16px;padding:34px 18px 26px!important}body:not(.adm) footer#foot:before{font-size:clamp(4rem,18vw,7rem);padding-bottom:18px;margin-bottom:8px}body:not(.adm) footer#foot .footer-brand{grid-column:1/-1}body:not(.adm) footer#foot>div{min-width:0}body:not(.adm) footer#foot a{overflow-wrap:anywhere}}
+</style></head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
 <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="storeMenu" aria-label="Open menu">☰ <span>Menu</span></button>
