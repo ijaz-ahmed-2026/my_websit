@@ -2586,6 +2586,33 @@ body:not(.adm) header nav.st{order:2!important;margin-left:auto!important;margin
  body:not(.adm) header nav.st{order:2!important;flex:1 1 auto!important;justify-content:flex-end!important;margin-left:auto!important}
 }
 </style>
+
+<style id="ijaz-nav-contrast-both-themes">
+/* Navigation: consistent high-contrast liquid glass in BOTH themes */
+body:not(.adm) header .store-menu{
+ background:rgba(18,25,26,.82)!important;border:1px solid rgba(255,255,255,.19)!important;
+ border-radius:999px!important;padding:4px!important;
+ box-shadow:0 7px 22px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.13)!important;
+ -webkit-backdrop-filter:blur(24px) saturate(1.45)!important;backdrop-filter:blur(24px) saturate(1.45)!important
+}
+body:not(.adm) header .store-menu a,body:not(.adm) header #xnav a{
+ color:rgba(255,255,255,.9)!important;text-shadow:none!important;background:transparent!important;border:0!important
+}
+body:not(.adm) header .store-menu a:hover,body:not(.adm) header .store-menu a:focus-visible,body:not(.adm) header #xnav a:hover{
+ color:#fff!important;background:rgba(255,255,255,.15)!important
+}
+body:not(.adm) header .nav-actions button,body:not(.adm) header .search-icon-toggle,body:not(.adm) header .mobile-menu-toggle{
+ color:#fff!important;background:rgba(18,25,26,.76)!important;border:1px solid rgba(255,255,255,.24)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.12)!important
+}
+body:not(.adm) header .nav-actions button svg,body:not(.adm) header .search-icon-toggle svg{color:inherit!important;stroke:currentColor!important}
+:root[data-t="light"] body:not(.adm) header .store-menu{background:rgba(18,25,26,.84)!important;border-color:rgba(255,255,255,.2)!important}
+:root[data-t="light"] body:not(.adm) header .store-menu a,:root[data-t="light"] body:not(.adm) header #xnav a{color:rgba(255,255,255,.92)!important}
+:root[data-t="light"] body:not(.adm) header .nav-actions button,:root[data-t="light"] body:not(.adm) header .search-icon-toggle,:root[data-t="light"] body:not(.adm) header .mobile-menu-toggle{
+ color:#fff!important;background:rgba(18,25,26,.76)!important;border-color:rgba(255,255,255,.23)!important
+}
+@media(max-width:720px){body:not(.adm) header .store-menu{border-radius:18px!important;padding:8px!important;box-shadow:0 14px 34px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.12)!important}body:not(.adm) header .store-menu a{color:#fff!important;padding:11px 12px!important}}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
