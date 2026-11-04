@@ -3233,7 +3233,22 @@ body:not(.adm) footer#foot>div>b{color:#fff;font-size:12px;letter-spacing:.14em}
 body:not(.adm) footer#foot a{color:#888;font-size:13px;transition:color .2s,transform .2s}
 body:not(.adm) footer#foot a:hover{color:#fff;transform:translateX(3px)}
 @media(max-width:768px){body:not(.adm) footer#foot{grid-template-columns:1fr 1fr;gap:22px 16px;padding:34px 18px 26px!important}body:not(.adm) footer#foot:before{font-size:clamp(4rem,18vw,7rem);padding-bottom:18px;margin-bottom:8px}body:not(.adm) footer#foot .footer-brand{grid-column:1/-1}body:not(.adm) footer#foot>div{min-width:0}body:not(.adm) footer#foot a{overflow-wrap:anywhere}}
-</style></head><body>
+</style><style id="ijaz-editorial-footer-trial">
+:root{--footer-bg:#000;--footer-text-primary:#fff;--footer-text-secondary:#888;--footer-text-hover:#fff;--footer-border-color:#222;--status-green:#00e676}
+body:not(.adm) footer#foot{display:grid!important;grid-template-columns:minmax(220px,1.1fr) minmax(140px,.8fr) minmax(180px,1fr)!important;gap:34px!important;background:#000!important;color:#888!important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;padding:40px max(20px,calc((100vw - 1200px)/2)) 26px!important;border:0!important;overflow:hidden}
+body:not(.adm) footer#foot:before{content:"IJAZ";grid-column:1/-1;display:block;text-align:center;font-size:clamp(4rem,15vw,12rem);font-weight:800;line-height:.9;letter-spacing:-.05em;background:linear-gradient(180deg,#fff 0%,#444 100%);-webkit-background-clip:text;background-clip:text;color:transparent;border-bottom:1px solid #222;padding:0 0 22px;margin-bottom:12px}
+body:not(.adm) footer#foot>div{display:flex;flex-direction:column;align-items:flex-start;gap:11px;min-width:0}
+body:not(.adm) footer#foot .footer-brand{position:relative}
+body:not(.adm) footer#foot .footer-brand .logo{display:none}
+body:not(.adm) footer#foot .footer-brand:after{content:"●  ONLINE STORE · BANGLADESH";display:inline-flex;align-items:center;color:#fff;background:rgba(255,255,255,.05);border:1px solid #222;border-radius:20px;padding:7px 12px;font-size:10px;letter-spacing:.08em;order:3}
+body:not(.adm) footer#foot p{color:#888!important;font-size:14px;line-height:1.8;margin:0;order:1}
+body:not(.adm) footer#foot .footer-links>b,body:not(.adm) footer#foot .footer-contact>b{font-size:12px;letter-spacing:.14em;color:#fff!important;margin:0 0 7px}
+body:not(.adm) footer#foot a{font-size:13px;color:#888!important;text-decoration:none;transition:color .2s,transform .2s}
+body:not(.adm) footer#foot a:hover{color:#fff!important;transform:translateX(2px)}
+body:not(.adm) footer#foot .footer-brand:before{content:"";display:block;width:8px;height:8px;border-radius:50%;background:#00e676;box-shadow:0 0 8px #00e676;position:absolute;left:7px;bottom:10px;z-index:1}
+@media(max-width:720px){body:not(.adm) footer#foot{grid-template-columns:1fr 1fr!important;gap:24px 16px!important;padding:34px 18px 28px!important}body:not(.adm) footer#foot:before{font-size:clamp(4rem,18vw,7rem);padding-bottom:18px;margin-bottom:6px}body:not(.adm) footer#foot .footer-brand{grid-column:1/-1}body:not(.adm) footer#foot .footer-links{grid-column:1}body:not(.adm) footer#foot .footer-contact{grid-column:2}body:not(.adm) footer#foot p{font-size:13px}}
+</style>
+</head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
 <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="storeMenu" aria-label="Open menu">☰ <span>Menu</span></button>
