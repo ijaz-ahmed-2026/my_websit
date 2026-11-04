@@ -2467,6 +2467,99 @@ body.adm #app button:active,body.adm #app button.ij-pressed{filter:brightness(.8
 }
 </style>
 
+
+<style id="ijaz-editorial-glass-redesign">
+/* IJAZ editorial fashion direction: monochrome imagery + retained liquid glass */
+html{scroll-behavior:smooth}
+body:not(.adm) header{
+ position:sticky!important;top:0!important;z-index:1400!important;
+ display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;
+ gap:22px!important;width:100%!important;min-height:72px!important;padding:10px clamp(16px,4vw,58px)!important;
+ margin:0!important;background:rgba(13,17,18,.66)!important;
+ border:0!important;border-bottom:1px solid rgba(255,255,255,.16)!important;
+ box-shadow:0 8px 30px rgba(0,0,0,.12)!important;
+ -webkit-backdrop-filter:blur(24px) saturate(1.45)!important;backdrop-filter:blur(24px) saturate(1.45)!important
+}
+body:not(.adm) header #brand{order:2!important;flex:0 0 auto!important;margin-left:auto!important;background:transparent!important;border:0!important;box-shadow:none!important;color:#fff!important;text-shadow:0 1px 12px rgba(0,0,0,.25)!important;font-size:clamp(19px,2vw,25px)!important;letter-spacing:.18em!important}
+body:not(.adm) header nav.st{order:1!important;display:flex!important;flex:1 1 auto!important;align-items:center!important;justify-content:flex-start!important;gap:12px!important;min-width:0!important}
+body:not(.adm) header .store-menu{display:flex!important;align-items:center!important;gap:clamp(8px,1.8vw,22px)!important;background:transparent!important;border:0!important;box-shadow:none!important}
+body:not(.adm) header .store-menu a{color:rgba(255,255,255,.86)!important;font-size:10px!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+body:not(.adm) header .nav-actions{display:flex!important;align-items:center!important;gap:8px!important}
+body:not(.adm) header .nav-actions button,body:not(.adm) header .search-icon-toggle{
+ width:38px!important;min-width:38px!important;height:38px!important;min-height:38px!important;
+ border-radius:12px!important;background:rgba(255,255,255,.10)!important;
+ border:1px solid rgba(255,255,255,.24)!important;color:#fff!important;
+ -webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important;
+ box-shadow:inset 0 1px rgba(255,255,255,.2),0 4px 14px rgba(0,0,0,.08)!important
+}
+body:not(.adm) header .nav-actions button svg{width:16px!important;height:16px!important;stroke:currentColor!important}
+body:not(.adm) header .mobile-menu-toggle{display:none!important}
+body:not(.adm) header .nav-search{background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:12px!important;backdrop-filter:blur(16px)!important}
+#app .ij-clean-hero{
+ min-height:clamp(540px,76vh,790px)!important;margin:0 0 clamp(58px,8vw,100px)!important;
+ padding:clamp(28px,5vw,70px)!important;border:1px solid rgba(255,255,255,.2)!important;
+ border-radius:0 0 22px 22px!important;box-shadow:0 24px 70px rgba(0,0,0,.2)!important;
+ background-blend-mode:normal!important;background-position:center 42%!important
+}
+#app .ij-clean-hero:before{
+ background:linear-gradient(90deg,rgba(5,7,8,.78) 0%,rgba(5,7,8,.42) 48%,rgba(5,7,8,.12) 100%),linear-gradient(0deg,rgba(5,7,8,.48),transparent 52%)!important
+}
+#app .ij-clean-meta,#app .ij-clean-foot{font-size:9px!important;letter-spacing:.22em!important}
+#app .ij-clean-content{width:min(690px,76%)!important;padding:clamp(35px,6vw,76px) 0!important}
+#app .ij-clean-content h1{font-size:clamp(48px,8vw,100px)!important;line-height:.94!important;letter-spacing:-.055em!important;max-width:9em!important}
+#app .ij-clean-kicker{letter-spacing:.28em!important;color:rgba(255,255,255,.72)!important}
+#app .ij-clean-cta{border-radius:999px!important;padding:15px 24px!important;color:#fff!important;background:rgba(255,255,255,.13)!important;border:1px solid rgba(255,255,255,.42)!important;box-shadow:inset 0 1px rgba(255,255,255,.28),0 8px 24px rgba(0,0,0,.12)!important;backdrop-filter:blur(18px)!important}
+#app .ij-editorial-cats{margin:0 0 clamp(58px,8vw,100px)!important}
+#app .ij-editorial-cats-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:0 0 22px;padding-bottom:16px;border-bottom:1px solid var(--ln)}
+#app .ij-editorial-cats-head h2{margin:5px 0 0;font:500 clamp(22px,3vw,34px)/1.1 var(--fc)!important;letter-spacing:.04em!important}
+#app .ij-editorial-cats-head>a{font:600 9px var(--fb);letter-spacing:.16em;color:var(--tx);text-decoration:none;white-space:nowrap}
+#app .ij-editorial-cats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,2vw,22px)}
+#app .ij-editorial-cat{position:relative;display:block;overflow:hidden;isolation:isolate;aspect-ratio:.67;border-radius:48% 48% 18px 18px;background:linear-gradient(145deg,#343738,#101314);border:1px solid rgba(255,255,255,.2);box-shadow:0 16px 38px rgba(0,0,0,.14),inset 0 1px rgba(255,255,255,.22);text-decoration:none;color:#fff}
+#app .ij-editorial-cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .6s}
+#app .ij-editorial-cat:hover img{transform:scale(1.06);filter:grayscale(.65) contrast(1.08)}
+#app .ij-editorial-cat-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02) 35%,rgba(0,0,0,.68) 100%);z-index:1}
+#app .ij-editorial-cat-name{position:absolute;z-index:2;left:8px;right:8px;bottom:14%;text-align:center;font:500 clamp(12px,1.8vw,20px)/1.1 var(--fb);letter-spacing:.16em;text-transform:uppercase;text-shadow:0 2px 12px #000}
+#app .ij-editorial-cat-no{position:absolute;z-index:2;top:14px;left:14px;font:10px var(--fb);letter-spacing:.15em;color:rgba(255,255,255,.8)}
+#app .ij-editorial-cat-fallback{position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.7);font:500 28px var(--fc);letter-spacing:.2em}
+#app .sec{margin-top:clamp(50px,7vw,88px)!important;padding-bottom:12px!important;border-bottom:1px solid var(--ln)!important}
+#app .pc{border-radius:14px!important}
+@media(max-width:720px){
+ body:not(.adm) header{height:62px!important;min-height:62px!important;padding:8px 12px!important;gap:8px!important}
+ body:not(.adm) header #brand{order:2!important;margin-left:auto!important;font-size:19px!important;white-space:nowrap!important}
+ body:not(.adm) header nav.st{order:1!important;flex:1 1 auto!important;gap:7px!important;justify-content:flex-start!important}
+ body:not(.adm) header .mobile-menu-toggle{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 34px!important;width:34px!important;min-width:34px!important;height:34px!important;min-height:34px!important;border-radius:11px!important;background:rgba(255,255,255,.1)!important;border:1px solid rgba(255,255,255,.24)!important;color:#fff!important;font-size:0!important}
+ body:not(.adm) header .mobile-menu-toggle:before{content:"☰";font:17px/1 Arial!important}
+ body:not(.adm) header .mobile-menu-toggle span{display:none!important}
+ body:not(.adm) header .store-menu{display:none!important;position:absolute!important;left:12px!important;right:12px!important;top:calc(100% + 8px)!important;flex-direction:column!important;align-items:stretch!important;gap:4px!important;padding:12px!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:15px!important;background:rgba(15,20,21,.9)!important;box-shadow:0 18px 42px rgba(0,0,0,.24)!important;backdrop-filter:blur(24px)!important}
+ body:not(.adm).menu-open header .store-menu{display:flex!important}
+ body:not(.adm) header .store-menu a{padding:11px 12px!important;font-size:11px!important}
+ body:not(.adm) header .search-icon-toggle,body:not(.adm) header .nav-actions button{width:33px!important;min-width:33px!important;height:33px!important;min-height:33px!important;border-radius:11px!important}
+ body:not(.adm) header .nav-actions{gap:5px!important}
+ body:not(.adm) header .nav-search{display:none!important}
+ #app .ij-clean-hero{min-height:570px!important;margin:0 0 54px!important;padding:22px 20px!important;border-radius:0 0 18px 18px!important;background-position:57% center!important}
+ #app .ij-clean-content{width:100%!important;padding:36px 0!important}
+ #app .ij-clean-content h1{font-size:clamp(42px,11vw,62px)!important;max-width:8.8em!important}
+ #app .ij-clean-meta{font-size:7px!important;letter-spacing:.13em!important}
+ #app .ij-clean-foot{font-size:7px!important;letter-spacing:.12em!important}
+ #app .ij-editorial-cats{margin-bottom:56px!important}
+ #app .ij-editorial-cats-head h2{font-size:23px!important}
+ #app .ij-editorial-cats-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+ #app .ij-editorial-cat{aspect-ratio:.72!important;border-radius:48% 48% 14px 14px!important}
+ #app .ij-editorial-cat-name{font-size:12px!important;letter-spacing:.1em!important}
+ #app .ij-editorial-cat-no{top:10px!important;left:10px!important;font-size:8px!important}
+}
+@media(max-width:390px){
+ body:not(.adm) header{padding-inline:8px!important;gap:6px!important}
+ body:not(.adm) header #brand{font-size:17px!important;letter-spacing:.13em!important}
+ body:not(.adm) header .mobile-menu-toggle,body:not(.adm) header .search-icon-toggle,body:not(.adm) header .nav-actions button{width:29px!important;min-width:29px!important;flex-basis:29px!important;height:29px!important;min-height:29px!important}
+ body:not(.adm) header .nav-actions{gap:3px!important}
+ #app .ij-clean-hero{min-height:535px!important}
+}
+:root[data-t="light"] body:not(.adm) header{background:rgba(245,245,239,.72)!important;border-bottom-color:rgba(30,40,40,.12)!important}
+:root[data-t="light"] body:not(.adm) header #brand{color:#253334!important;text-shadow:none!important}
+:root[data-t="light"] body:not(.adm) header .store-menu a{color:#fff!important}
+:root[data-t="light"] body:not(.adm) header .nav-actions button,:root[data-t="light"] body:not(.adm) header .search-icon-toggle,:root[data-t="light"] body:not(.adm) header .mobile-menu-toggle{color:#263536!important;background:rgba(255,255,255,.42)!important;border-color:rgba(37,53,54,.18)!important}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
@@ -2607,7 +2700,8 @@ const stars=id=>{const l=rvs(id);if(!l.length)return"";const a=l.reduce((x,r)=>x
 const rvList=id=>rvs(id).map(r=>`<div><span class="ac">${"★".repeat(r.s)}</span> <b>${esc(r.n)}</b><br><span class="mut">${esc(r.t)}</span></div>`).join("")||'<span class="mut">No reviews yet.</span>';
 const reviewsSec=()=>{const all=db.reviews.filter(r=>!r.hide).slice(0,6);return`${sec("Reviews & ratings","রিভিউ ও রেটিং")}<div class="grid">${all.map(r=>`<div class="glass stack" style="padding:14px"><span class="ac">${"★".repeat(r.s)}</span><span>${esc(r.t)}</span><span class="mut">${esc(r.n)} on ${esc(prod(r.pid)?.name||"")}</span></div>`).join("")||'<p class="mut">No reviews yet. Be the first to share your experience.</p>'}</div>
 <form data-s="review" class="glass stack" style="padding:18px;margin-top:16px;max-width:560px"><h3>Write a review</h3><select name="pid" aria-label="Product">${vis().map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join("")}</select><div class="two"><input name="n" placeholder="Your name" required maxlength="40"><select name="s" aria-label="Rating">${[5,4,3,2,1].map(n=>`<option value="${n}">${"★".repeat(n)} ${n}/5</option>`).join("")}</select></div><textarea name="t" required maxlength="400" placeholder="Your experience"></textarea><button class="pri">Submit review</button></form>`};
-const home=()=>hero()+(db.set.sec||[]).filter(x=>x.on).map(x=>x.id.startsWith("b:")?blockHtml((db.set.blocks||[]).find(b=>"b:"+b.id===x.id)):(SECR[x.id]||(()=>""))()).join("");
+const editorialCategories=()=>{const seen=new Set(),items=[];vis().forEach(p=>{const name=String(p.cat||"").trim();if(!name||seen.has(name)||items.length>=4)return;seen.add(name);const image=(p.images&&p.images[0])||p.img||"";items.push({name,image});});if(!items.length)return"";return '<section class="ij-editorial-cats"><div class="ij-editorial-cats-head"><div><span class="eyebrow bn">নিজের স্টাইল খুঁজে নিন</span><h2>EXPLORE THE COLLECTION</h2></div><a href="#/shop">VIEW ALL ↗</a></div><div class="ij-editorial-cats-grid">'+items.map((x,i)=>'<a class="ij-editorial-cat" href="#/shop?c='+encodeURIComponent(x.name)+'" style="--cat-index:'+i+'">'+(x.image?'<img src="'+esc(x.image)+'" alt="'+esc(x.name)+'" loading="lazy">':'<span class="ij-editorial-cat-fallback">IJAZ</span>')+'<span class="ij-editorial-cat-shade"></span><span class="ij-editorial-cat-name">'+esc(x.name)+'</span><span class="ij-editorial-cat-no">0'+(i+1)+'</span></a>').join("")+'</div></section>';};
+const home=()=>hero()+editorialCategories()+(db.set.sec||[]).filter(x=>x.on).map(x=>x.id.startsWith("b:")?blockHtml((db.set.blocks||[]).find(b=>"b:"+b.id===x.id)):(SECR[x.id]||(()=>""))()).join("");
 const contactPg=()=>{const s=db.set;return`<h2>Contact us</h2><div class="glass stack" style="padding:22px;max-width:520px;margin-top:14px"><div><span class="mut">Address</span><br>${esc(s.addr)}</div><div><span class="mut">Phone</span><br><a class="ac" href="tel:${esc(s.ph1)}">${esc(s.ph1)}</a> / <a class="ac" href="tel:${esc(s.ph2)}">${esc(s.ph2)}</a></div><div><span class="mut">Email</span><br><a class="ac" href="mailto:${esc(s.mail)}">${esc(s.mail)}</a></div><a class="btn pri" href="${wa(s)}" target="_blank" rel="noopener">Chat on WhatsApp ${esc(s.wa)}</a></div><form data-s="comp" class="glass stack" style="padding:22px;max-width:520px;margin-top:18px"><span class="eyebrow bn">Report a problem · সমস্যা জানান</span><div class="two"><input name="name" placeholder="Your name" required><input name="phone" placeholder="01XXXXXXXXX" required pattern="(\\+?88)?01[3-9][0-9]{8}"></div><input name="order" placeholder="Order number (optional)"><textarea name="text" required placeholder="What went wrong?"></textarea><button class="pri">Send complaint</button></form>`};
 let f={q:"",c:"",s:"feat"};
 const qs=()=>{const h=location.hash,i=h.indexOf("?");return new URLSearchParams(i<0?"":h.slice(i+1))};
