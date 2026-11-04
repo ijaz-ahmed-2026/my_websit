@@ -3221,32 +3221,50 @@ body:not(.adm) header nav.ad{display:none!important}
 }
 </style>
 
-<style id="ijaz-footer-trial">
-:root{--footer-bg:#000;--footer-text-primary:#fff;--footer-text-secondary:#888;--footer-text-hover:#fff;--footer-border-color:#222;--status-green:#00e676}
-body:not(.adm) footer#foot{display:grid!important;grid-template-columns:minmax(220px,1.5fr) repeat(2,minmax(150px,1fr));gap:28px;background:#000!important;color:#888!important;padding:40px max(18px,4vw) 28px!important;border:0!important;overflow:hidden}
-body:not(.adm) footer#foot:before{content:"IJAZ";grid-column:1/-1;display:block;text-align:center;border-bottom:1px solid #222;padding:0 0 22px;margin:0 0 14px;font-family:var(--fn),Impact,sans-serif;font-size:clamp(4rem,15vw,12rem);font-weight:800;line-height:.9;letter-spacing:-.05em;background:linear-gradient(180deg,#fff 0%,#444 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.92}
-body:not(.adm) footer#foot>div{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-body:not(.adm) footer#foot .footer-brand .logo{display:none}
-body:not(.adm) footer#foot .footer-brand p{font-size:14px;line-height:1.8;color:#888}
-body:not(.adm) footer#foot .footer-brand:after{content:"●  ONLINE STORE · BANGLADESH";display:inline-flex;margin-top:8px;padding:7px 12px;border:1px solid #222;border-radius:30px;background:rgba(255,255,255,.05);font-size:11px;letter-spacing:.08em;color:#fff;box-shadow:inset 9px 0 0 -5px #00e676}
-body:not(.adm) footer#foot>div>b{color:#fff;font-size:12px;letter-spacing:.14em}
-body:not(.adm) footer#foot a{color:#888;font-size:13px;transition:color .2s,transform .2s}
-body:not(.adm) footer#foot a:hover{color:#fff;transform:translateX(3px)}
-@media(max-width:768px){body:not(.adm) footer#foot{grid-template-columns:1fr 1fr;gap:22px 16px;padding:34px 18px 26px!important}body:not(.adm) footer#foot:before{font-size:clamp(4rem,18vw,7rem);padding-bottom:18px;margin-bottom:8px}body:not(.adm) footer#foot .footer-brand{grid-column:1/-1}body:not(.adm) footer#foot>div{min-width:0}body:not(.adm) footer#foot a{overflow-wrap:anywhere}}
-</style><style id="ijaz-editorial-footer-trial">
-/* Footer follows the same logo lettering and active site theme */
-body:not(.adm) footer#foot{display:grid!important;grid-template-columns:minmax(220px,1.1fr) minmax(140px,.8fr) minmax(180px,1fr)!important;gap:34px!important;background:var(--bg)!important;color:var(--mut)!important;font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;padding:38px max(20px,calc((100vw - 1200px)/2)) 26px!important;border:0!important;border-top:1px solid var(--ln)!important;overflow:hidden}
-body:not(.adm) footer#foot:before{content:"IJAZ WEAR"!important;grid-column:1/-1;display:block;text-align:center;font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;font-size:clamp(25px,4.5vw,42px)!important;font-weight:700!important;line-height:1.2!important;letter-spacing:.22em!important;text-indent:.22em;background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;color:var(--fg)!important;-webkit-text-fill-color:var(--fg)!important;opacity:1!important;border-bottom:1px solid var(--ln)!important;padding:0 0 22px!important;margin:0 0 12px!important}
+<style id="ijaz-footer-final">
+/* Footer uses the real brand text and the active storefront theme */
+body:not(.adm) footer#foot{
+ display:grid!important;
+ grid-template-columns:minmax(220px,1.1fr) minmax(140px,.8fr) minmax(180px,1fr)!important;
+ gap:34px!important;
+ background:var(--ij-footer-bg,var(--bg))!important;
+ color:var(--ij-footer-text,var(--fg))!important;
+ padding:38px max(20px,calc((100vw - 1200px)/2)) 26px!important;
+ border:0!important;
+ border-top:1px solid var(--ij-footer-border,var(--ln))!important;
+ overflow:hidden;
+}
+body:not(.adm) footer#foot:before{content:none!important;display:none!important}
 body:not(.adm) footer#foot>div{display:flex;flex-direction:column;align-items:flex-start;gap:11px;min-width:0}
-body:not(.adm) footer#foot .footer-brand{position:relative}
-body:not(.adm) footer#foot .footer-brand .logo{display:none!important}
-body:not(.adm) footer#foot .footer-brand:after{content:"●  ONLINE STORE · BANGLADESH";display:inline-flex;align-items:center;color:var(--fg);background:var(--gl);border:1px solid var(--ln);border-radius:20px;padding:7px 12px;font-size:10px;letter-spacing:.08em;order:3}
-body:not(.adm) footer#foot p{color:var(--mut)!important;font-size:14px;line-height:1.8;margin:0}
-body:not(.adm) footer#foot .footer-links>b,body:not(.adm) footer#foot .footer-contact>b{font-size:12px;letter-spacing:.14em;color:var(--fg)!important;margin:0 0 7px}
-body:not(.adm) footer#foot a{font-size:13px;color:var(--mut)!important;text-decoration:none;transition:color .2s,transform .2s}
+body:not(.adm) footer#foot .footer-brand .logo{
+ display:block!important;
+ margin:0 0 5px!important;
+ padding:0!important;
+ background:none!important;
+ border:0!important;
+ color:var(--ij-footer-text,var(--fg))!important;
+ -webkit-text-fill-color:var(--ij-footer-text,var(--fg))!important;
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ font-size:20px!important;
+ font-weight:700!important;
+ line-height:1.2!important;
+ letter-spacing:.22em!important;
+ white-space:nowrap;
+}
+body:not(.adm) footer#foot .footer-brand .logo:after{content:none!important;display:none!important}
+body:not(.adm) footer#foot p{color:color-mix(in srgb,var(--ij-footer-text,var(--fg)) 72%,transparent)!important;font-size:14px;line-height:1.8;margin:0}
+body:not(.adm) footer#foot .footer-links>b,
+body:not(.adm) footer#foot .footer-contact>b{font-size:12px;letter-spacing:.14em;color:var(--ij-footer-text,var(--fg))!important;margin:0 0 7px}
+body:not(.adm) footer#foot a{font-size:13px;color:color-mix(in srgb,var(--ij-footer-text,var(--fg)) 72%,transparent)!important;text-decoration:none;transition:color .2s,transform .2s}
 body:not(.adm) footer#foot a:hover{color:var(--ac)!important;transform:translateX(2px)}
-body:not(.adm) footer#foot .footer-brand:before{content:"";display:block;width:8px;height:8px;border-radius:50%;background:#36c98f;box-shadow:0 0 8px rgba(54,201,143,.55);position:absolute;left:7px;bottom:10px;z-index:1}
-@media(max-width:720px){body:not(.adm) footer#foot{grid-template-columns:1fr 1fr!important;gap:24px 16px!important;padding:30px 18px 26px!important}body:not(.adm) footer#foot:before{font-size:clamp(22px,6vw,32px)!important;letter-spacing:.18em!important;text-indent:.18em;padding-bottom:18px!important;margin-bottom:6px!important}body:not(.adm) footer#foot .footer-brand{grid-column:1/-1}body:not(.adm) footer#foot .footer-links{grid-column:1}body:not(.adm) footer#foot .footer-contact{grid-column:2}body:not(.adm) footer#foot p{font-size:13px}}
+@media(max-width:720px){
+ body:not(.adm) footer#foot{grid-template-columns:1fr 1fr!important;gap:24px 16px!important;padding:30px 18px 26px!important}
+ body:not(.adm) footer#foot .footer-brand{grid-column:1/-1}
+ body:not(.adm) footer#foot .footer-links{grid-column:1}
+ body:not(.adm) footer#foot .footer-contact{grid-column:2}
+ body:not(.adm) footer#foot p{font-size:13px}
+ body:not(.adm) footer#foot .footer-brand .logo{font-size:19px!important;letter-spacing:.14em!important}
+}
 </style>
 </head><body>
 
