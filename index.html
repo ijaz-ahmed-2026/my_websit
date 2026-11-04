@@ -1974,6 +1974,41 @@ body.adm button:focus-visible{outline:2px solid var(--ac)!important;outline-offs
  body.adm .sidebar>button.sn{min-height:36px!important}
 }
 </style>
+
+<style id="ijaz-theme-admin-final-fix">
+/* Unified light palette: apply to storefront AND admin, including admin-only surfaces */
+:root[data-t="light"]{--act:#85570b;--fg:#263436;--mut:#68797a;--bg:#edf3f1;--bg2:#f8fbfa;--gl:rgba(255,255,255,.78);--ln:rgba(39,62,63,.16);color-scheme:light}
+:root[data-t="light"] body{background:linear-gradient(145deg,#f7faf8 0%,#edf3f1 58%,#e5eeeb 100%)!important;color:#263436!important}
+:root[data-t="light"] body.adm header{background:rgba(248,251,250,.94)!important;border-color:rgba(39,62,63,.14)!important;color:#263436!important}
+:root[data-t="light"] body.adm #app{color:#263436!important}
+:root[data-t="light"] body.adm #app :is(h1,h2,h3,h4,h5,p,label,small,strong,b,span,td,th,summary){text-shadow:none}
+:root[data-t="light"] body.adm #app :is(.glass,.sidebar,.tbl,.dt,.agrp,.order-edit-section,.attn-c,.cd,.rc,.stat,.orow,.pro-panel,.pro-metric,.pro-quick,.dash-kpi){background:#fff!important;color:#263436!important;border-color:rgba(39,62,63,.15)!important;box-shadow:0 7px 24px rgba(36,59,58,.07)!important}
+:root[data-t="light"] body.adm #app :is(.mut,.mn,.sub button:not(.on),.who label){color:#68797a!important}
+:root[data-t="light"] body.adm #app :is(input,select,textarea){background:#fff!important;color:#263436!important;border-color:rgba(39,62,63,.22)!important}
+:root[data-t="light"] body.adm #app table th{background:#edf3f1!important;color:#536565!important}
+:root[data-t="light"] body.adm #app table td{color:#263436!important;border-color:rgba(39,62,63,.12)!important}
+:root[data-t="light"] body.adm #app .sidebar button{background:transparent!important;color:#46595a!important;box-shadow:none!important}
+:root[data-t="light"] body.adm #app .sidebar button.on{background:#e4efeb!important;color:#85570b!important;box-shadow:inset 3px 0 0 #b47b22!important}
+:root[data-t="light"] body.adm #app .sidebar .sub button.on{background:#f0f5f2!important;color:#85570b!important}
+:root[data-t="light"] body.adm #app button:not(.side-collapse),:root[data-t="light"] body.adm #app .btn{color:#263436;border-color:rgba(39,62,63,.2)}
+:root[data-t="light"] body.adm #app .pri,:root[data-t="light"] body.adm #app .ab.p{background:#d99a2b!important;color:#211707!important;border-color:#d99a2b!important}
+:root[data-t="light"] body.adm #app .sb{color:inherit}
+:root[data-t="light"] body.adm #app .on td{background:#f5f0df!important}
+/* Compact admin action controls; cards keep their own layout */
+body.adm #app button.ab,body.adm #app button.pri,body.adm #app .chips button,
+body.adm #app .row>button,body.adm #app .tbl button,body.adm #app .tw button,
+body.adm #app button[data-a]:not(.sn):not(.cd):not(.attn-c):not(.side-collapse){
+ min-height:32px!important;padding:6px 10px!important;font-size:12px!important;line-height:1.2!important;border-radius:8px!important
+}
+body.adm #app .sidebar>button.sn{min-height:36px!important;padding:6px 9px!important;font-size:12px!important;border-radius:8px!important}
+body.adm #app .sidebar .sub button{min-height:29px!important;padding:5px 8px!important;font-size:11.5px!important}
+body.adm #app button.side-collapse{min-height:28px!important;padding:3px 8px!important}
+body.adm #app button:active,body.adm #app button.ij-pressed{filter:brightness(.88)!important;transform:translateY(1px) scale(.97)!important}
+@media(max-width:720px){
+ body.adm #app button.ab,body.adm #app button.pri,body.adm #app .chips button,body.adm #app .row>button{min-height:30px!important;padding:5px 8px!important;font-size:11.5px!important}
+}
+</style>
+
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
