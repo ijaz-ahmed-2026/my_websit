@@ -2745,6 +2745,68 @@ body:not(.adm) header .store-menu{
  backdrop-filter:blur(24px) saturate(1.35)!important;
 }
 </style>
+
+<style id="ijaz-nav-labels-bare-final">
+/* Navigation text and icons must never have their own background.
+   The shared glass surface belongs only to the menu container. */
+body:not(.adm) header .store-menu > a,
+body:not(.adm) header .store-menu > button,
+body:not(.adm) header #xnav,
+body:not(.adm) header #xnav a,
+body:not(.adm) header .nav-actions > button,
+body:not(.adm) header .mobile-menu-toggle,
+body:not(.adm) header .search-icon-toggle,
+body:not(.adm) header .menu-search-open,
+body:not(.adm) header .store-menu > a *,
+body:not(.adm) header .store-menu > button *,
+body:not(.adm) header #xnav a *,
+body:not(.adm) header .nav-actions > button *,
+body:not(.adm) header .mobile-menu-toggle *,
+body:not(.adm) header .search-icon-toggle * {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+body:not(.adm) header .store-menu > a::before,
+body:not(.adm) header .store-menu > a::after,
+body:not(.adm) header .store-menu > button::before,
+body:not(.adm) header .store-menu > button::after,
+body:not(.adm) header #xnav a::before,
+body:not(.adm) header #xnav a::after,
+body:not(.adm) header .nav-actions > button::before,
+body:not(.adm) header .nav-actions > button::after,
+body:not(.adm) header .mobile-menu-toggle::before,
+body:not(.adm) header .mobile-menu-toggle::after,
+body:not(.adm) header .search-icon-toggle::before,
+body:not(.adm) header .search-icon-toggle::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+body:not(.adm) header .store-menu > a:hover,
+body:not(.adm) header .store-menu > a:focus,
+body:not(.adm) header .store-menu > a:active,
+body:not(.adm) header #xnav a:hover,
+body:not(.adm) header #xnav a:focus,
+body:not(.adm) header #xnav a:active,
+body:not(.adm) header .nav-actions > button:hover,
+body:not(.adm) header .nav-actions > button:active {
+  background: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+/* Preserve the single shared glass capsule around the navigation links. */
+body:not(.adm) header .store-menu {
+  background: rgba(255,255,255,.105) !important;
+  background-image: none !important;
+  border: 1px solid rgba(255,255,255,.20) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.35) !important;
+  backdrop-filter: blur(24px) saturate(1.35) !important;
+}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
