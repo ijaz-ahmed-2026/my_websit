@@ -1902,6 +1902,51 @@ body:not(.adm) #app .ij-motion-soft{transform:translate3d(0,12px,0);filter:blur(
 #app :is(button,.btn,.pc,.glass,.rc,.blk){transition-timing-function:cubic-bezier(.2,.7,.2,1)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}body:not(.adm) #app .ij-reveal{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}}
 </style>
+<style id="ijaz-button-feedback-refine">
+/* Cleaner, less pill-shaped controls with a clear pressed state */
+button:not(.icon-btn):not(.round):not(.circle),
+.btn, a.button, [role="button"]:not(.icon-btn) {
+  border-radius: 10px !important;
+  transition: transform .16s ease, box-shadow .16s ease, background-color .18s ease, border-color .18s ease, filter .16s ease !important;
+  -webkit-tap-highlight-color: transparent;
+}
+button:active, .btn:active, a.button:active, [role="button"]:active,
+button.ij-pressed, .btn.ij-pressed, a.button.ij-pressed, [role="button"].ij-pressed {
+  transform: translateY(1px) scale(.965) !important;
+  filter: brightness(.90) saturate(1.12) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,.20), 0 0 0 2px rgba(120,190,255,.22) !important;
+}
+button:focus-visible, .btn:focus-visible, a.button:focus-visible, [role="button"]:focus-visible {
+  outline: 2px solid var(--accent, #75bfff) !important;
+  outline-offset: 3px !important;
+}
+button:disabled, .btn:disabled { cursor: not-allowed; opacity: .55; transform: none !important; }
+@media (prefers-reduced-motion: reduce) {
+ button, .btn, a.button, [role="button"] { transition: none !important; }
+}
+</style>
+<script id="ijaz-button-feedback">
+(function(){
+ if(window.__ijButtonFeedbackReady)return;window.__ijButtonFeedbackReady=true;
+ let active=null,clear=null;
+ document.addEventListener("pointerdown",function(e){
+  const el=e.target.closest("button, .btn, a.button, [role='button']");
+  if(!el||el.disabled)return;
+  if(active)active.classList.remove("ij-pressed");
+  active=el;el.classList.add("ij-pressed");
+  clearTimeout(clear);clear=setTimeout(()=>{el.classList.remove("ij-pressed");if(active===el)active=null},650);
+ },true);
+ function release(){if(active){active.classList.remove("ij-pressed");active=null}clearTimeout(clear)}
+ document.addEventListener("pointerup",release,true);
+ document.addEventListener("pointercancel",release,true);
+ document.addEventListener("click",function(e){
+  const el=e.target.closest("button, .btn, a.button, [role='button']");
+  if(!el)return;
+  el.classList.add("ij-clicked");
+  setTimeout(()=>el.classList.remove("ij-clicked"),220);
+ },true);
+})();
+</script>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
