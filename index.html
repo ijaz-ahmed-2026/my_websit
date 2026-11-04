@@ -2997,6 +2997,36 @@ header .nav-actions button span {
   min-height: 0 !important;
 }
 </style>
+
+<style id="ijaz-nav-no-button-boxes-final">
+/* Navigation brand, links, icons and count labels are plain text/icons only. */
+header .logo, header .store-menu, header .store-menu > *, header #xnav,
+header #xnav *, header .nav-actions, header .nav-actions *,
+header .mobile-menu-toggle, header .search-icon-toggle {
+ background:transparent!important;background-color:transparent!important;
+ background-image:none!important;box-shadow:none!important;border-color:transparent!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+header .nav-actions > button,header .nav-actions > button span,
+header .nav-actions > button svg,header .store-menu > a,header .store-menu > button,
+header #xnav a,header .mobile-menu-toggle,header .search-icon-toggle {
+ border:0!important;outline:0!important;border-radius:0!important;
+ background:transparent!important;background-color:transparent!important;box-shadow:none!important;
+}
+header .nav-actions > button::before,header .nav-actions > button::after,
+header .nav-actions > button span::before,header .nav-actions > button span::after,
+header .store-menu > a::before,header .store-menu > a::after,
+header .store-menu > button::before,header .store-menu > button::after {
+ content:none!important;display:none!important;
+}
+header .nav-actions > button:hover,header .nav-actions > button:focus,
+header .nav-actions > button:active,header .nav-actions > button:hover span,
+header .nav-actions > button:focus span {
+ background:transparent!important;background-color:transparent!important;
+ box-shadow:none!important;border:0!important;
+}
+header .nav-actions > button span{padding:0!important}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
