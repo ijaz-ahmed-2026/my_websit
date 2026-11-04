@@ -2575,7 +2575,7 @@ document.addEventListener("click",e=>{
   const nav=document.querySelector("header .nav-actions");if(!nav)return;
   let b=document.getElementById("ijLanguageToggle");
   if(!b){b=document.createElement("button");b.id="ijLanguageToggle";b.type="button";b.className="ij-language-toggle";b.style.cssText="min-width:42px;padding:7px 9px;font-size:11px;border-radius:30px";nav.insertBefore(b,nav.lastElementChild||null);b.addEventListener("click",()=>{lang=lang==="en"?"bn":"en";localStorage.setItem("ij_lang",lang);document.documentElement.lang=lang==="bn"?"bn":"en";walk(document.body);update()})}
-  function update(){b.textContent=lang==="bn"?"EN":"বাং";b.setAttribute("aria-label",lang==="bn"?"Switch to English":"Switch to Bangla");b.title=b.getAttribute("aria-label")}
+  function update(){const label=lang==="bn"?"EN":"বাং";if(b.textContent!==label)b.textContent=label;const aria=lang==="bn"?"Switch to English":"Switch to Bangla";if(b.getAttribute("aria-label")!==aria)b.setAttribute("aria-label",aria);if(b.title!==aria)b.title=aria}
   window.__ijLangUpdate=update;update();
  }
  function apply(){document.documentElement.lang=lang==="bn"?"bn":"en";walk(document.body);setup();window.__ijLangUpdate&&window.__ijLangUpdate()}
