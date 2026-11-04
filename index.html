@@ -2346,6 +2346,127 @@ body.adm #app button:active,body.adm #app button.ij-pressed{filter:brightness(.8
 }
 </style>
 
+
+<style id="ijaz-mobile-header-right-brand-v1">
+@media(max-width:720px){
+ body:not(.adm) header{
+  display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+  align-items:center!important;justify-content:space-between!important;
+  width:100%!important;height:62px!important;min-height:62px!important;
+  box-sizing:border-box!important;padding:8px 14px!important;margin:0!important;gap:12px!important;
+  overflow:visible!important;position:sticky!important;top:0!important;z-index:1200!important;
+  background:rgba(13,23,23,.94)!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.12)!important;
+  box-shadow:0 5px 20px rgba(0,0,0,.12)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important
+ }
+ body:not(.adm) header #brand{
+  order:2!important;display:flex!important;flex:0 0 auto!important;align-items:center!important;
+  justify-content:flex-end!important;width:auto!important;min-width:96px!important;max-width:124px!important;
+  height:42px!important;padding:0!important;margin:0!important;background:transparent!important;
+  border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important;
+  font-size:0!important;line-height:0!important;color:transparent!important;text-shadow:none!important
+ }
+ body:not(.adm) header #brand .lg{
+  display:block!important;width:auto!important;height:34px!important;max-width:120px!important;
+  object-fit:contain!important;object-position:right center!important;margin:0!important;padding:0!important;
+  border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;
+  mix-blend-mode:screen!important;filter:brightness(1.12) contrast(1.04)!important
+ }
+ body:not(.adm) header nav.st{
+  order:1!important;display:flex!important;flex:1 1 auto!important;flex-direction:row!important;
+  align-items:center!important;justify-content:flex-start!important;gap:7px!important;
+  width:auto!important;min-width:0!important;margin:0!important;padding:0!important;
+  overflow:visible!important;background:transparent!important;border:0!important;box-shadow:none!important
+ }
+ body:not(.adm) header .mobile-menu-toggle{
+  order:1!important;display:inline-flex!important;flex:0 0 32px!important;
+  width:32px!important;min-width:32px!important;height:32px!important;min-height:32px!important;
+  align-items:center!important;justify-content:center!important;padding:0!important;margin:0!important;
+  border:1px solid rgba(255,255,255,.19)!important;border-radius:9px!important;
+  background:rgba(255,255,255,.07)!important;color:#f5f4ee!important;
+  font-size:0!important;box-shadow:none!important
+ }
+ body:not(.adm) header .mobile-menu-toggle:before{
+  content:"☰"!important;display:block!important;font:16px/1 Arial,sans-serif!important;color:currentColor!important
+ }
+ body:not(.adm) header .mobile-menu-toggle span{display:none!important}
+ body:not(.adm) header .store-menu{
+  display:none!important;position:absolute!important;left:12px!important;right:12px!important;
+  top:calc(100% + 8px)!important;z-index:1300!important;flex-direction:column!important;
+  align-items:stretch!important;justify-content:flex-start!important;gap:3px!important;
+  width:auto!important;min-width:0!important;padding:10px!important;margin:0!important;
+  background:rgba(15,25,25,.98)!important;border:1px solid rgba(255,255,255,.14)!important;
+  border-radius:13px!important;box-shadow:0 16px 38px rgba(0,0,0,.28)!important;
+  -webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important
+ }
+ body:not(.adm).menu-open header .store-menu{display:flex!important}
+ body:not(.adm) header .store-menu a{
+  display:flex!important;align-items:center!important;min-height:40px!important;
+  padding:9px 12px!important;border:0!important;border-radius:8px!important;
+  color:#f5f4ee!important;background:transparent!important;font-size:12px!important;
+  letter-spacing:.04em!important;text-transform:uppercase!important
+ }
+ body:not(.adm) header .store-menu a:hover{background:rgba(255,255,255,.08)!important}
+ body:not(.adm) header .store-menu .menu-search-open{display:none!important}
+ body:not(.adm) header .search-icon-toggle{
+  order:2!important;display:inline-flex!important;position:relative!important;
+  flex:0 0 32px!important;width:32px!important;min-width:32px!important;height:32px!important;min-height:32px!important;
+  align-items:center!important;justify-content:center!important;padding:0!important;margin:0!important;
+  border:1px solid rgba(255,255,255,.19)!important;border-radius:9px!important;
+  background:rgba(255,255,255,.07)!important;color:#f5f4ee!important;font-size:0!important;box-shadow:none!important
+ }
+ body:not(.adm) header .search-icon-toggle>span{
+  display:block!important;width:11px!important;height:11px!important;border:1.7px solid currentColor!important;
+  border-radius:50%!important;position:relative!important;opacity:1!important
+ }
+ body:not(.adm) header .search-icon-toggle>span:after{
+  content:""!important;position:absolute!important;right:-4px!important;bottom:-2px!important;
+  width:5px!important;height:1.7px!important;background:currentColor!important;transform:rotate(45deg)!important
+ }
+ body:not(.adm) header .nav-search{display:none!important}
+ body:not(.adm) header .nav-actions{
+  order:3!important;display:flex!important;flex:0 0 auto!important;align-items:center!important;
+  justify-content:flex-start!important;gap:5px!important;margin:0!important;padding:0!important
+ }
+ body:not(.adm) header .nav-actions button{
+  display:inline-flex!important;flex:0 0 32px!important;width:32px!important;min-width:32px!important;
+  height:32px!important;min-height:32px!important;align-items:center!important;justify-content:center!important;
+  padding:0!important;margin:0!important;border:1px solid rgba(255,255,255,.19)!important;
+  border-radius:9px!important;background:rgba(255,255,255,.07)!important;color:#f5f4ee!important;
+  box-shadow:none!important;font-size:15px!important
+ }
+ body:not(.adm) header .nav-actions button svg{display:block!important;width:15px!important;height:15px!important;stroke:currentColor!important;fill:none!important}
+ body:not(.adm) header .nav-actions button span{display:none!important}
+ body:not(.adm) header .nav-actions button[data-a="theme"]{font-size:0!important}
+ body:not(.adm) header .nav-actions button[data-a="theme"]:before{
+  content:"◐"!important;display:block!important;font:17px/1 Arial,sans-serif!important;color:currentColor!important
+ }
+ body:not(.adm) header nav.ad{display:none!important}
+ :root[data-t="light"] body:not(.adm) header{
+  background:rgba(246,244,237,.96)!important;border-bottom:1px solid rgba(37,49,47,.13)!important;
+  box-shadow:0 4px 16px rgba(37,49,47,.06)!important
+ }
+ :root[data-t="light"] body:not(.adm) header #brand .lg{mix-blend-mode:multiply!important;filter:grayscale(1) contrast(1.35)!important}
+ :root[data-t="light"] body:not(.adm) header .mobile-menu-toggle,
+ :root[data-t="light"] body:not(.adm) header .search-icon-toggle,
+ :root[data-t="light"] body:not(.adm) header .nav-actions button{
+  color:#263b3c!important;background:rgba(255,255,255,.72)!important;border-color:rgba(38,59,60,.18)!important
+ }
+ :root[data-t="light"] body:not(.adm) header .store-menu{background:rgba(250,249,244,.98)!important;border-color:rgba(38,59,60,.14)!important}
+ :root[data-t="light"] body:not(.adm) header .store-menu a{color:#263b3c!important}
+}
+@media(max-width:390px){
+ body:not(.adm) header{gap:7px!important;padding-inline:9px!important}
+ body:not(.adm) header #brand{min-width:82px!important;max-width:100px!important}
+ body:not(.adm) header #brand .lg{max-width:98px!important;height:30px!important}
+ body:not(.adm) header nav.st{gap:5px!important}
+ body:not(.adm) header .mobile-menu-toggle,
+ body:not(.adm) header .search-icon-toggle,
+ body:not(.adm) header .nav-actions button{flex-basis:29px!important;width:29px!important;min-width:29px!important;height:29px!important;min-height:29px!important}
+ body:not(.adm) header .nav-actions{gap:3px!important}
+}
+</style>
+
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
