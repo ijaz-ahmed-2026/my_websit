@@ -3266,6 +3266,35 @@ body:not(.adm) footer#foot a:hover{color:var(--ac)!important;transform:translate
  body:not(.adm) footer#foot .footer-brand .logo{font-size:19px!important;letter-spacing:.14em!important}
 }
 </style>
+
+<style id="ijaz-footer-logo-theme-fix">
+/* Use the same live logo typography and active theme palette in the footer */
+body:not(.adm) footer#foot{
+ background:var(--ij-footer-bg,var(--bg))!important;
+ color:var(--fg)!important;
+ border-top:1px solid var(--ln)!important;
+ border-right:0!important;border-bottom:0!important;border-left:0!important;
+}
+body:not(.adm) footer#foot:before{content:none!important;display:none!important}
+body:not(.adm) footer#foot .footer-brand .logo{
+ display:block!important;
+ font-family:inherit!important;
+ font-size:20px!important;
+ font-weight:700!important;
+ letter-spacing:.22em!important;
+ line-height:1.2!important;
+ color:var(--fg)!important;
+ -webkit-text-fill-color:var(--fg)!important;
+ background:none!important;
+ text-shadow:none!important;
+ margin:0 0 8px!important;
+}
+body:not(.adm) footer#foot p{color:var(--mut)!important}
+body:not(.adm) footer#foot .footer-links>b,
+body:not(.adm) footer#foot .footer-contact>b{color:var(--fg)!important}
+body:not(.adm) footer#foot a{color:var(--mut)!important}
+body:not(.adm) footer#foot a:hover{color:var(--ac)!important}
+</style>
 </head><body>
 
 <header><a href="#/" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
@@ -3340,7 +3369,7 @@ const sv=()=>{try{localStorage.setItem("ij_w",JSON.stringify(wish));localStorage
 const toast=(m,a)=>{const t=document.createElement("div");t.className="toast glass";t.style.background="var(--bg2)";t.append(m);if(a){const b=document.createElement("button");b.textContent=a.t;b.dataset.a=a.a;t.append(b)}(document.querySelector("dialog[open]")||document.body).append(t);setTimeout(()=>t.remove(),2800)};
 const pr=p=>p.sale??p.price,prod=id=>db.products.find(p=>p.id==id);
 function chrome(){const s=db.set,bs=s.brandStyle||{},isLight=document.documentElement.dataset.t==="light",chosenBrandColor=isLight?(bs.lightColor||""):(bs.darkColor||bs.color||"" );let fs=$("#ijBrandFont");if(!fs){fs=document.createElement("style");fs.id="ijBrandFont";document.head.appendChild(fs)}const fontSrc=s.brandFont||s.brandFontData||"",brandColor=/^#[0-9a-f]{6}$/i.test(chosenBrandColor)?chosenBrandColor:"inherit",brandSize=Math.min(32,Math.max(14,+bs.size||20));fs.textContent=(fontSrc?"@font-face{font-family:IJAZUploadedBrand;src:url("+JSON.stringify(String(fontSrc))+");font-display:swap}":"")+("#brand{"+(fontSrc?"font-family:IJAZUploadedBrand,cursive!important;":"")+"font-weight:"+(bs.bold?"700":"400")+"!important;font-style:"+(bs.italic?"italic":"normal")+"!important;font-size:"+brandSize+"px!important;"+(brandColor!=="inherit"?"color:"+brandColor+"!important;":"")+"}");document.title=s.brand+(MODE==="admin"?" Admin":"");$("#brand").innerHTML=(safeImg(s.img&&s.img.logo)?`<img class="lg" src="${safeImg(s.img.logo)}" alt="">`:"")+esc(s.brand);applyTheme();ijDesignCss();document.documentElement.style.setProperty("--ac",s.ac);$("#wc")&&($("#wc").textContent=wish.length);$("#cc")&&($("#cc").textContent=cart.reduce((a,b)=>a+b.q,0));
- const xn=$("#xnav");if(xn)xn.innerHTML=(s.nav||[]).map(n=>`<a href="${esc(safeLink(n.l))}"${/^https?:/i.test(n.l)?' target="_blank" rel="noopener"':""}>${esc(n.t)}</a>`).join("")+(s.pages||[]).map(p=>`<a href="#/page/${esc(p.id)}">${esc(p.title)}</a>`).join("");const ft=$("#foot");if(ft)ft.innerHTML=`<div class="footer-brand"><b class="logo">${esc(s.brand)}</b><p>${esc(s.addr)}<br>${esc(s.foot||"Cash on Delivery or online payment across Bangladesh")}</p></div><div class="footer-links"><b>Explore</b><a href="#/">Home</a><a href="#/shop">Shop All</a><a href="#/shop?s=new">New Arrivals</a><a href="#/track">Track Order</a>${(s.pages||[]).map(p=>`<a href="#/page/${esc(p.id)}">${esc(p.title)}</a>`).join("")}</div><div class="footer-contact"><b>Customer Care</b><a href="#/contact">Contact Us</a><a href="tel:${esc(s.ph1)}">${esc(s.ph1)}</a><a href="tel:${esc(s.ph2)}">${esc(s.ph2)}</a><a href="mailto:${esc(s.mail)}">${esc(s.mail)}</a><a href="${wa(s)}" target="_blank" rel="noopener">WhatsApp ${esc(s.wa)}</a></div>`}
+ const xn=$("#xnav");if(xn)xn.innerHTML=(s.nav||[]).map(n=>`<a href="${esc(safeLink(n.l))}"${/^https?:/i.test(n.l)?' target="_blank" rel="noopener"':""}>${esc(n.t)}</a>`).join("")+(s.pages||[]).map(p=>`<a href="#/page/${esc(p.id)}">${esc(p.title)}</a>`).join("");const ft=$("#foot");if(ft)ft.innerHTML=`<div class="footer-brand"><b class="logo">IJAZ WEAR</b><p>${esc(s.addr)}<br>${esc(s.foot||"Cash on Delivery or online payment across Bangladesh")}</p></div><div class="footer-links"><b>Explore</b><a href="#/">Home</a><a href="#/shop">Shop All</a><a href="#/shop?s=new">New Arrivals</a><a href="#/track">Track Order</a>${(s.pages||[]).map(p=>`<a href="#/page/${esc(p.id)}">${esc(p.title)}</a>`).join("")}</div><div class="footer-contact"><b>Customer Care</b><a href="#/contact">Contact Us</a><a href="tel:${esc(s.ph1)}">${esc(s.ph1)}</a><a href="tel:${esc(s.ph2)}">${esc(s.ph2)}</a><a href="mailto:${esc(s.mail)}">${esc(s.mail)}</a><a href="${wa(s)}" target="_blank" rel="noopener">WhatsApp ${esc(s.wa)}</a></div>`}
 const wa=s=>"https://wa.me/88"+String(s.wa).replace(/\D/g,"");
 // ── "server" logic (in the real build this lives in Postgres functions; here it is browser code) ──
 function quote(items,method,district){const sub=items.reduce((a,i)=>a+pr(prod(i.id))*i.q,0),s=db.set;
