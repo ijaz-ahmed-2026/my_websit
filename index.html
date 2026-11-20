@@ -4035,7 +4035,7 @@ document.addEventListener("submit",e=>{const t=e.target,k=t.dataset.s;if(!k)retu
  if(k==="set"){const s=db.set;Object.assign(s,{brand:d.brand,ac:d.ac,h1b:d.h1b,delD:d.delD,delO:d.delO,addr:d.addr,ph1:d.ph1,ph2:d.ph2,mail:d.mail,wa:d.wa,h1:d.h1,h2:d.h2,cta:d.cta,adv:+d.adv,advMin:+d.advMin,dhaka:+d.dhaka,out:+d.out,advOn:!!d.advOn});commit();toast("Settings saved")}
  if(["note","addp"].includes(k))route()});
 addEventListener("hashchange",()=>route());
-{let th=null;try{th=localStorage.getItem("ij_theme")}catch{}document.documentElement.dataset.t=th||(db.set.th&&db.set.th.mode)||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}
+{document.documentElement.dataset.t="dark";try{localStorage.removeItem("ij_theme")}catch{}}
 bootSupabase();
 
 /* Scroll reveal observer is reattached after every storefront/admin render */
