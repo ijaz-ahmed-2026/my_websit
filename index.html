@@ -4020,23 +4020,51 @@ document.addEventListener("click",e=>{
  };
  const reverse=Object.fromEntries(Object.entries(dictionary).map(([a,b])=>[b,a]));
  let lang=localStorage.getItem("ij_lang")==="bn"?"bn":"en";
- const translate=s=>{const v=String(s||"");return lang==="bn"?(dictionary[v]||v):(reverse[v]||v)};
+ const englishOnly=s=>String(s||"")
+  .replace(/[\u0980-\u09FF\u09E6-\u09EF]+/g,"")
+  .replace(/\s*৳(?=\s|$)/g,"")
+  .replace(/^\s*[·•|–—-]\s*/,"")
+  .replace(/\s*[·•|–—-]\s*$/,"")
+  .replace(/\s{2,}/g," ").replace(/\s+([,.;:!?])/g,"$1").trim();
+ const translate=s=>{const v=String(s||"");return lang==="bn"?(dictionary[v]||v):englishOnly(reverse[v]||v)};
  function walk(root){
   if(!root)return;
   const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
-  let n;while((n=w.nextNode())){if(!n.nodeValue.trim()||/^(SCRIPT|STYLE|NOSCRIPT)$/.test(n.parentElement?.tagName||""))continue;const raw=n.nodeValue.trim(),out=translate(raw);if(out!==raw){const lead=n.nodeValue.match(/^\s*/)?.[0]||"",tail=n.nodeValue.match(/\s*$/)?.[0]||"";n.nodeValue=lead+out+tail}}
-  const els=root.querySelectorAll?root.querySelectorAll("[placeholder],[aria-label],[title]"):[];els.forEach(el=>["placeholder","aria-label","title"].forEach(a=>{const v=el.getAttribute(a);if(v)el.setAttribute(a,translate(v))}));
+  let n;while((n=w.nextNode())){
+   if(!n.nodeValue.trim()||/^(SCRIPT|STYLE|NOSCRIPT)$/.test(n.parentElement?.tagName||""))continue;
+   const raw=n.nodeValue.trim(),out=translate(raw);
+   if(out!==raw){const lead=n.nodeValue.match(/^\s*/)?.[0]||"",tail=n.nodeValue.match(/\s*$/)?.[0]||"";n.nodeValue=out?lead+out+tail:""}
+  }
+  const els=root.querySelectorAll?root.querySelectorAll("[placeholder],[aria-label],[title],[alt]"):[];
+  els.forEach(el=>["placeholder","aria-label","title","alt"].forEach(a=>{const v=el.getAttribute(a);if(v)el.setAttribute(a,translate(v))}));
  }
  function setup(){
   const nav=document.querySelector("header .nav-actions");if(!nav)return;
   let b=document.getElementById("ijLanguageToggle");
-  if(!b){b=document.createElement("button");b.id="ijLanguageToggle";b.type="button";b.className="ij-language-toggle";b.style.cssText="min-width:42px;padding:7px 9px;font-size:11px;border-radius:30px";nav.insertBefore(b,nav.lastElementChild||null);b.addEventListener("click",()=>{lang=lang==="en"?"bn":"en";localStorage.setItem("ij_lang",lang);document.documentElement.lang=lang==="bn"?"bn":"en";walk(document.body);update()})}
-  function update(){const label=lang==="bn"?"EN":"বাং";if(b.textContent!==label)b.textContent=label;const aria=lang==="bn"?"Switch to English":"Switch to Bangla";if(b.getAttribute("aria-label")!==aria)b.setAttribute("aria-label",aria);if(b.title!==aria)b.title=aria}
+  if(!b){
+   b=document.createElement("button");b.id="ijLanguageToggle";b.type="button";b.className="ij-language-toggle";
+   b.style.cssText="min-width:42px;padding:7px 9px;font-size:11px;border-radius:30px";
+   nav.insertBefore(b,nav.lastElementChild||null);
+   b.addEventListener("click",()=>{localStorage.setItem("ij_lang",lang==="en"?"bn":"en");location.reload()});
+  }
+  function update(){
+   const label=lang==="bn"?"EN":"BN";
+   if(b.textContent!==label)b.textContent=label;
+   const aria=lang==="bn"?"Switch to English":"Switch to Bangla";
+   if(b.getAttribute("aria-label")!==aria)b.setAttribute("aria-label",aria);
+   if(b.title!==aria)b.title=aria;
+  }
   window.__ijLangUpdate=update;update();
  }
  function apply(){document.documentElement.lang=lang==="bn"?"bn":"en";walk(document.body);setup();window.__ijLangUpdate&&window.__ijLangUpdate()}
  apply();
- const observer=new MutationObserver(records=>{for(const r of records){if(r.type==="childList")r.addedNodes.forEach(n=>{if(n.nodeType===Node.ELEMENT_NODE)walk(n);else if(n.nodeType===Node.TEXT_NODE){const raw=n.nodeValue.trim(),out=translate(raw);if(out!==raw)n.nodeValue=n.nodeValue.replace(raw,out)}});else if(r.type==="characterData"){const raw=r.target.nodeValue.trim(),out=translate(raw);if(out!==raw)r.target.nodeValue=r.target.nodeValue.replace(raw,out)}}setup()});
+ const observer=new MutationObserver(records=>{
+  for(const r of records){
+   if(r.type==="childList")r.addedNodes.forEach(n=>{if(n.nodeType===Node.ELEMENT_NODE)walk(n);else if(n.nodeType===Node.TEXT_NODE){const raw=n.nodeValue.trim(),out=translate(raw);if(out!==raw)n.nodeValue=out}});
+   else if(r.type==="characterData"){const raw=r.target.nodeValue.trim(),out=translate(raw);if(out!==raw)r.target.nodeValue=out}
+  }
+  setup()
+ });
  observer.observe(document.body,{subtree:true,childList:true,characterData:true});
 })();
 </script>
