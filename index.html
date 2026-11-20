@@ -3419,7 +3419,7 @@ body.ij-intro-mode{margin:0!important;padding:0!important;overflow:hidden!import
 <footer id="foot"></footer>
 <dialog id="dlg"></dialog>
 <script>
-const SUPABASE_URL="https://dkzzfuulyygpwfikyzup.supabase.co",SUPABASE_KEY="sb_publishable_q1VicwYnKENd1lDVwzmW_g_aUPiO4kw";
+const SUPABASE_URL="https://dbnqshojfrmcximyojsk.supabase.co",SUPABASE_KEY="sb_publishable_irFeXfnX5i2CmHCAU6ktcQ_7x-Hn87T";
 const sbClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage}});
 let sbSession=null,sbRole=null,sbSaving=false,sbSaveTimer=null,sbSavePromise=Promise.resolve(),sbSaveWaiters=[],sbAuthReady=false;
 const MODE="both",KEY="ijaz_demo_v3",$=(s,e=document)=>e.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])),bdt=n=>"৳"+Number(n).toLocaleString("en-IN");
@@ -3574,7 +3574,7 @@ const prodPg=id=>{const p=prod(id);if(!p||!p.pub)return'<p class="mut">Product n
 function reqCancel(id,why,more){const o=db.orders.find(x=>x.id==id);if(!o||!["new","pending_payment","confirmed","on_hold"].includes(o.status))return null;const r=why+(more?" — "+more:"");o.creason=r;o.hist.push({from:o.status,to:"cancel_requested",by:"customer",at:Date.now(),reason:r});o.status="cancel_requested";commit();return o}
 const T=s=>{const o=db.set.txt;return(o&&o[s])||s};
 const safeLink=l=>/^(#|https?:\/\/|tel:|mailto:)/i.test(l||"")?l:"#/";
-const safeImg=s=>{if(/^data:image\/(jpeg|png|webp|gif);base64,[A-Za-z0-9+\/=]+$/.test(s||""))return s;try{const u=new URL(String(s||""));return u.protocol==="https:"&&u.hostname==="dkzzfuulyygpwfikyzup.supabase.co"&&u.pathname.startsWith("/storage/v1/object/public/ijaz-media/")?u.href:""}catch{return""}};
+const safeImg=s=>{if(/^data:image\/(jpeg|png|webp|gif);base64,[A-Za-z0-9+\/=]+$/.test(s||""))return s;try{const u=new URL(String(s||""));return u.protocol==="https:"&&u.hostname==="dbnqshojfrmcximyojsk.supabase.co"&&u.pathname.startsWith("/storage/v1/object/public/ijaz-media/")?u.href:""}catch{return""}};
 const FH=["Cinzel","Playfair Display","Inter","Bebas Neue","Noto Serif Bengali","Tiro Bangla","Hind Siliguri"],FB=["Inter","Hind Siliguri","Playfair Display","Noto Serif Bengali"];
 const PRE={Amber:["#e0a23b","#15120e","#f4efe6"],Emerald:["#2fbf8f","#0e1512","#eef5f0"],Rose:["#e0607e","#17110f","#f8eeee"],Ocean:["#3b9eff","#0e131a","#edf2f8"],Mono:["#d9d9d9","#111111","#f2f2f2"]};
 const TXL=["Featured","বাছাই করা","New arrivals","নতুন এসেছে","Bestsellers","সেরা বিক্রি","Recently viewed","সম্প্রতি দেখা","How ordering works","অর্ডারের নিয়ম","Reviews & ratings","রিভিউ ও রেটিং","Description","বিবরণ","Reviews","রিভিউ","You may also like","আপনার পছন্দ হতে পারে","Track order · ট্র্যাক"];
