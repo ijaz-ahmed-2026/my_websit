@@ -4307,5 +4307,91 @@ body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) :is(input,select,textarea){b
 }
 </style>
 
+
+<style id="ijaz-final-alignment-v2">
+/* ADMIN: fix actual dashboard tiles and controls, keep labels inside their surfaces */
+body.adm #app{width:100%;min-width:0;overflow-x:hidden}
+body.adm #app .shell{width:100%;grid-template-columns:minmax(190px,240px) minmax(0,1fr)!important;gap:16px!important}
+body.adm #app .shell>*,body.adm #app .ol>*,body.adm #app .od2>*,body.adm #app .nogrid>*{min-width:0;max-width:100%}
+body.adm #app button,body.adm #app .btn,body.adm #app .ab{
+ box-sizing:border-box!important;max-width:100%;min-width:0;
+ height:auto!important;min-height:36px;padding:8px 11px!important;
+ line-height:1.25!important;white-space:normal!important;
+ overflow-wrap:anywhere;word-break:normal;text-align:center;
+ display:inline-flex;align-items:center;justify-content:center;
+}
+body.adm #app .cd,body.adm #app .attn-c{
+ width:100%;min-width:0;min-height:92px;height:auto!important;
+ padding:13px!important;display:flex!important;flex-direction:column;
+ align-items:flex-start!important;justify-content:center!important;
+ gap:5px!important;text-align:left!important;white-space:normal!important;
+ line-height:1.25!important;overflow-wrap:anywhere;
+}
+body.adm #app .cd b,body.adm #app .attn-c b{
+ display:block;max-width:100%;font-size:clamp(21px,3vw,30px)!important;
+ line-height:1.05!important;overflow-wrap:anywhere;
+}
+body.adm #app .cd span,body.adm #app .attn-c span{font-size:12px;line-height:1.3;white-space:normal}
+body.adm #app .cards,body.adm #app .attn,body.adm #app .stats{
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,145px),1fr))!important;
+ align-items:stretch;min-width:0;
+}
+body.adm #app .row{min-width:0;align-items:center;flex-wrap:wrap!important}
+body.adm #app .row>*{min-width:0;max-width:100%}
+body.adm #app .agrp,body.adm #app .glass,body.adm #app .tbl{min-width:0;max-width:100%}
+body.adm #app .tw,body.adm #app .tbl{overflow-x:auto;-webkit-overflow-scrolling:touch}
+body.adm #app input,body.adm #app select,body.adm #app textarea{box-sizing:border-box;min-width:0;max-width:100%}
+@media(max-width:900px){
+ body.adm #app .shell{grid-template-columns:minmax(0,1fr)!important}
+ body.adm #app .sidebar{position:static;max-width:100%;grid-auto-flow:column;grid-auto-columns:max-content;overflow-x:auto}
+ body.adm #app .ol,body.adm #app .od2,body.adm #app .nogrid{grid-template-columns:minmax(0,1fr)!important}
+ body.adm #app .dt{position:static}
+ body.adm #app .nrow{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:480px){
+ body.adm #app{padding-left:10px;padding-right:10px}
+ body.adm #app .cards,body.adm #app .attn,body.adm #app .stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ body.adm #app .cd,body.adm #app .attn-c{min-height:82px;padding:10px!important}
+ body.adm #app .cd b,body.adm #app .attn-c b{font-size:23px!important}
+ body.adm #app .ab,body.adm #app button{font-size:12px!important;padding:8px 9px!important}
+ body.adm #app .nrow{grid-template-columns:minmax(0,1fr)!important}
+}
+/* CUSTOMER PAGES ONLY: the opening landing intro is explicitly excluded */
+body:not(.adm):not(.ij-intro-mode) #app{width:100%;min-width:0;overflow-x:clip}
+body:not(.adm):not(.ij-intro-mode) #app main{min-width:0;max-width:100%}
+body:not(.adm):not(.ij-intro-mode) #app .grid{
+ grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:clamp(8px,1.3vw,16px)!important;
+}
+body:not(.adm):not(.ij-intro-mode) #app .pc{min-width:0;max-width:100%;height:100%;overflow:hidden}
+body:not(.adm):not(.ij-intro-mode) #app .pc .pn{min-width:0;overflow-wrap:anywhere;line-height:1.3}
+body:not(.adm):not(.ij-intro-mode) #app .pc .row{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:6px!important;min-width:0;align-items:stretch;
+}
+body:not(.adm):not(.ij-intro-mode) #app .pc .row button{
+ width:100%;min-width:0!important;max-width:100%;min-height:38px;height:auto!important;
+ padding:8px 5px!important;font-size:10px!important;line-height:1.2!important;
+ letter-spacing:0!important;white-space:normal!important;overflow-wrap:anywhere;
+}
+body:not(.adm):not(.ij-intro-mode) #app .pp{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:clamp(14px,3vw,36px)!important}
+body:not(.adm):not(.ij-intro-mode) #app .pp>div{min-width:0;max-width:100%}
+body:not(.adm):not(.ij-intro-mode) #app :is(input,select,textarea){box-sizing:border-box;min-width:0;max-width:100%}
+body:not(.adm):not(.ij-intro-mode) #app .blk{grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-width:0}
+@media(max-width:1050px){
+ body:not(.adm):not(.ij-intro-mode) #app .grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media(max-width:720px){
+ body:not(.adm):not(.ij-intro-mode) #app main{padding:14px 12px 76px}
+ body:not(.adm):not(.ij-intro-mode) #app .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+ body:not(.adm):not(.ij-intro-mode) #app .pc{padding:7px;gap:7px}
+ body:not(.adm):not(.ij-intro-mode) #app .pp{grid-template-columns:minmax(0,1fr)!important;gap:16px!important}
+ body:not(.adm):not(.ij-intro-mode) #app .pp>div:last-child{position:static}
+ body:not(.adm):not(.ij-intro-mode) #app .blk{grid-template-columns:minmax(0,1fr)!important}
+ body:not(.adm):not(.ij-intro-mode) #app .sec{gap:8px;flex-wrap:wrap}
+}
+@media(max-width:360px){
+ body:not(.adm):not(.ij-intro-mode) #app .grid{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
 </body></html>
 <!-- Cloudflare Pages initial deployment trigger -->
