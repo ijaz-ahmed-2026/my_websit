@@ -741,7 +741,7 @@ button,.btn{border-color:rgba(255,255,255,.15)}
 :root[data-t=light] body,
 :root[data-t=light] body.adm{color:#211b12!important;background:radial-gradient(900px 520px at 8% -10%,rgba(220,174,93,.17),transparent 68%),radial-gradient(760px 480px at 100% 32%,rgba(154,185,210,.15),transparent 70%),linear-gradient(145deg,#f8f6f1,#eee9df 55%,#f8f6f1)!important}
 :root[data-t=light] body.adm #app,
-:root[data-t=light] body:not(.adm) #app{color:#211b12}
+:root[data-t=light] body:not(.adm) #app:not(:has(.ij-fullscreen-intro)){color:#211b12}
 :root[data-t=light] body.adm :is(h1,h2,h3,h4,h5,p,label,small,strong,b,em,span,li,dt,dd,td,th,summary,.mut,.sm,.mn,.who,.empty,.order-block-title,.pro-metric-label,.dash-kpi-top,.pro-chart-value,.pro-chart-foot,.pro-status,.pro-product-line){color:inherit}
 :root[data-t=light] body.adm :is(.mut,.sm,.mn,.who,.empty,.pro-metric-label,.dash-kpi-top,.pro-chart-value,.pro-chart-foot,.pro-panel-head p,.pro-welcome p,.pro-live,.sub button){color:#625847!important}
 :root[data-t=light] body.adm :is(.sidebar,.glass,.tbl,.ot,.orow,.attn-c,.pro-welcome,.pro-metric,.pro-panel,.pro-quick,.pro-total,.dash-kpi,.stat,.cd,.rc,.agrp,.note,.dt,.order-main,.order-side,.blk,.panel,.box,.tile){
@@ -1906,15 +1906,15 @@ body:not(.adm),#app,body:not(.adm) header,#foot,
 :root[data-t="light"] .sb.r{color:#b4232b!important}
 /* Smooth scrolling and varied, restrained entrance motion */
 html{scroll-behavior:smooth!important;scroll-padding-top:84px}
-body:not(.adm) #app .ij-reveal{will-change:opacity,transform,filter}
-body:not(.adm) #app .ij-reveal.ij-visible{opacity:1!important;filter:blur(0)!important;transform:translate3d(0,0,0) scale(1)!important}
-body:not(.adm) #app .ij-motion-rise{transform:translate3d(0,28px,0);filter:blur(5px);opacity:0;transition:opacity .75s ease,transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
-body:not(.adm) #app .ij-motion-left{transform:translate3d(-24px,12px,0);filter:blur(4px);opacity:0;transition:opacity .75s ease,transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
-body:not(.adm) #app .ij-motion-right{transform:translate3d(24px,12px,0);filter:blur(4px);opacity:0;transition:opacity .75s ease,transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
-body:not(.adm) #app .ij-motion-zoom{transform:translate3d(0,14px,0) scale(.965);filter:blur(4px);opacity:0;transition:opacity .8s ease,transform .85s cubic-bezier(.2,.7,.2,1),filter .8s ease}
-body:not(.adm) #app .ij-motion-soft{transform:translate3d(0,12px,0);filter:blur(3px);opacity:0;transition:opacity .9s ease,transform .9s ease,filter .9s ease}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .ij-reveal{will-change:opacity,transform,filter}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .ij-reveal.ij-visible{opacity:1!important;filter:blur(0)!important;transform:translate3d(0,0,0) scale(1)!important}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .ij-motion-rise{transform:translate3d(0,28px,0);filter:blur(5px);opacity:0;transition:opacity .75s ease,transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .ij-motion-left{transform:translate3d(-24px,12px,0);filter:blur(4px);opacity:0;transition:opacity .75s ease,transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .ij-motion-right{transform:translate3d(24px,12px,0);filter:blur(4px);opacity:0;transition:opacity .75s ease,transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .ij-motion-zoom{transform:translate3d(0,14px,0) scale(.965);filter:blur(4px);opacity:0;transition:opacity .8s ease,transform .85s cubic-bezier(.2,.7,.2,1),filter .8s ease}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .ij-motion-soft{transform:translate3d(0,12px,0);filter:blur(3px);opacity:0;transition:opacity .9s ease,transform .9s ease,filter .9s ease}
 #app :is(button,.btn,.pc,.glass,.rc,.blk){transition-timing-function:cubic-bezier(.2,.7,.2,1)}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}body:not(.adm) #app .ij-reveal{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .ij-reveal{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}}
 </style>
 <style id="ijaz-button-feedback-refine">
 /* Cleaner, less pill-shaped controls with a clear pressed state */
@@ -2062,7 +2062,7 @@ body.adm #app button:active,body.adm #app button.ij-pressed{filter:brightness(.8
 :root[data-t="light"] body:not(.adm){
  background:linear-gradient(145deg,#eaf1ee 0%,#f3f2eb 48%,#e5eeeb 100%)!important;
 }
-:root[data-t="light"] body:not(.adm) #app .pc{
+:root[data-t="light"] body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .pc{
  background:rgba(255,255,255,.94)!important;border-color:rgba(37,59,58,.18)!important;
  box-shadow:0 9px 26px rgba(36,59,58,.09)!important;
 }
@@ -3338,7 +3338,7 @@ body:not(.adm) footer#foot a:hover{color:var(--ac)!important}
 
 <style id="ijaz-editorial-redesign">
 body:not(.adm){--ij-ink:#080808;--ij-paper:#f4f3ef}
-body:not(.adm) #app{max-width:none!important;padding:0!important}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)){max-width:none!important;padding:0!important}
 body:not(.adm) .ij-editorial-hero{position:relative;isolation:isolate;min-height:calc(100svh - 72px);height:min(880px,calc(100svh - 72px));margin:0!important;border:0!important;border-radius:0!important;overflow:hidden;background:#333 var(--ij-clean-image) center 42%/cover no-repeat!important;color:#fff!important;display:flex;align-items:center;justify-content:center}
 body:not(.adm) .ij-editorial-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.32),rgba(0,0,0,.10) 40%,rgba(0,0,0,.35))}
 body:not(.adm) .ij-editorial-grain{position:absolute;inset:0;pointer-events:none;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E")}
@@ -4259,29 +4259,29 @@ body.adm #app :is(.tbl,.table-wrap){overflow-x:auto;-webkit-overflow-scrolling:t
   body.adm #app :is(button,.btn,.ab,.pri,.pro-quick,[role="button"]){font-size:12px!important;padding:8px 10px!important}
 }
 /* Customer pages: repair content widths and product/card alignment without touching the opening landing screen */
-body:not(.adm) #app :is(.pc,.cards,.pp,.ol,.stats,.grid,.product-gallery-main,.product-gallery-thumbs){
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) :is(.pc,.cards,.pp,.ol,.stats,.grid,.product-gallery-main,.product-gallery-thumbs){
   min-width:0;
   max-width:100%;
   box-sizing:border-box;
 }
-body:not(.adm) #app :is(.cards,.grid){
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) :is(.cards,.grid){
   grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));
 }
-body:not(.adm) #app .pc{
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .pc{
   display:flex;
   flex-direction:column;
   min-width:0;
   height:100%;
 }
-body:not(.adm) #app .pc > *{min-width:0;max-width:100%}
-body:not(.adm) #app .pc .row{
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .pc > *{min-width:0;max-width:100%}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .pc .row{
   display:flex;
   flex-wrap:wrap!important;
   align-items:stretch;
   gap:7px!important;
   margin-top:auto;
 }
-body:not(.adm) #app .pc .row button{
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .pc .row button{
   flex:1 1 105px!important;
   min-width:0!important;
   max-width:100%;
@@ -4294,16 +4294,16 @@ body:not(.adm) #app .pc .row button{
   text-align:center;
   letter-spacing:.035em!important;
 }
-body:not(.adm) #app :is(.pp,.ol){grid-template-columns:repeat(2,minmax(0,1fr))}
-body:not(.adm) #app :is(input,select,textarea){box-sizing:border-box;max-width:100%;min-width:0}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) :is(.pp,.ol){grid-template-columns:repeat(2,minmax(0,1fr))}
+body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) :is(input,select,textarea){box-sizing:border-box;max-width:100%;min-width:0}
 @media(max-width:680px){
-  body:not(.adm) #app main{padding-left:14px;padding-right:14px}
-  body:not(.adm) #app :is(.cards,.grid){grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
-  body:not(.adm) #app :is(.pp,.ol){grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
-  body:not(.adm) #app .pc .row button{font-size:10px!important;padding:8px 7px!important}
+  body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) main{padding-left:14px;padding-right:14px}
+  body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) :is(.cards,.grid){grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) :is(.pp,.ol){grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+  body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) .pc .row button{font-size:10px!important;padding:8px 7px!important}
 }
 @media(max-width:360px){
-  body:not(.adm) #app :is(.cards,.grid){grid-template-columns:minmax(0,1fr)!important}
+  body:not(.adm) #app:not(:has(.ij-fullscreen-intro)) :is(.cards,.grid){grid-template-columns:minmax(0,1fr)!important}
 }
 </style>
 
