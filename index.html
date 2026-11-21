@@ -3422,6 +3422,27 @@ body.ij-intro-mode{margin:0!important;padding:0!important;overflow:hidden!import
 #app .ij-landing-pages a:hover{opacity:1}
 #app .ij-landing-pages .sep{opacity:.65}#app .ij-landing-pages .sep:before{content:"|"}
 </style>
+<style id="ijaz-smooth-water-motion-v1">
+@keyframes ijIntroSoftOpen{from{opacity:0;filter:blur(4px);transform:scale(1.006)}to{opacity:1;filter:blur(0);transform:scale(1)}}
+@keyframes ijShopSoftOpen{from{opacity:0;filter:blur(3px);transform:translateY(7px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@keyframes ijWaterDrop{0%{opacity:0;transform:scale(.12)}18%{opacity:.42}70%{opacity:.16}100%{opacity:0;transform:scale(2.5)}}
+@keyframes ijDialogOpen{from{opacity:0;transform:translateY(10px) scale(.99);filter:blur(3px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+body:not(.adm) #app .ij-fullscreen-intro{animation:ijIntroSoftOpen .65s cubic-bezier(.2,.72,.2,1) both}
+body:not(.adm) #app .ij-intro-shop{position:relative;isolation:isolate;overflow:hidden;animation:ijShopSoftOpen .7s .1s cubic-bezier(.2,.72,.2,1) both;transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease}
+body:not(.adm) #app .ij-intro-shop:before{content:"";position:absolute;z-index:-1;inset:-65% -30%;pointer-events:none;background:radial-gradient(ellipse,rgba(255,255,255,.28),rgba(183,231,244,.12) 36%,transparent 68%);transform:translateX(-70%);transition:transform .65s ease}
+body:not(.adm) #app .ij-intro-shop:after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.4);border-radius:inherit;pointer-events:none;opacity:0;transform:scale(.7)}
+body:not(.adm) #app .ij-intro-shop:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.24)}
+body:not(.adm) #app .ij-intro-shop:hover:before{transform:translateX(65%)}
+body:not(.adm) #app .ij-intro-shop:active{transform:scale(.975)}
+body:not(.adm) #app .ij-intro-shop:active:after{animation:ijWaterDrop .58s ease-out}
+body:not(.adm) #app .ij-intro-shop span{display:inline-block;transition:transform .3s ease}
+body:not(.adm) #app .ij-intro-shop:hover span{transform:translate(3px,-2px)}
+body:not(.adm) dialog[open]{animation:ijDialogOpen .3s cubic-bezier(.2,.72,.2,1) both}
+body:not(.adm) dialog::backdrop{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+body:not(.adm) dialog{overscroll-behavior:contain}
+@media(max-width:600px){body:not(.adm) dialog::backdrop{-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}}
+@media(prefers-reduced-motion:reduce){body:not(.adm) #app .ij-fullscreen-intro,body:not(.adm) #app .ij-intro-shop,body:not(.adm) dialog[open]{animation:none!important}body:not(.adm) #app .ij-intro-shop,body:not(.adm) #app .ij-intro-shop:before,body:not(.adm) #app .ij-intro-shop span{transition:none!important}}
+</style>
 </head><body>
 
 <header><a href="#/home" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
