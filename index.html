@@ -3422,29 +3422,7 @@ body.ij-intro-mode{margin:0!important;padding:0!important;overflow:hidden!import
 #app .ij-landing-pages a:hover{opacity:1}
 #app .ij-landing-pages .sep{opacity:.65}#app .ij-landing-pages .sep:before{content:"|"}
 </style>
-<style id="ijaz-smooth-water-motion-v1">
-@keyframes ijIntroSoftOpen{from{opacity:0;filter:blur(4px);transform:scale(1.006)}to{opacity:1;filter:blur(0);transform:scale(1)}}
-@keyframes ijShopSoftOpen{from{opacity:0;filter:blur(3px);transform:translateY(7px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
-@keyframes ijTapWaterPulse{0%{box-shadow:inset 0 0 0 1px rgba(210,242,255,.5),0 0 0 0 rgba(170,225,245,.28)}65%{box-shadow:inset 0 0 0 1px rgba(210,242,255,.2),0 0 0 9px rgba(170,225,245,0)}100%{box-shadow:inset 0 0 0 1px rgba(210,242,255,0),0 0 0 12px rgba(170,225,245,0)}}
-@keyframes ijWaterDrop{0%{opacity:0;transform:scale(.12)}18%{opacity:.42}70%{opacity:.16}100%{opacity:0;transform:scale(2.5)}}
-@keyframes ijDialogOpen{from{opacity:0;transform:translateY(10px) scale(.99);filter:blur(3px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
-body:not(.adm) #app :is(button,.btn,a.button,[role="button"]):active{animation:ijTapWaterPulse .46s ease-out}
-body:not(.adm) #app .ij-fullscreen-intro{animation:ijIntroSoftOpen .65s cubic-bezier(.2,.72,.2,1) both}
-body:not(.adm) #app .ij-intro-shop{position:relative;isolation:isolate;overflow:hidden;animation:ijShopSoftOpen .7s .1s cubic-bezier(.2,.72,.2,1) both;transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease}
-body:not(.adm) #app .ij-intro-shop:before{content:"";position:absolute;z-index:-1;inset:-65% -30%;pointer-events:none;background:radial-gradient(ellipse,rgba(255,255,255,.28),rgba(183,231,244,.12) 36%,transparent 68%);transform:translateX(-70%);transition:transform .65s ease}
-body:not(.adm) #app .ij-intro-shop:after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.4);border-radius:inherit;pointer-events:none;opacity:0;transform:scale(.7)}
-body:not(.adm) #app .ij-intro-shop:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.24)}
-body:not(.adm) #app .ij-intro-shop:hover:before{transform:translateX(65%)}
-body:not(.adm) #app .ij-intro-shop:active{transform:scale(.975)}
-body:not(.adm) #app .ij-intro-shop:active:after{animation:ijWaterDrop .58s ease-out}
-body:not(.adm) #app .ij-intro-shop span{display:inline-block;transition:transform .3s ease}
-body:not(.adm) #app .ij-intro-shop:hover span{transform:translate(3px,-2px)}
-body:not(.adm) dialog[open]{animation:ijDialogOpen .3s cubic-bezier(.2,.72,.2,1) both}
-body:not(.adm) dialog::backdrop{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-body:not(.adm) dialog{overscroll-behavior:contain}
-@media(max-width:600px){body:not(.adm) dialog::backdrop{-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}}
-@media(prefers-reduced-motion:reduce){body:not(.adm) #app .ij-fullscreen-intro,body:not(.adm) #app .ij-intro-shop,body:not(.adm) dialog[open]{animation:none!important}body:not(.adm) #app .ij-intro-shop,body:not(.adm) #app .ij-intro-shop:before,body:not(.adm) #app .ij-intro-shop span{transition:none!important}}
-</style>
+
 </head><body>
 
 <header><a href="#/home" class="logo" id="brand">IJAZ</a><nav class="st" aria-label="Main navigation">
@@ -4458,5 +4436,35 @@ body:not(.adm):not(.ij-intro-mode) #app .blk{grid-template-columns:minmax(0,1fr)
  body:not(.adm):not(.ij-intro-mode) #app .grid{grid-template-columns:minmax(0,1fr)!important}
 }
 </style>
+<style id="ijaz-stable-motion-v2">
+@keyframes ijSoftDialog{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+#app .ij-intro-shop{transition:transform .22s ease,background-position .45s ease!important;will-change:auto!important}
+#app .ij-intro-shop:active{transform:scale(.98)!important}
+#app .ij-intro-shop:before,#app .ij-intro-shop:after{animation:none!important;filter:none!important}
+#app .ij-scroll-ready{opacity:.01;transform:translateY(9px);transition:opacity .42s ease,transform .42s ease}
+#app .ij-scroll-ready.ij-scroll-shown{opacity:1;transform:translateY(0)}
+dialog[open]{animation:ijSoftDialog .22s ease-out both}
+dialog::backdrop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+@media(prefers-reduced-motion:reduce){#app .ij-scroll-ready,#app .ij-intro-shop,dialog[open]{transition:none!important;animation:none!important;transform:none!important;opacity:1!important}}
+</style>
+<script id="ijaz-stable-scroll-motion-v2">
+(()=>{if(window.__ijStableMotionV2)return;window.__ijStableMotionV2=true;
+if(!("IntersectionObserver" in window))return;
+const app=document.getElementById("app");if(!app)return;
+const reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(reduced)return;
+const io=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting){e.target.classList.add("ij-scroll-shown");io.unobserve(e.target)}}},{threshold:.08,rootMargin:"0px 0px -28px 0px"});
+const seen=new WeakSet();
+function scan(root){if(!root||root.nodeType!==1)return;
+const targets=[];
+if(root.matches&&root.matches(".sec,.ij-new-drop,.ij-clean-hero"))targets.push(root);
+if(root.querySelectorAll)targets.push(...root.querySelectorAll(".sec,.ij-new-drop,.ij-clean-hero"));
+for(const el of targets){if(seen.has(el))continue;seen.add(el);el.classList.add("ij-scroll-ready");io.observe(el)}
+}
+scan(app);
+const mo=new MutationObserver(records=>{for(const r of records)for(const n of r.addedNodes)if(n.nodeType===1)scan(n)});
+mo.observe(app,{childList:true,subtree:true});
+})();
+</script>
 </body></html>
 <!-- Cloudflare Pages initial deployment trigger -->
