@@ -4436,34 +4436,52 @@ body:not(.adm):not(.ij-intro-mode) #app .blk{grid-template-columns:minmax(0,1fr)
  body:not(.adm):not(.ij-intro-mode) #app .grid{grid-template-columns:minmax(0,1fr)!important}
 }
 </style>
-<style id="ijaz-stable-motion-v2">
-@keyframes ijSoftDialog{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-#app .ij-intro-shop{transition:transform .22s ease,background-position .45s ease!important;will-change:auto!important}
-#app .ij-intro-shop:active{transform:scale(.98)!important}
-#app .ij-intro-shop:before,#app .ij-intro-shop:after{animation:none!important;filter:none!important}
-#app .ij-scroll-ready{opacity:.01;transform:translateY(9px);transition:opacity .42s ease,transform .42s ease}
-#app .ij-scroll-ready.ij-scroll-shown{opacity:1;transform:translateY(0)}
-dialog[open]{animation:ijSoftDialog .22s ease-out both}
+<style id="ijaz-stable-motion-v3">
+/* Motion is applied only after an element enters view; no hidden/pre-transformed layout. */
+@keyframes ijHeroArrive{0%{opacity:.72;transform:translateY(8px) scale(.992)}100%{opacity:1;transform:none}}
+@keyframes ijDropArrive{0%{opacity:.72;transform:translateX(12px)}100%{opacity:1;transform:none}}
+@keyframes ijSectionUp{0%{opacity:.78;transform:translateY(10px)}100%{opacity:1;transform:none}}
+@keyframes ijSectionSide{0%{opacity:.78;transform:translateX(-10px)}100%{opacity:1;transform:none}}
+@keyframes ijDialogArrive{0%{opacity:0;transform:translateY(5px) scale(.995)}100%{opacity:1;transform:none}}
+#app .ij-intro-shop{transition:transform .2s ease,background-position .4s ease!important;will-change:auto!important}
+#app .ij-intro-shop:active{transform:scale(.985)!important}
+#app .ij-intro-shop:before,#app .ij-intro-shop:after{filter:none!important}
+#app .ij-clean-hero.ij-motion-seen{animation:ijHeroArrive .58s cubic-bezier(.2,.7,.2,1) both}
+#app .ij-new-drop.ij-motion-seen{animation:ijDropArrive .52s cubic-bezier(.2,.7,.2,1) both}
+#app .sec.ij-motion-seen:nth-child(odd){animation:ijSectionUp .48s ease-out both}
+#app .sec.ij-motion-seen:nth-child(even){animation:ijSectionSide .48s ease-out both}
+dialog[open]{animation:ijDialogArrive .2s ease-out both}
 dialog::backdrop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-@media(prefers-reduced-motion:reduce){#app .ij-scroll-ready,#app .ij-intro-shop,dialog[open]{transition:none!important;animation:none!important;transform:none!important;opacity:1!important}}
+@media(prefers-reduced-motion:reduce){
+ #app .ij-motion-seen,#app .ij-intro-shop,dialog[open]{animation:none!important;transition:none!important;transform:none!important}
+}
 </style>
-<script id="ijaz-stable-scroll-motion-v2">
-(()=>{if(window.__ijStableMotionV2)return;window.__ijStableMotionV2=true;
-if(!("IntersectionObserver" in window))return;
-const app=document.getElementById("app");if(!app)return;
-const reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-if(reduced)return;
-const io=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting){e.target.classList.add("ij-scroll-shown");io.unobserve(e.target)}}},{threshold:.08,rootMargin:"0px 0px -28px 0px"});
+<script id="ijaz-stable-scroll-motion-v3">
+(()=>{if(window.__ijStableMotionV3)return;window.__ijStableMotionV3=true;
+const app=document.getElementById("app");
+if(!app||!("IntersectionObserver" in window))return;
+if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+const selector=".sec,.ij-new-drop,.ij-clean-hero";
 const seen=new WeakSet();
-function scan(root){if(!root||root.nodeType!==1)return;
-const targets=[];
-if(root.matches&&root.matches(".sec,.ij-new-drop,.ij-clean-hero"))targets.push(root);
-if(root.querySelectorAll)targets.push(...root.querySelectorAll(".sec,.ij-new-drop,.ij-clean-hero"));
-for(const el of targets){if(seen.has(el))continue;seen.add(el);el.classList.add("ij-scroll-ready");io.observe(el)}
+const io=new IntersectionObserver(entries=>{
+ for(const entry of entries){
+  if(!entry.isIntersecting)continue;
+  entry.target.classList.add("ij-motion-seen");
+  io.unobserve(entry.target);
+ }
+},{threshold:0.04,rootMargin:"0px 0px -24px 0px"});
+function scan(root){
+ if(!root||root.nodeType!==1)return;
+ const nodes=[];
+ if(root.matches&&root.matches(selector))nodes.push(root);
+ if(root.querySelectorAll)nodes.push(...root.querySelectorAll(selector));
+ for(const el of nodes){if(seen.has(el))continue;seen.add(el);io.observe(el)}
 }
 scan(app);
-const mo=new MutationObserver(records=>{for(const r of records)for(const n of r.addedNodes)if(n.nodeType===1)scan(n)});
-mo.observe(app,{childList:true,subtree:true});
+const observer=new MutationObserver(records=>{
+ for(const record of records)for(const node of record.addedNodes)if(node.nodeType===1)scan(node);
+});
+observer.observe(app,{childList:true,subtree:true});
 })();
 </script>
 </body></html>
