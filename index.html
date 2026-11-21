@@ -572,8 +572,8 @@ body.adm .sidebar .who .nav-ico{color:var(--fg);background:rgba(255,255,255,.07)
 @keyframes ij-admin-enter{from{opacity:0;transform:translate3d(18px,0,0) scale(.992)}to{opacity:1;transform:none}}
 @keyframes ij-hero-enter{0%{opacity:0;transform:translate3d(0,26px,0) scale(.975);filter:blur(7px)}70%{opacity:1;filter:blur(0)}100%{transform:none}}
 @keyframes ij-soft-pop{0%{opacity:0;transform:scale(.94)}75%{opacity:1;transform:scale(1.012)}100%{transform:scale(1)}}
-#app.ij-page-switch{animation:ij-store-enter .48s cubic-bezier(.2,.75,.2,1) both;transform-origin:50% 0}
-body.adm #app.ij-page-switch{animation:ij-admin-enter .34s cubic-bezier(.2,.8,.2,1) both}
+/* Prevent full-app opacity/blur flash during route renders and button actions */
+#app.ij-page-switch,body.adm #app.ij-page-switch{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
 #app .ij-reveal{opacity:0;will-change:opacity,transform,filter;transition:opacity .62s ease,transform .72s cubic-bezier(.2,.72,.18,1),filter .62s ease}
 #app .ij-reveal.ij-motion-rise{transform:translate3d(0,28px,0)}
 #app .ij-reveal.ij-motion-left{transform:translate3d(-30px,8px,0);filter:blur(3px)}
@@ -4054,23 +4054,15 @@ bootSupabase();
 let ijScrollObserver=null,ijLastScrollY=0,ijScrollDirection="down";
 window.addEventListener("scroll",()=>{const y=window.scrollY||0;ijScrollDirection=y<ijLastScrollY?"up":"down";ijLastScrollY=y},{passive:true});
 function ijObserveMotion(){
- const root=document.getElementById("app");if(!root)return;
- if(ijScrollObserver)ijScrollObserver.disconnect();
- const targets=root.querySelectorAll(":scope > main > .hero,:scope > main > .sec,:scope > main > .grid,:scope > main > .glass,:scope > main > .pc,:scope > main > .pro-panel,:scope > main > .pro-metric,:scope > main > .pro-quick,:scope > main > .dash-head,:scope > main > .dash-kpi,:scope > main > .stat,:scope > main > .cd,:scope > main > .rc,:scope > .hero,:scope .sec,:scope .pro-panel,:scope .pro-metric,:scope .pro-quick,:scope .dash-kpi,:scope .stat,:scope .pc,:scope .orow,:scope .cd,:scope .rc");
- const variants=["ij-motion-rise","ij-motion-left","ij-motion-zoom","ij-motion-soft","ij-motion-right"];
- targets.forEach((el,i)=>{
-  el.classList.add("ij-reveal");
-  const variant=el.matches(".hero,.dash-head")?"ij-motion-soft":el.matches(".pc,.pro-metric,.dash-kpi,.stat")?"ij-motion-zoom":el.matches(".sec,.pro-panel")?"ij-motion-left":variants[i%variants.length];
-  el.classList.add(variant);el.style.transitionDelay=(i%4)*65+"ms";
+ /* Legacy reveal observer disabled: it hid content and competed with the stable observer. */
+ const root=document.getElementById("app");
+ if(!root)return;
+ root.querySelectorAll(".ij-reveal").forEach(el=>{
+  el.classList.remove("ij-reveal","ij-visible","ij-leaving-up","ij-leaving-down","ij-motion-rise","ij-motion-left","ij-motion-right","ij-motion-zoom","ij-motion-soft");
+  el.style.transitionDelay="";
  });
- if(!("IntersectionObserver" in window)){targets.forEach(x=>x.classList.add("ij-visible"));return}
- ijScrollObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
-  const el=entry.target;
-  if(entry.isIntersecting){el.classList.remove("ij-leaving-up","ij-leaving-down");el.classList.add("ij-visible")}
-  else if(el.classList.contains("ij-visible")){el.classList.remove("ij-visible");el.classList.add(ijScrollDirection==="up"?"ij-leaving-up":"ij-leaving-down")}
- }),{root:null,rootMargin:"0px 0px -7% 0px",threshold:.08});
- targets.forEach(el=>ijScrollObserver.observe(el));
 }
+
 function ijAnimateDashboard(root){
  if(!root||!root.querySelector(".pro-dash"))return;
  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
